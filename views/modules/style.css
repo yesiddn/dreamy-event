@@ -1,0 +1,43 @@
+:root{
+    --primary: #7772E6;
+    --secondary: #737380;
+    --black: #1B1A33;
+    --white: #FFFFFF;
+  }
+  
+  html {
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .navBar{
+
+    background-color: var(--primary);
+    color: var(--white);
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+  }
+
+    .navBarSearch{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .navBarSearch input{
+        width: 50%;
+        height: 30px;
+        border-radius: 20px;
+        border: none;
+        outline: none;
+        padding: 5px;
+        box-shadow: 0px 0px 5px 2px #5e57e0;
+    }
+
+    .navBarSearch input:focus{
+        box-shadow: 0px 0px 5px 0px var(--white);
+    }
