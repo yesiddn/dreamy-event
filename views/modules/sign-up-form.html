@@ -4,40 +4,46 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../assets/css/normalize.css">
+  <link rel="stylesheet" href="../assets/css/main.css">
   <title>Document</title>
 </head>
 <body>
   <section class="sign-up">
-    <h2>Registrase</h2>
 
-    <div class="square"></div>
+    <div class="sign-up__container">
+      <h2>Registrase</h2>
+  
+      <div class="square"></div>
+  
+      <form class="sign-up__form">
+        <label for="user-name" class="sign-up__form__input">
+          <!-- <span>Nombre:</span> -->
+          <input id="user-name" type="text" placeholder="Nombre:" required>
+        </label>
+  
+        <label for="user-last-name" class="sign-up__form__input">
+          <!-- <span>Last name:</span> -->
+          <input id="user-last-name" type="text" placeholder="Last name:" required>
+        </label>
+  
+        <label for="user-phone" class="sign-up__form__input">
+          <!-- <span>Telefono:</span>  -->
+          <input id="user-phone" type="number" placeholder="Telefono:" required>
+        </label>
+  
+        <label for="user-email" class="sign-up__form__input">
+          <!-- <span>Email:</span>  -->
+          <input id="user-email" type="email" placeholder="Email:" required>
+        </label>
+  
+        <label for="user-pass" class="sign-up__form__input">
+          <!-- <span>Password:</span> -->
+          <input id="user-pass" type="password" placeholder="Password:" required>
+        </label>
 
-    <form class="sign-up__form">
-      <label for="user-name" class="sign-up__form__input">
-        Nombre: 
-        <input id="user-name" type="text" required>
-      </label>
-
-      <label for="user-last-name" class="sign-up__form__input">
-        Last name: 
-        <input id="user-last-name" type="text" required>
-      </label>
-
-      <label for="user-phone" class="sign-up__form__input">
-        Telefono: 
-        <input id="user-phone" type="number" required>
-      </label>
-
-      <label for="user-email" class="sign-up__form__input">
-        Email: 
-        <input id="user-email" type="email" required>
-      </label>
-
-      <label for="user-pass" class="sign-up__form__input">
-        Password: 
-        <input id="user-pass" type="password" required>
-      </label>
-    </form>
+        <button type="button">Registrase</button>
+      </form>
+    </div>
   </section>
 </body>
 </html>
