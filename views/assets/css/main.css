@@ -1,4 +1,4 @@
-:root{
+:root {
   --primary: #7772E6;
   --secondary: #737380;
   --black: #1B1A33;
@@ -34,6 +34,7 @@
   background-color: rgba(120, 114, 230, 0.3);
   border-radius: 35px;
   filter: blur(10px);
+  z-index: -100;
 }
 
 /* sign up form */
@@ -49,7 +50,8 @@
 }
 
 .sign-up__form__input {
-  position: relative;
+  display: flex;
+  flex-direction: column;
   margin: 0.5rem 0;
 }
 
@@ -62,11 +64,16 @@
 } */
 
 .sign-up__form__input input {
+  margin-bottom: 0.5rem;
   padding: 0.5rem;
   background-color: transparent;
   border: 1px solid var(--secondary);
   border-radius: 10px;
   outline: none;
+}
+
+.sign-up__form__input span {
+  color: red;
 }
 
 .sign-up__form__input input:focus {
@@ -85,6 +92,26 @@
 
 .sign-up__form button:hover {
   background-color: var(--black);
-  box-shadow: 0 5px 
-  15px var(--primary);
+  box-shadow: 0 5px 15px var(--primary);
+}
+
+/* validacion de input */
+.is-invalid {
+  border: 2px dashed red !important;
+}
+
+input:invalid {
+  border: 2px dashed red;
+}
+
+input:invalid:focus {
+  border: 2px dashed red;
+}
+
+input:valid {
+  border: 2px solid black;
+}
+
+.inactive {
+  display: none;
 }
