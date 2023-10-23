@@ -2,6 +2,16 @@ const customerFormButton = document.getElementById('customerFormButton');
 
 customerFormButton.addEventListener('click', createCustomer);
 
+async function fetchData(url, method, data) {
+  const response = await fetch(url, {
+    method,
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data),
+  });
+}
+
 function getFormCustomerData() {
   const customerForm = document.getElementById('customerForm');
   const customerData = new FormData(customerForm);
@@ -43,5 +53,12 @@ function createCustomer() {
     return false;
   }
   
-  console.log(formData);
+  const url = 'control/customer.control.php';
+  const method = 'POST';
+  const data = {
+    action: 'create',
+    formData
+  };
+
+  const response = fetchData(url, method, data);
 }
