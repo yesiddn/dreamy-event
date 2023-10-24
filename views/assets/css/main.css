@@ -5,6 +5,10 @@
   --white: #FFFFFF;
 }
 
+html {
+  font-family: 'Poppins', sans-serif;
+}
+
 /* sign up container */
 .sign-up {
   display: flex;
