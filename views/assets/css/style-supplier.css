@@ -1,0 +1,129 @@
+:root{
+  --primary: #7772E6;
+  --secondary: #737380;
+  --black: #1B1A33;
+  --white: #FFFFFF;
+}
+
+
+.container__supplier{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#supplier__form {
+  width: 350px;
+  height: 100%;
+  position: relative;
+  top: initial;
+  background: var(--white);
+  box-shadow: 0px 4px 10px rgba(120, 114, 230, 0.25);
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px;
+  padding-top: 0%;
+  padding-left: 30px;
+  padding-bottom: 20px;
+}
+
+.background {
+  position: absolute;
+  width: 110%;
+  height: 75%;
+  transform: rotate(45deg);
+  transform-origin: 5 0;
+  background: rgba(119, 114, 230, 0.45);
+  border-radius: 25px;
+  left: -215px;
+  top: 73px;
+}
+
+#supplier__form label {
+  display: none;
+}
+
+#supplier__form .inputs-form {
+  width: 90%;
+  /* position: relative; */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  margin-bottom: 3px;
+}
+
+
+#supplier__form .form-control {
+  padding: 5px 16px;
+  border-radius: 5px;
+  border: 1px solid var(--secondary);
+  outline: none;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 16px;
+  opacity: 0.8; 
+  /* transition: border-color 0.5s; */
+}
+
+#supplier__form .form-control:focus {
+  border: 1px solid var(--black);
+}
+
+#supplier__form .btn {
+  width: 40%;
+  padding-top: 8px; 
+  padding-bottom: 8px; 
+  padding-left: 20px; 
+  padding-right: 20px;
+  color: var(--white);
+  margin-top: 20px;
+  background: var(--primary);
+  border: 1px solid;
+  border-radius: 10px;
+  font-size: 20px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+#supplier__form .btn:hover {
+  border-color: var(--primary);
+}
+
+.row{
+  margin-top:0px;
+  display: flex;
+  width: 90%;
+  /* justify-content: space-between;  */
+}
+
+
+/* titulo */
+#supplier__signUp{
+  color: var(--black);
+  font-size: 32px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 3%;
+}
+
+
+/* nombre */
+#name__supplier{
+  flex:calc(20%); 
+  margin-bottom: 3px; 
+  margin-right: 10px;
+}
+
+
+/* apellido */
+#last__name__supplier{
+  flex: calc(20%); 
+  margin-bottom: 3px; 
+}
+
+
+
+
+
+
