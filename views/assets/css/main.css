@@ -58,6 +58,7 @@ html {
   flex-direction: column;
   width: 75%;
   margin: 0.5rem 0;
+  color: var(--secondary);
 }
 
 /* .sign-up__form__input span {
@@ -77,10 +78,15 @@ input {
   outline: none;
 }
 
+input:focus {
+  border: 2px solid var(--black);
+}
+
 .sign-up__form__input input[type="file"] {
   width: 100%;
+  margin-top: 0.5rem;
   padding: 0;
-  border: none;
+  border: none !important;
   outline: none;
   border-radius: 10px;
   background-color: transparent;
@@ -106,10 +112,6 @@ input {
   color: red;
 }
 
-.sign-up__form__input input:focus {
-  border: 2px solid var(--black);
-}
-
 .sign-up__form button {
   margin: 1rem;
   padding: 0.5rem 1rem;
@@ -127,7 +129,7 @@ input {
 
 /* validacion de input */
 .is-invalid {
-  border: 2px dashed red;
+  border: 2px dashed red !important;
 }
 
 input:invalid {
