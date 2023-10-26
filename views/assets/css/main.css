@@ -9,12 +9,19 @@ html {
   font-family: 'Poppins', sans-serif;
 }
 
+/* styles titles */
+.primary {
+  text-shadow: 0 2px 10px var(--primary);
+  color: var(--primary);
+}
+
 /* sign up container */
 .sign-up {
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100dvh;
+  padding: 2rem 0;
 }
 
 .sign-up__container {
@@ -30,8 +37,8 @@ html {
 /* square */
 .square {
   position: absolute;
-  width: 70dvh;
-  height: 70dvh;
+  width: 65dvw;
+  height: 65dvw;
   top: 50%;
   left: 0;
   transform: translate(-50%, -50%) rotate(45deg);
