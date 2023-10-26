@@ -30,28 +30,30 @@
 
 .background {
   position: absolute;
-  width: 100%;
-  height: 74%;
-  transform: rotate(42deg);
+  width: 110%;
+  height: 75%;
+  transform: rotate(45deg);
   transform-origin: 5 0;
   background: rgba(119, 114, 230, 0.45);
   border-radius: 25px;
-  left: -190px;
-  top: 72px;
+  left: -215px;
+  top: 73px;
 }
 
 #supplier__form label {
   display: none;
 }
 
-#supplier__form .mb-3 {
+#supplier__form .inputs-form {
   width: 90%;
   /* position: relative; */
   overflow: hidden;
   display: flex;
   flex-direction: column;
   margin-top: 20px;
+  margin-bottom: 3px;
 }
+
 
 #supplier__form .form-control {
   padding: 5px 16px;
@@ -119,6 +121,7 @@
   flex: calc(20%); 
   margin-bottom: 3px; 
 }
+
 
 
 
