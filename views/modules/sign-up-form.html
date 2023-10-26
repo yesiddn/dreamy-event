@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,44 +8,75 @@
   <link rel="stylesheet" href="../assets/css/main.css">
   <title>Document</title>
 </head>
+
 <body>
   <section class="sign-up">
 
     <div class="sign-up__container">
       <h2>Registrase</h2>
-  
+
       <div class="square"></div>
-  
+
       <form class="sign-up__form" id="customerForm">
         <label for="customer-name" class="sign-up__form__input">
           <!-- <span>Nombre:</span> -->
-          <input id="customer-name" type="text" name="customer-name" placeholder="Nombre:" onkeyup="validateInputData('customer-name')">
+          <input id="customer-name" type="text" name="customer-name" placeholder="Nombre"
+            onkeyup="validateInputData('customer-name')">
           <!-- mensaje de error -->
           <span class="inactive">Ingrese un valor valido.</span>
         </label>
-        
+
         <label for="customer-last-name" class="sign-up__form__input">
           <!-- <span>Last name:</span> -->
-          <input id="customer-last-name" type="text" name="customer-last-name" placeholder="Last name:" onkeyup="validateInputData('customer-last-name')">
+          <input id="customer-last-name" type="text" name="customer-last-name" placeholder="Last name"
+            onkeyup="validateInputData('customer-last-name')">
           <span class="inactive">Ingrese un valor valido.</span>
         </label>
-        
-        <label for="customer-phone" class="sign-up__form__input">
-          <!-- <span>Telefono:</span>  -->
-          <input id="customer-phone" type="number" name="customer-phone" placeholder="Telefono:" onkeyup="validateInputData('customer-phone')">
-          <span class="inactive">Ingrese un valor valido.</span>
-        </label>
-        
+
         <label for="customer-email" class="sign-up__form__input">
           <!-- <span>Email:</span>  -->
-          <input id="customer-email" type="email" name="customer-email" placeholder="Email:" onkeyup="validateInputData('customer-email')">
+          <input id="customer-email" type="email" name="customer-email" placeholder="Email"
+            onkeyup="validateInputData('customer-email')">
           <span class="inactive">Ingrese un valor valido.</span>
         </label>
-        
+
+        <label for="customer-phone" class="sign-up__form__input">
+          <!-- <span>Telefono:</span>  -->
+          <input id="customer-phone" type="number" name="customer-phone" placeholder="Telefono"
+            onkeyup="validateInputData('customer-phone')">
+          <span class="inactive">Ingrese un valor valido.</span>
+        </label>
+
+        <!-- city -->
+        <label for="customer-city" class="sign-up__form__input">
+          <!-- <span>Ciudad:</span>  -->
+          <input id="customer-city" type="text" name="customer-city" placeholder="Ciudad"
+            onkeyup="validateInputData('customer-city')">
+          <span class="inactive">Ingrese un valor valido.</span>
+        </label>
+
+        <!-- country -->
+        <label for="customer-country" class="sign-up__form__input">
+          <!-- <span>Pais:</span>  -->
+          <input id="customer-country" type="text" name="customer-country" placeholder="Pais"
+            onkeyup="validateInputData('customer-country')">
+          <span class="inactive">Ingrese un valor valido.</span>
+        </label>
+
+        <!-- password -->
         <label for="customer-pass" class="sign-up__form__input">
           <!-- <span>Password:</span> -->
-          <input id="customer-pass" type="password" name="customer-pass" placeholder="Password:" onkeyup="validateInputData('customer-pass')">
+          <input id="customer-pass" type="password" name="customer-pass" placeholder="Password"
+            onkeyup="validateInputData('customer-pass')">
           <span class="inactive">Ingrese un valor valido.</span>
+        </label>
+
+        <!-- img -->
+        <label for="customer-img" class="sign-up__form__input">
+          Foto de perfil:
+          <input id="customer-img" type="file" name="customer-img" placeholder="Imagen"
+            onchange="validateInputData('customer-img')" accept="image/*">
+          <span class="inactive">Seleccione un tipo de archivo correcto.</span>
         </label>
 
         <button type="button" id="customerFormButton">Registrase</button>
@@ -53,4 +85,5 @@
   </section>
   <script src="../assets/js/main.js"></script>
 </body>
+
 </html>
