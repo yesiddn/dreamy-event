@@ -1,31 +1,47 @@
 <?php
-include_once 'model/connection.model.php';
 
-class UserModel {
-  public static function createUser($name, $lastName, $email, $phone, $city, $country, $password, $img) {
-    $sql = "INSERT INTO users (name, lastName, email, phone, city, country, password, img) VALUES (?, ?, ?, ?, ?, ?, ?, ?); SELECT LAST_INSERT_ID();";
-    $query = conexion::conectar()->prepare($sql);
-    $query->bindParam(1, $name, PDO::PARAM_STR);
-    $query->bindParam(2, $lastName, PDO::PARAM_STR);
-    $query->bindParam(3, $email, PDO::PARAM_STR);
-    $query->bindParam(4, $phone, PDO::PARAM_STR);
-    $query->bindParam(5, $city, PDO::PARAM_STR);
-    $query->bindParam(6, $country, PDO::PARAM_STR);
-    $query->bindParam(7, $password, PDO::PARAM_STR);
-    $query->bindParam(8, $img, PDO::PARAM_STR);
-    $userId = $query->execute();
+include_once 'connection.model.php';
+include_once 'files.model.php';
 
-    $user = array(
-      'id' => $userId,
-      'name' => $name,
-      'lastName' => $lastName,
-      'email' => $email,
-      'phone' => $phone,
-      'city' => $city,
-      'country' => $country,
-      'img' => $img
-    );
+class UserModel
+{
+  public static function createUser($name, $lastName, $email, $phone, $city, $country, $password, $file)
+  {
+    try {
+      $img = FilesModel::saveImage($file);
 
-    return $user;
+      $sql = "INSERT INTO users (name_user, last_name_user, email_user, phone_user, city_user, country_user, password_user, img_user) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+      $connection = Connection::connect();
+      $query = $connection->prepare($sql);
+      $query->bindParam(1, $name, PDO::PARAM_STR);
+      $query->bindParam(2, $lastName, PDO::PARAM_STR);
+      $query->bindParam(3, $email, PDO::PARAM_STR);
+      $query->bindParam(4, $phone, PDO::PARAM_STR);
+      $query->bindParam(5, $city, PDO::PARAM_STR);
+      $query->bindParam(6, $country, PDO::PARAM_STR);
+      $query->bindParam(7, $password, PDO::PARAM_STR);
+      $query->bindParam(8, $img, PDO::PARAM_STR);
+
+      if ($query->execute()){
+        $userId = $connection->lastInsertId();
+      } else {
+        return $connection->errorInfo()[2];
+      }
+
+      $user = array(
+        'id_user' => $userId,
+        'name' => $name,
+        'lastName' => $lastName,
+        'email' => $email,
+        'phone' => $phone,
+        'city' => $city,
+        'country' => $country,
+        'img' => $img
+      );
+
+      return $user;
+    } catch (Exception $e) {
+      return $e->getMessage();
+    }
   }
 }

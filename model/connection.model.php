@@ -1,7 +1,7 @@
 <?php
-class conexion
+class Connection
 {
-  public static function conectar()
+  public static function connect()
   {
     $nombreServidor = "localhost";
     $baseDatos = "dreamy_event";
