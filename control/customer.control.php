@@ -17,9 +17,15 @@ class CustomerControl {
 
     return $newCustomer;
   }
+
+  public function getByEmail() {
+    $customer = CustomerModel::getByEmail($this->email);
+
+    return $customer;
+  }
 }
 
-if($_POST['action'] == 'create') {
+if($_POST['action'] === 'create') {
   $customer = new CustomerControl();
   $customer->name = $_POST['customer-name'];
   $customer->lastName = $_POST['customer-last-name'];
@@ -33,3 +39,10 @@ if($_POST['action'] == 'create') {
   echo json_encode($response);
 }
 
+if ($_POST['action'] === 'get-by-email') {
+  $customer = new CustomerControl();
+  $customer->email = $_POST['email'];
+  $customer = $customer->getByEmail();
+  echo json_encode($customer);
+
+}
