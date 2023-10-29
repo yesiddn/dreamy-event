@@ -44,4 +44,27 @@ class UserModel
       return $e->getMessage();
     }
   }
+
+  public static function getByEmail($email)
+  {
+    try {
+      $sql = "SELECT * FROM users WHERE email_user = ?";
+      $connection = Connection::connect();
+      $query = $connection->prepare($sql);
+      $query->bindParam(1, $email, PDO::PARAM_STR);
+      $query->execute();
+      $user = $query->fetch(PDO::FETCH_ASSOC);
+
+      if ($user) {
+        return $user;
+      }
+
+      return array(
+        'status' => 404,
+        'message' => 'User not found',
+      );
+    } catch (Exception $e) {
+      return $e->getMessage();
+    }
+  }
 }
