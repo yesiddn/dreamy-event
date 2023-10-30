@@ -1,0 +1,68 @@
+:root {
+    --primary: #7772E6;
+    --secondary: #737380;
+    --black: #1B1A33;
+    --white: #FFFFFF;
+}
+
+html {
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: var(--black);
+}
+
+.navbar {
+    background-color: var(--white);
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    overflow: scroll;
+    scroll-behavior: smooth;
+}
+
+.navbar li {
+    display: inline-block;
+    margin: 0 0.5rem;
+}
+
+.navbar li:last-child {
+    margin-right: 0;
+}
+
+.navbar li img {
+    display: block;
+    margin: 0 auto;
+}
+
+.navbar li span {
+    display: block;
+    text-align: center;
+    font-size: 14px;
+    color: var(--black);
+    margin-top: 5px;
+}
+
+.navbar li .line {
+    display: block;
+    height: 4px;
+    background-color: var(--primary);
+    border-radius: 2px;
+
+    
+}
+
+
+
+.navbar li a {
+    text-decoration: none;
+}
+
+@media (min-width: 768px) {
+    .navbar {
+        overflow: hidden;
+        justify-content: space-evenly;
+    }
+    
+}
