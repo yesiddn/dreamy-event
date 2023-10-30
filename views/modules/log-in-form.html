@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../assets/css/normalize.css">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <title>Log in </title>
+</head>
+<body>
+  <section class="log-in">
+
+    <div class="log-in__container">
+      <h2>Bienvenido a</h2>
+      <h2 class="tittle-welcome">Dreamy Event</h2>
+  
+      <div class="square"></div>
+  
+      <form class="log-in__form" id="customerForm">
+        
+        <label for="customer-email" class="log-in__form__input">
+          <!-- <span>Email:</span>  -->
+          <input id="customer-email" type="email" name="customer-email" placeholder="Email:" onkeyup="validateInputData('customer-email')">
+          <span class="inactive">Ingrese un valor valido.</span>
+        </label>
+        
+        <label for="customer-pass" class="log-in__form__input">
+          <!-- <span>Password:</span> -->
+          <input id="customer-pass" type="password" name="customer-pass" placeholder="Password:" onkeyup="validateInputData('customer-pass')">
+          <span class="inactive">Ingrese un valor valido.</span>
+        </label>
+        
+
+        <button type="button" id="customerFormButton">Ingresar</button>
+      </form>
+    </div>
+  </section>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
