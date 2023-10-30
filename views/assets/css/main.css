@@ -5,6 +5,201 @@
   --white: #FFFFFF;
 }
 
+html {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* header */
+header {
+  position: sticky;
+  border-bottom: 1px solid var(--primary);
+}
+
+header>div {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+}
+
+.hamburguer-menu {
+  width: 24px;
+  height: 24px;
+  border: none;
+  outline: none;
+  background-image: url('../svg/hamburguer-menu.svg');
+  background-repeat: no-repeat;
+  background-size: 24px;
+  background-position: center;
+  cursor: pointer;
+}
+
+.search-bar {
+  position: relative;
+  width: 50%;
+  max-width: 300px;
+  height: 30px;
+  border-radius: 20px;
+  background-color: var(--primary);
+  box-shadow: 0px 0px 5px 2px #5e57e0;
+}
+
+.search-bar input {
+  width: calc(100% - 30px);
+  height: 100%;
+  border: none;
+  border-radius: 20px;
+  background-color: transparent;
+  outline: none;
+  text-indent: 16px;
+  color: var(--white);
+}
+
+.search-bar input::placeholder {
+  color: var(--white);
+}
+
+.search-bar button {
+  position: absolute;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  background-image: url('../svg/search.svg');
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: 16px;
+  background-position: center;
+  outline: none;
+  cursor: pointer;
+}
+
+/* styles titles */
+.primary {
+  text-shadow: 0 2px 10px var(--primary);
+  color: var(--primary);
+}
+
+/* sign up container */
+.sign-up {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100dvh;
+  padding: 2rem 0;
+}
+
+.sign-up__container {
+  position: relative;
+  width: 50%;
+  margin: 0 auto;
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px var(--primary);
+  overflow: hidden;
+}
+
+/* square */
+.square {
+  position: absolute;
+  width: 65dvw;
+  height: 65dvw;
+  top: 50%;
+  left: 0;
+  transform: translate(-50%, -50%) rotate(45deg);
+  background-color: rgba(120, 114, 230, 0.3);
+  border-radius: 35px;
+  filter: blur(10px);
+  z-index: -100;
+}
+
+/* sign up form */
+.sign-up__container h2 {
+  text-align: center;
+}
+
+.sign-up__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sign-up__form__input {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  margin: 0.5rem 0;
+  color: var(--secondary);
+}
+
+input {
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  background-color: transparent;
+  border: 1px solid var(--secondary);
+  border-radius: 10px;
+  outline: none;
+}
+
+input:focus {
+  border: 2px solid var(--black);
+}
+
+.sign-up__form__input input[type="file"] {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0;
+  border: none !important;
+  outline: none;
+  border-radius: 10px;
+  background-color: transparent;
+  color: var(--secondary);
+  cursor: pointer;
+}
+
+.sign-up__form__input input::file-selector-button {
+  border: none;
+  border-radius: 15px;
+  background-color: var(--primary);
+  padding: 0.5rem 1rem;
+  color: var(--white);
+  cursor: pointer;
+}
+
+.sign-up__form__input input::file-selector-button:hover {
+  background-color: var(--black);
+  box-shadow: 0 5px 15px var(--primary);
+}
+
+.sign-up__form__input span {
+  color: red;
+}
+
+.sign-up__form button {
+  margin: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--primary);
+  border-radius: 10px;
+  border: none;
+  color: var(--white);
+  cursor: pointer;
+}
+
+.sign-up__form button:hover {
+  background-color: var(--black);
+  box-shadow: 0 5px 15px var(--primary);
+}
+
+
 .tittle-welcome{
   color: var(--primary);
 }
@@ -101,10 +296,6 @@ input:invalid {
 
 input:invalid:focus {
   border: 2px dashed red;
-}
-
-input:valid {
-  border: 2px solid black;
 }
 
 .inactive {
