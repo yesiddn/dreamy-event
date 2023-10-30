@@ -1,26 +1,22 @@
 <?php
 
 class SupplierControl {
-  public $name;
-  public $lastName;
+  public $nameCompany;
   public $email;
   public $phone;
-  public $name_company;
   public $rut;
   public $city;
   public $country;
-  public $password;
+  public $userId;
 }
 
 if($_POST['action'] == 'create') {
   $customer = new SupplierControl();
-  $customer->name = $_POST['name'];
-  $customer->lastName = $_POST['lastName'];
+  $customer->nameCompany = $_POST['name_company'];
   $customer->email = $_POST['email'];
   $customer->phone = $_POST['phone'];
-  $customer->name_company = $_POST['name_company'];
   $customer->rut = $_POST['rut'];
   $customer->city = $_POST['city'];
   $customer->country = $_POST['country'];
-  $customer->password = $_POST['password'];
+  $customer->userId = $_POST['id_user'];
 }
