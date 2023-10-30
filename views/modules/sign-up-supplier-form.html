@@ -10,15 +10,15 @@
 </head>
 
 <body>
-  <section class="sign-up">
+  <section class="form-section">
 
-    <div class="sign-up__container">
+    <div class="form__container">
       <h2>Registrarse como <span class="primary">proveedor</span></h2>
 
       <div class="square"></div>
 
-      <form class="sign-up__form" id="sign-up-form">
-        <label for="name_company" class="sign-up__form__input">
+      <form class="form" id="form">
+        <label for="name_company" class="form__input">
           <!-- <span>Nombre:</span> -->
           <input id="name-company" type="text" name="name-company" placeholder="Nombre de proveedor"
             onkeyup="validateInputData('name-company')">
@@ -26,21 +26,21 @@
           <span class="inactive">Ingrese un valor valido.</span>
         </label>
 
-        <label for="email-company" class="sign-up__form__input">
+        <label for="email-company" class="form__input">
           <!-- <span>Email:</span>  -->
           <input id="email-company" type="email" name="email-company" placeholder="Email de contacto"
             onkeyup="validateInputData('email-company')">
           <span class="inactive">Ingrese un valor valido.</span>
         </label>
 
-        <label for="phone-company" class="sign-up__form__input">
+        <label for="phone-company" class="form__input">
           <!-- <span>Telefono:</span>  -->
           <input id="phone-company" type="number" name="phone-company" placeholder="Telefono de contacto"
             onkeyup="validateInputData('phone-company')">
           <span class="inactive">Ingrese un valor valido.</span>
         </label>
 
-        <label for="rut-company" class="sign-up__form__input">
+        <label for="rut-company" class="form__input">
           <!-- <span>Telefono:</span>  -->
           <input id="rut-company" type="number" name="rut-company" placeholder="RUT"
             onkeyup="validateInputData('rut-company')">
@@ -48,7 +48,7 @@
         </label>
 
         <!-- city -->
-        <label for="city-company" class="sign-up__form__input">
+        <label for="city-company" class="form__input">
           <!-- <span>Ciudad:</span>  -->
           <input id="city-company" type="text" name="city-company" placeholder="Ciudad"
             onkeyup="validateInputData('city-company')">
@@ -56,7 +56,7 @@
         </label>
 
         <!-- country -->
-        <label for="country-company" class="sign-up__form__input">
+        <label for="country-company" class="form__input">
           <!-- <span>Pais:</span>  -->
           <input id="country-company" type="text" name="country-company" placeholder="Pais"
             onkeyup="validateInputData('country-company')">
@@ -64,7 +64,7 @@
         </label>
 
         <!-- img -->
-        <label for="img-company" class="sign-up__form__input">
+        <label for="img-company" class="form__input">
           Foto de perfil:
           <input id="img-company" type="file" name="img-company" placeholder="Imagen"
             onchange="validateInputData('img-company')" accept="image/*">
