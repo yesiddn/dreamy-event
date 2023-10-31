@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../assets/css/normalize.css">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <section class="create__new__event">
+
+    <div class="create-event__container">
+
+      <h2>Crear <span class="primary">evento</span></h2>
+
+      <div class="square__event__form"></div>
+
+      <form class="event__form" id="new-event-form">
+
+      <!-- name event  -->
+        <label for="name_event" class="create__event__form__input">
+          <input id="name-event" type="text" name="name-event" placeholder="Nombre del evento"
+            onkeyup="validateInputData('name-event')">
+          <span class="inactive">Ingrese un valor valido.</span>
+        </label>
+         
+        <!-- date event  -->
+        <label for="date_event" class="create__event__form__input">
+            Fecha:
+          <input id="date_event-" type="date" name="date_event" placeholder="Fecha"
+            onkeyup="validateInputData('date_event')">
+          <span class="inactive">Ingrese un valor valido.</span>
+        </label>
+
+        <!-- time event -->
+        <label for="time_event" class="create__event__form__input">
+            Hora:
+          <input id="time_event" type="time" name="time_event" placeholder="Hora"
+            onkeyup="validateInputData('time_event')">
+          <span class="inactive">Ingrese un valor valido.</span>
+        </label>
+
+        <!-- type event -->
+        <label for="type_event" class="create__event__form__input">
+             Tipo de evento:
+        </label>
+        
+        <select name="type_event" id="type_event" class="create__event__form__select">
+            <option value="1">Boda</option>
+            <option value="2">Fiesta de cumpleaños</option>
+            <option value="3">Baby showers</option>
+            <option value="4">Conferencia/Seminario</option>
+            <option value="5">Quince años</option>
+            <option value="6">Reunión corporativa</option>
+            <option value="7">Feria/Exposición</option>
+            <option value="8">Celebración familiar</option>
+            <option value="9">Bautizo</option>
+            <option value="10">Comunión</option>
+            <option value="11">Confirmación</option>
+            <option value="12">Graduación</option>
+          </select>
+
+
+
+    <button type="button" id="form-button">Crear</button>
+
+      </form>
+
+    </div>
+
+  </section>
+
+
+  <script src="../assets/js/main.js"></script>
+
+</body>
+
+</html>
