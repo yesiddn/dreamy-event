@@ -215,3 +215,48 @@ input:invalid:focus {
 .inactive {
   display: none;
 }
+
+/* list of services */
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-width: 768px;
+  padding: 2rem;
+  gap: 2rem;
+}
+
+.card {
+  border-radius: 10px;
+  box-shadow: 0 5px 15px var(--primary);
+  background-color: transparent;
+  text-decoration: none;
+  color: var(--black);
+}
+
+.card img {
+  width: 100%;
+}
+.price__card {
+  color: var(--primary);
+}
+
+.ubication__card {
+  color: var(--secondary);
+}
+
+.card i {
+  color: var(--primary);
+  float: right;
+}
+
+.card img {
+  max-width: 100%;
+  border-radius: 5px;
+}
+
+.card p.price {
+  color: #333;
+  font-size: 24px;
+}
