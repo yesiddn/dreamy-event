@@ -219,36 +219,58 @@ input:invalid:focus {
 /* info Service */ /* info Service */ /* info Service */ /* info Service */ /* info Service */
 
 
-.gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 0 auto;
-  width: 80%;
-  border-radius: 10px;
+.B-main{
+  padding-left: 15rem;
+  padding-right: 15rem;
+}
+
+.image-grid {
+	--gap: 16px;
+	--num-cols: 4;
+	--row-height: 200px;
+
+	box-sizing: border-box;
+	padding: var(--gap);
+
+	display: grid;
+	grid-template-columns: repeat(var(--num-cols), 1fr);
+	grid-auto-rows: var(--row-height);
+	gap: var(--gap);
+}
+
+.image-grid>img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.image-grid-col-2 {
+	grid-column: span 2;
+}
+
+.image-grid-row-2 {
+	grid-row: span 2;
+}
+
+/* Anything udner 1024px */
+@media screen and (max-width: 1024px) {
+	.image-grid {
+		--num-cols: 2;
+		--row-height: 200px;
+	}
 }
 
 
-.image {
-  width: 25%;
-  background-size: cover;
-  margin: 10px;
-  border-radius: 10px;
+.content{
+  padding: 16px;
+}
+.content h2 {
+  font-size: 40px;
+}
+.content h3 {
+  font-size: 30px;
 }
 
-.image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-
-.row {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.col {
-  width: 50%;
-  margin: 10px;
+.content p {
+  font-size: 25px;
 }
