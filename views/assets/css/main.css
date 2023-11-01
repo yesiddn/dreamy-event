@@ -304,17 +304,13 @@ input:invalid:focus {
   display: flex;
   align-items: center;
   padding: 1rem;
+  gap: 1.5rem;
   background-color: var(--white);
   overflow: scroll;
 }
 
 .filer-bar li {
-  display: inline-block;
-  margin: 0 0.5rem;
-}
-
-.filer-bar li:last-child {
-  margin-right: 0;
+  list-style: none;
 }
 
 .filer-bar li img {
@@ -324,8 +320,8 @@ input:invalid:focus {
 
 .filer-bar li span {
   display: block;
-  margin-top: 5px;
-  font-size: 14px;
+  margin-top: 0.5rem;
+  font-size: 1rem;
   text-align: center;
   color: var(--black);
 }
