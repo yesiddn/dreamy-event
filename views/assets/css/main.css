@@ -215,3 +215,86 @@ input:invalid:focus {
 .inactive {
   display: none;
 }
+
+/* list of services */
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  gap: 2rem;
+}
+
+.card {
+  max-width: 350px;
+  margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px var(--primary);
+  background-color: transparent;
+  text-decoration: none;
+  color: var(--black);
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  max-height: 10rem;
+  border-radius: 10px 10px 0 0;
+}
+
+.card__content {
+  padding: 1rem;
+}
+
+
+.card__title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.card__title h2 {
+  margin: 0;
+}
+
+.card__title span {
+  margin-top: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.card__content p {
+  font-size: 1rem;
+}
+
+.card__content p:last-child {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--primary);
+}
+
+.price__card {
+  color: var(--primary);
+}
+
+.ubication__card {
+  color: var(--secondary);
+}
+
+.card i {
+  color: var(--primary);
+  float: right;
+}
+
+.card p.price {
+  color: #333;
+  font-size: 24px;
+}
