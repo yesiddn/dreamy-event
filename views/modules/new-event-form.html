@@ -10,45 +10,46 @@
 </head>
 
 <body>
+
   <section class="create__new__event">
 
     <div class="create-event__container">
 
-      <h2>Crear <span class="primary">evento</span></h2>
+      <h2>Crear <span class="primary">Evento</span></h2>
 
       <div class="square__event__form"></div>
 
       <form class="event__form" id="new-event-form">
 
       <!-- name event  -->
-        <label for="name_event" class="create__event__form__input">
-          <input id="name-event" type="text" name="name-event" placeholder="Nombre del evento"
-            onkeyup="validateInputData('name-event')">
+        <label for="event_name" class="create__event__form__input">
+          <input class="content__input" id="event_name" type="text" name="event_name" placeholder="Nombre del evento"
+            onkeyup="validateInputData('event_name')">
           <span class="inactive">Ingrese un valor valido.</span>
         </label>
          
         <!-- date event  -->
-        <label for="date_event" class="create__event__form__input">
+        <label for="event_date" class="create__event__form__input">
             Fecha:
-          <input id="date_event-" type="date" name="date_event" placeholder="Fecha"
-            onkeyup="validateInputData('date_event')">
+          <input class="content__input"  id="event_date" type="date" name="event_date" placeholder="Fecha"
+            onkeyup="validateInputData('event_date')">
           <span class="inactive">Ingrese un valor valido.</span>
         </label>
 
         <!-- time event -->
-        <label for="time_event" class="create__event__form__input">
+        <label for="event_time" class="create__event__form__input">
             Hora:
-          <input id="time_event" type="time" name="time_event" placeholder="Hora"
-            onkeyup="validateInputData('time_event')">
+          <input class="content__input"  id="event_time" type="time" name="event_time" placeholder="Hora"
+            onkeyup="validateInputData('event_time')">
           <span class="inactive">Ingrese un valor valido.</span>
         </label>
 
         <!-- type event -->
-        <label for="type_event" class="create__event__form__input">
+        <label for="event_type" class="create__event__form__input">
              Tipo de evento:
         </label>
         
-        <select name="type_event" id="type_event" class="create__event__form__select">
+        <select name="event_type" id="event_type" class="create__event__form__select content__input">
             <option value="1">Boda</option>
             <option value="2">Fiesta de cumpleaños</option>
             <option value="3">Baby showers</option>
@@ -61,11 +62,9 @@
             <option value="10">Comunión</option>
             <option value="11">Confirmación</option>
             <option value="12">Graduación</option>
-          </select>
+        </select>
 
-
-
-    <button type="button" id="form-button">Crear</button>
+    <button type="button" id="create-event-form-button">Crear</button>
 
       </form>
 
