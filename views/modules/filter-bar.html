@@ -26,11 +26,11 @@
     <div class="modal-content">
 
             <header>
-                <div class="filter__header row">
-                        <h4>Filtros</h4>
+                <div class="filter__header">
+                        <h4 id="title-modal-filter">Filtros</h4>
                             
                                <button class="exit__filter" onclick="document.getElementById('modal__filter').style.display='none'">
-                                <img src="../assets/img/salir filtro.png" alt="Salir"  height="20px" width="20px">
+                                <img src="../assets/img/salir filtro.png" alt="Salir"  height="25px" width="25px">
                                </button>
                          
                 </div>
@@ -58,12 +58,16 @@
 
         <section class="filter_elements">
             <div class="scroll-container">
-               <div class="mb-3">
+               <div class="mb-3" style="display:grid;">
                    <h3>Rango de precio</h3>
-                    <label for="min__Price">Precio mínimo:</label>
-                    <input type="number" id="min__Price" min="200000" placeholder="Mínimo">
+                   <div>
+                    <label for="min__Price" >Precio mínimo:</label>
+                    <input type="number" id="min__Price" min="200000" style="width: 168px;height: 38px;"  placeholder="Mínimo">
+                  </div>
+                  <div>
                     <label for="max__Price">Precio máximo:</label>
-                    <input type="number" id="max__Price" min="300000" max="10000000" placeholder="Máximo">
+                    <input type="number" id="max__Price" min="300000"  style="width: 168px;height: 38px;" max="10000000" placeholder="Máximo">
+                  </div>
                     <!-- <button onclick="filterByPrice()">Aplicar filtro</button> -->
                 </div>
                </div>
@@ -71,95 +75,68 @@
     
 
         <section class="filter_elements">
-            <div class="scroll-container">
-               <div class="mb-3">
-                   <h3>Promociones</h3>
-                   <div class="checkbox-grid">
-                    <div class="checkbox-row">
-                        <input type="checkbox" id="percentage">
-                        <label for="percentage">10% - 50%</label>
-                    </div>
-
-                    <div class="checkbox-row">
-                      <input type="checkbox" id="logistics">
-                      <label for="logistics">Halloween</label>
-                    </div>
-
-                    <div class="checkbox-row">
-                      <input type="checkbox" id="decor">
-                      <label for="decor">San Valentín</label>
-                    </div>
-
-                    <div class="checkbox-row">
-                      <input type="checkbox" id="music">
-                      <label for="music">Navidad</label>
-                    </div>
-
-                    <div class="checkbox-row">
-                        <input type="checkbox" id="photography">
-                        <label for="photography">Fotografia</label>
-                    </div>
-
-                </div>
-                </div>
+          <div class="scroll-container">
+            <div class="mb-3">
+              <h3>Servicios</h3>
+                  <div class="checkbox-grid">
+                        <div class="checkbox-row">
+                            <input type="checkbox" id="cake__shop">
+                            <label for="cake__shop">Pasteleria</label>
+                        </div>
+  
+                        <div class="checkbox-row">
+                          <input type="checkbox" id="logistics">
+                          <label for="logistics">Logística</label>
+                        </div>
+  
+                        <div class="checkbox-row">
+                          <input type="checkbox" id="decor">
+                          <label for="decor">Decoración</label>
+                        </div>
+  
+                        <div class="checkbox-row">
+                          <input type="checkbox" id="catering">
+                          <label for="catering">Catering</label>
+                        </div>
+  
+                        <div class="checkbox-row">
+                          <input type="checkbox" id="music">
+                          <label for="music">Música</label>
+                        </div>
+  
+                        <div class="checkbox-row">
+                            <input type="checkbox" id="photography">
+                            <label for="photography">Fotografia</label>
+                        </div>
+  
+                  </div>
                </div>
+            </div>
         </section>
-    
+
 
         <section class="filter_elements">
             <div class="scroll-container">
-          <div class="mb-3">
+          <div class="mb-3 input__amount">
             <h3>Aforo</h3>
-            <label for="min__amount">Cantidad mínima:</label>
-            <input type="number" id="min__amount" min="20" placeholder="Mínimo">
-            <label for="max__amount">Cantidad máxima:</label>
-            <input type="number" id="max__amount" min="30" max="250" placeholder="Máximo">
+
+              <div>
+                 <label for="min__amount">Cantidad mínima:</label>
+                 <input type="number" id="min__amount" min="10" style="width: 168px;height: 38px;" placeholder="Mínimo">
+              </div>
+
+              <div>
+                 <label for="max__amount">Cantidad máxima:</label>
+                 <input type="number" id="max__amount" min="30" max="3000" style="width: 168px;height: 38px;"  placeholder="Máximo">
+              </div>
             <!-- <button onclick="filterByPrice()">Aplicar filtro</button> -->
           </div>
           </div>
         </section>
 
 
-
-        <section class="filter_elements">
-            <div class="scroll-container">
-              <div class="mb-3">
-                <h3>Servicios</h3>
-                <div class="checkbox-grid">
-                    <div class="checkbox-row">
-                        <input type="checkbox" id="cake__shop">
-                        <label for="cake__shop">Pasteleria</label>
-                    </div>
-
-                    <div class="checkbox-row">
-                      <input type="checkbox" id="logistics">
-                      <label for="logistics">Logística</label>
-                    </div>
-
-                    <div class="checkbox-row">
-                      <input type="checkbox" id="decor">
-                      <label for="decor">Decoración</label>
-                    </div>
-
-                    <div class="checkbox-row">
-                      <input type="checkbox" id="catering">
-                      <label for="catering">Catering:</label>
-                    </div>
-
-                    <div class="checkbox-row">
-                      <input type="checkbox" id="music">
-                      <label for="music">Música</label>
-                    </div>
-
-                    <div class="checkbox-row">
-                        <input type="checkbox" id="photography">
-                        <label for="photography">Fotografia</label>
-                    </div>
-
-                </div>
-              </div>
-            </div>
-        </section>
+             
+           
 
      
         </div>
