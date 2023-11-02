@@ -32,11 +32,20 @@ class TypeServicesModel
   public static function createTypeService($data) {
     try {
       $query = "INSERT INTO type_services (name_type_service, image_type_service) VALUES (?, ?))";
-      $result = Connection::connect()->prepare($query);
+      $connetion = Connection::connect();
+      $result = $connetion->prepare($query);
       $result->bindParam(1, $data['name'], PDO::PARAM_STR);
       $result->bindParam(2, $data['image'], PDO::PARAM_STR);
-      $result->execute();
-      return array("codigo" => "200", "mensaje" => "ok");
+
+      if ($result->execute()) {
+        $typeServiceId = $connetion->lastInsertId();
+      } else {
+        return array("codigo" => "500", "mensaje" => $connetion->errorInfo()[2]);
+      }
+
+      $data['id'] = $typeServiceId;
+
+      return array("codigo" => "200", "mensaje" => "ok", "data" => $data);
     } catch(Exception $e) {
       return array("codigo" => "500", "mensaje" => $e->getMessage());
     }
