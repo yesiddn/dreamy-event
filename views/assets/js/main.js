@@ -1,8 +1,10 @@
 const customerFormButton = document.getElementById('customer-form-button');
 const supplierFormButton = document.getElementById('supplier-form-button');
+const createEventFormButton = document.getElementById('create-event-form-button');
 
 customerFormButton.addEventListener('click', createUser('customer'));
 supplierFormButton.addEventListener('click', createSupplier('supplier'));
+createEventFormButton.addEventListener('click', createSupplier('event'));
 
 async function fetchData(url, method, data) {
   const response = await fetch(url, {
