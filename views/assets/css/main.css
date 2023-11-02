@@ -284,9 +284,9 @@ input:invalid:focus {
 
 .flex-gallery{
   display: flex;
-  background-color: pink;
   height: 200px;
   gap: 10px;
+
   
 }
 
@@ -299,7 +299,8 @@ input:invalid:focus {
 
 .boxE{
   width: 50%;
-  background-color: #7772E6;
+  background-image: url("https://images.pexels.com/photos/18925457/pexels-photo-18925457/free-photo-of-a-snowy-village-in-the-middle-of-the-ocean-with-mountains-in-the-background.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load");
+  background-size: cover;
 
 }
 
@@ -312,8 +313,8 @@ input:invalid:focus {
 }
 
 .one-col-two-rows div{
-  background-color: red;
-  border: solid 1px black;
+  background-image: url("https://images.pexels.com/photos/18925457/pexels-photo-18925457/free-photo-of-a-snowy-village-in-the-middle-of-the-ocean-with-mountains-in-the-background.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load");
+  background-size: cover;
   
 }
 
@@ -348,6 +349,7 @@ input:invalid:focus {
   border-radius: 20px;
   border: solid 2px var(--primary);
   box-shadow: 1px 1px 10px var(--primary);
+  padding: 2px;
 }
 
 .price-card p {
@@ -363,3 +365,33 @@ input:invalid:focus {
   font-size: 20px;
 }
 
+
+
+@media (max-width: 1300px) {
+
+  h3{
+    color: red;
+  }
+
+  .content{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .content-card{
+    width: 100%;
+  }
+  .content-text{
+    width:100%;
+  }
+
+  .B-main{
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+
+  
+}
