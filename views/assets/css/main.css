@@ -216,57 +216,41 @@ input:invalid:focus {
   display: none;
 }
 
-/* info Service */ /* info Service */ /* info Service */ /* info Service */ /* info Service */
 
 
-.B-main{
+
+
+
+
+
+
+
+/* info Service */
+/* info Service */
+/* info Service */
+/* info Service */
+/* info Service */
+
+
+
+
+
+
+.B-main {
   padding-left: 15rem;
   padding-right: 15rem;
 }
 
-.image-grid {
-	--gap: 16px;
-	--num-cols: 4;
-	--row-height: 200px;
-
-	box-sizing: border-box;
-	padding: var(--gap);
-
-	display: grid;
-	grid-template-columns: repeat(var(--num-cols), 1fr);
-	grid-auto-rows: var(--row-height);
-	gap: var(--gap);
-}
-
-.image-grid>img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-}
-
-.image-grid-col-2 {
-	grid-column: span 2;
-}
-
-.image-grid-row-2 {
-	grid-row: span 2;
-}
-
-/* Anything udner 1024px */
-@media screen and (max-width: 1024px) {
-	.image-grid {
-		--num-cols: 2;
-		--row-height: 200px;
-	}
-}
 
 
-.content{
+.content {
   padding: 16px;
 }
+
 .content h2 {
   font-size: 40px;
 }
+
 .content h3 {
   font-size: 30px;
 }
@@ -277,61 +261,20 @@ input:invalid:focus {
 
 
 
-
-
-
-/* Flexbox Gallery */
-
-.flex-gallery{
-  display: flex;
-  height: 200px;
-  gap: 10px;
-
-  
-}
-
-.two-col{
-  width: 70%;
-  display: flex;
-  gap: 10px;
-  
-}
-
-.boxE{
-  width: 50%;
-  background-image: url("https://images.pexels.com/photos/18925457/pexels-photo-18925457/free-photo-of-a-snowy-village-in-the-middle-of-the-ocean-with-mountains-in-the-background.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load");
-  background-size: cover;
-
-}
-
-.one-col-two-rows {
-  display: grid; 
-  color: white;
-  width: 30%;
-  gap: 10px;
-  
-}
-
-.one-col-two-rows div{
-  background-image: url("https://images.pexels.com/photos/18925457/pexels-photo-18925457/free-photo-of-a-snowy-village-in-the-middle-of-the-ocean-with-mountains-in-the-background.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load");
-  background-size: cover;
-  
-}
-
 /*content card*/
 
 
-.content{
+.content {
   width: 100%;
   display: flex;
   flex-direction: row;
 }
 
-.content-text{
-  width:75%;
+.content-text {
+  width: 75%;
 }
 
-.content-card{
+.content-card {
   display: flex;
   width: 25%;
   height: 200px;
@@ -340,7 +283,7 @@ input:invalid:focus {
   align-items: center;
 }
 
-.price-card{
+.price-card {
   display: grid;
   justify-content: center;
   align-items: center;
@@ -356,6 +299,7 @@ input:invalid:focus {
   font-size: 30px;
   color: var(--black);
 }
+
 .price-card button {
   background-color: var(--primary);
   color: var(--white);
@@ -367,31 +311,75 @@ input:invalid:focus {
 
 
 
+/* R e s p o n s i v e  */
 @media (max-width: 1300px) {
 
-  h3{
+  h3 {
     color: red;
   }
 
-  .content{
+  .content {
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
 
-  .content-card{
+  .content-card {
     width: 100%;
   }
-  .content-text{
-    width:100%;
+
+  .content-text {
+    width: 100%;
   }
 
-  .B-main{
+  .B-main {
     padding-left: 1rem;
     padding-right: 1rem;
   }
 
 
-  
+
+
+
+
+
+}
+
+
+
+
+/* new Grid Gallery */
+.new-grid-Galley {
+  display: grid;
+  grid-template-columns: 60% 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  width: 100%;
+  height: 200px;
+  gap: 25px;
+}
+.pic-1 {
+  grid-area: 1 / 1 / 3 / 2;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.pic-2 {
+  grid-area: 1 / 2 / 3 / 3;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.pic-3 {
+  grid-area: 1 / 3 / 2 / 4;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 0 25px 25px 0;
+}
+.pic-4 {
+  grid-area: 2 / 3 / 3 / 4;
+  object-fit: cover;
+  width: 100%;
+  border-radius: 0 25px 25px 0;
 }
