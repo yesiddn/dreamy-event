@@ -138,10 +138,10 @@ header>div {
   flex-direction: column;
   width: 75%;
   margin: 0.5rem 0;
-  color: var(--secondary);<li><a href="pagina5.html"><img src="boton5.png" alt="Botón 5"><span>Botón 5</span></a></li>
+  color: var(--secondary);
 }
 
-input {
+input, select {
   margin-bottom: 0.5rem;
   padding: 0.5rem;
   background-color: transparent;
@@ -150,7 +150,7 @@ input {
   outline: none;
 }
 
-input:focus {
+input:focus, select:focus {
   border: 2px solid var(--black);
 }
 
@@ -199,218 +199,16 @@ input:focus {
   box-shadow: 0 5px 15px var(--primary);
 }
 
-
-
-
-/* event form */
-.create__new__event{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100dvh;
-  padding: 2rem 0;
-}
-
-.create-event__container {
-  position: relative;
-  width: 30%;
-  margin: 0 auto;
-  padding: 1.5rem;
-  border-radius: 15px;
-  box-shadow: 0 5px 15px var(--primary);
-  overflow: hidden;
-}
-
-.create-event__container h2 {
-  text-align: center;
-}
-
-.event__form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.content__input{
-  color: var(--secondary);
-}
-
-.create__event__form__input {
-  display: flex;
-  flex-direction: column;
-  width: 75%;
-  margin: 0.5rem 0;
-  color: var(--black);
-}
-
-.create__event__form__select{
-   width: 100%; 
-    margin: 0.5rem 0;
-    color: var(--primary);
-    background-color: transparent; 
-    border: 1px solid var(--black);
-    border-radius: 10px;
-    padding: 0.5rem;
-    outline: none; 
-    cursor: pointer; 
-}
-
-.sections__form__create{
-  color: var(--secondary);
-}
-
-#event_type{
-  display: flex;
-  flex-direction: column;
-  width: 75%;
-  margin: 0.5rem 0;
-  color: var(--secondary);
-}
-
-.event__form button {
-  margin: 1rem;
-  padding: 0.5rem 1rem;
-  background-color: var(--primary);
-  border-radius: 10px;
-  border: none;
-  color: var(--white);
-  cursor: pointer;
-}
-
-.event__form button:hover {
-  background-color: var(--black);
-  box-shadow: 0 5px 15px var(--primary);
-}
-
-
-
-
-
-
-  /* Estilos para el modal de filtro */
-  .Modal__filter {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(218, 216, 216, 0.7);
-    z-index: 1;
-    overflow-y: scroll;
-}
-
-.filter__header {
-    max-width: 300px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 10px;
-    background-color: #fff;
-    display: flex;
-    justify-content: space-between; /* Alinear el contenido a los extremos */
-    align-items: center; /* Centrar verticalmente */
-}
-
-/* Estilos para el contenido del modal */
-.modal-content {
-    background-color: var(--white);
-    width: 28%;
-    margin: 100px auto;
-    padding: 20px;
-    border-radius: 10px;
-    max-height: 80%; 
-   overflow-y: auto;
-}
-
-.scroll-container {
-  overflow-y: auto; 
-  max-height: calc(100% - 20px); 
-}
-
-.checkbox-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);  
-  gap: 20px;
-}
-
-.button-filter-bar{
-    padding: 10px;
-    background: none;
-    border: 1px solid var(--primary);
-    border-radius: 10px;
-    box-shadow: 0 ;
-    margin-top: 20%;
-}
-
-.button-filter-bar:hover{
-  border: 2px solid var(--primary);
-}
-
-.filter__img{
-    margin-right: 8px;
-}
-
-.button_places {
-    display: flex;
-    justify-content: space-around;
-    padding-bottom:10px ;
-}
-
- .filter_elements{
-  border-bottom: 1px solid #ccc; 
-  padding-bottom: 10px; 
- }
-
- 
-
-/* Estilo para el botón de cerrar */
-.exit__filter{
-    text-align:left;
-    outline: none;
-    border: 55px solid;
-    padding: 0%;
-    border-width: 0px;
-    width: 23px;
-    height: 25px;
-    padding-top: 2px;
-   background: none;
-}
-
-/* img lugares  */
-.img_places_button{
-    border-radius: 5px;
-    height: 90px;
-    width: 100px;
-    background: none; 
-    border: 1px;
-    border: 1px solid #ccc;
-    background: none;
-    padding: 10px; 
-}
-
-.img_places_button:hover {
-   border: 1px solid var(--black);
-}
-
-.img_places{
-    width: 50px;
-}
-
-
-
-
-
 /* validacion de input */
 .is-invalid {
   border: 2px dashed red !important;
 }
 
-input:invalid {
+input:invalid, select:invalid {
   border: 2px dashed red;
 }
 
-input:invalid:focus {
+input:invalid:focus, select:invalid:focus {
   border: 2px dashed red;
 }
 
