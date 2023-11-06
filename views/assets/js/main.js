@@ -1,10 +1,5 @@
-const customerFormButton = document.getElementById('customer-form-button');
-const supplierFormButton = document.getElementById('supplier-form-button');
-const createEventFormButton = document.getElementById('create-event-form-button');
-
-customerFormButton.addEventListener('click', createUser('customer'));
-supplierFormButton.addEventListener('click', createSupplier('supplier'));
-createEventFormButton.addEventListener('click', createSupplier('event'));
+// const loginFormButton = document.getElementById('log-in-form-button');
+// loginFormButton.addEventListener('click', method());
 
 async function fetchData(url, method, data) {
   const response = await fetch(url, {
@@ -16,7 +11,7 @@ async function fetchData(url, method, data) {
 }
 
 function getFormData() {
-  const customerForm = document.getElementById('sign-up-form');
+  const customerForm = document.getElementById('form');
   const customerData = new FormData(customerForm);
 
   return validateFormData(customerData);

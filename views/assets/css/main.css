@@ -88,8 +88,8 @@ header>div {
   color: var(--primary);
 }
 
-/* sign up container */
-.sign-up {
+/* form section */
+.form-section {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -97,7 +97,7 @@ header>div {
   padding: 2rem 0;
 }
 
-.sign-up__container {
+.form__container {
   position: relative;
   width: 50%;
   margin: 0 auto;
@@ -110,8 +110,8 @@ header>div {
 /* square */
 .square {
   position: absolute;
-  width: 65dvw;
-  height: 65dvw;
+  width: 60dvw;
+  height: 60dvw;
   top: 50%;
   left: 0;
   transform: translate(-50%, -50%) rotate(45deg);
@@ -122,23 +122,23 @@ header>div {
 }
 
 /* sign up form */
-.sign-up__container h2 {
+.form__container h2 {
   text-align: center;
 }
 
-.sign-up__form {
+.form {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.sign-up__form__input {
+.form__input {
   display: flex;
   flex-direction: column;
   width: 75%;
   margin: 0.5rem 0;
-  color: var(--secondary);
+  color: var(--secondary);<li><a href="pagina5.html"><img src="boton5.png" alt="Botón 5"><span>Botón 5</span></a></li>
 }
 
 input {
@@ -154,7 +154,7 @@ input:focus {
   border: 2px solid var(--black);
 }
 
-.sign-up__form__input input[type="file"] {
+.form__input input[type="file"] {
   width: 100%;
   margin-top: 0.5rem;
   padding: 0;
@@ -166,7 +166,7 @@ input:focus {
   cursor: pointer;
 }
 
-.sign-up__form__input input::file-selector-button {
+.form__input input::file-selector-button {
   border: none;
   border-radius: 15px;
   background-color: var(--primary);
@@ -175,16 +175,16 @@ input:focus {
   cursor: pointer;
 }
 
-.sign-up__form__input input::file-selector-button:hover {
+.form__input input::file-selector-button:hover {
   background-color: var(--black);
   box-shadow: 0 5px 15px var(--primary);
 }
 
-.sign-up__form__input span {
+.form__input span {
   color: red;
 }
 
-.sign-up__form button {
+.form button {
   margin: 1rem;
   padding: 0.5rem 1rem;
   background-color: var(--primary);
@@ -194,93 +194,7 @@ input:focus {
   cursor: pointer;
 }
 
-.sign-up__form button:hover {
-  background-color: var(--black);
-  box-shadow: 0 5px 15px var(--primary);
-}
-
-
-.tittle-welcome{
-  color: var(--primary);
-}
-/* sign up container */
-.log-in {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100dvh;
-}
-
-.log-in__container {
-  position: relative;
-  width: 30%;
-  margin: 0 auto;
-  padding: 1.5rem;
-  border-radius: 15px;
-  box-shadow: 0 5px 15px var(--primary);
-  overflow: hidden;
-}
-
-/* square */
-.square {
-  position: absolute;
-  width: 35dvh;
-  height: 35dvh;
-  top: 50%;
-  left: 0;
-  transform: translate(-50%, -50%) rotate(45deg);
-  background-color: rgba(120, 114, 230, 0.3);
-  border-radius: 35px;
-  filter: blur(10px);
-  z-index: -100;
-}
-
-/* log in  form */
-.log-in__container h2 {
-  text-align: center;
-}
-
-.log-in__form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.log-in__form__input {
-  display: flex;
-  flex-direction: column;
-  margin: 0.5rem 0;
-}
-
-.log-in__form__input input {
-  margin-bottom: 0.5rem;
-  padding: 0.5rem;
-  background-color: transparent;
-  border: 1px solid var(--secondary);
-  border-radius: 10px;
-  outline: none;
-}
-
-.log-in__form__input span {
-  color: red;
-}
-
-.log-in__form__input input:focus {
-  border: 2px solid var(--black);
-}
-
-.log-in__form button {
-  margin: 1rem;
-  padding: 0.5rem 1rem;
-  background-color: var(--primary);
-  border-radius: 10px;
-  border: none;
-  color: var(--white);
-  cursor: pointer;
-}
-
-.log-in__form button:hover {
+.form button:hover {
   background-color: var(--black);
   box-shadow: 0 5px 15px var(--primary);
 }
@@ -502,4 +416,133 @@ input:invalid:focus {
 
 .inactive {
   display: none;
+}
+
+/* list of services */
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  gap: 2rem;
+}
+
+.card {
+  max-width: 350px;
+  margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px var(--primary);
+  background-color: transparent;
+  text-decoration: none;
+  color: var(--black);
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  max-height: 10rem;
+  border-radius: 10px 10px 0 0;
+}
+
+.card__content {
+  padding: 1rem;
+}
+
+
+.card__title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.card__title h2 {
+  margin: 0;
+}
+
+.card__title span {
+  margin-top: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.card__content p {
+  font-size: 1rem;
+}
+
+.card__content p:last-child {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--primary);
+}
+
+.price__card {
+  color: var(--primary);
+}
+
+.ubication__card {
+  color: var(--secondary);
+}
+
+.card i {
+  color: var(--primary);
+  float: right;
+}
+
+.card p.price {
+  color: #333;
+  font-size: 24px;
+}
+
+/* Filter bar */
+.filer-bar {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  gap: 1.5rem;
+  background-color: var(--white);
+  overflow: scroll;
+}
+
+.filer-bar li {
+  list-style: none;
+}
+
+.filer-bar li img {
+  display: block;
+  margin: 0 auto;
+}
+
+.filer-bar li span {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  text-align: center;
+  color: var(--black);
+}
+
+.filer-bar li .line {
+  display: block;
+  height: 4px;
+  background-color: var(--primary);
+  border-radius: 2px;
+}
+
+.filer-bar li a {
+  text-decoration: none;
+}
+
+@media (min-width: 768px) {
+  .filer-bar {
+    justify-content: space-evenly;
+    overflow: hidden;
+  }
+
 }
