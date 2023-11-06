@@ -138,10 +138,10 @@ header>div {
   flex-direction: column;
   width: 75%;
   margin: 0.5rem 0;
-  color: var(--secondary);<li><a href="pagina5.html"><img src="boton5.png" alt="Botón 5"><span>Botón 5</span></a></li>
+  color: var(--secondary);
 }
 
-input {
+input, select {
   margin-bottom: 0.5rem;
   padding: 0.5rem;
   background-color: transparent;
@@ -150,7 +150,7 @@ input {
   outline: none;
 }
 
-input:focus {
+input:focus, select:focus {
   border: 2px solid var(--black);
 }
 
@@ -204,11 +204,11 @@ input:focus {
   border: 2px dashed red !important;
 }
 
-input:invalid {
+input:invalid, select:invalid {
   border: 2px dashed red;
 }
 
-input:invalid:focus {
+input:invalid:focus, select:invalid:focus {
   border: 2px dashed red;
 }
 
