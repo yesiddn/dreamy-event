@@ -217,11 +217,11 @@ input:invalid:focus {
 }
 
 /* info Service */
-
 .info-service {
   padding: 2rem;
 }
 
+/* gallery */
 .info-service__gallery {
   display: grid;
   grid-template-columns: 3fr 1fr 1fr;
@@ -253,45 +253,60 @@ input:invalid:focus {
   grid-area: 2 / 3 / 3 / 4;
 }
 
-
-.content {
-  padding: 16px;
-}
-
-.content h2 {
-  font-size: 40px;
-}
-
-.content h3 {
-  font-size: 30px;
-}
-
-.content p {
-  font-size: 25px;
-}
-
-
-
-/*content card*/
-
-
-.content {
-  width: 100%;
+/* datails */
+.info-service__details {
   display: flex;
-  flex-direction: row;
+  gap: 1rem;
+  width: 100%;
+  padding: 1rem;
 }
 
-.content-text {
-  width: 75%;
+.info-service__details > div:first-child {
+  width: 65%;
 }
+
+.info-service__details__header {
+  display: flex;
+  color: var(--secondary);
+}
+
+.info-service__details__header__title {
+  width: 80%;
+} 
+
+.info-service__details__header p {
+  font-size: 1.3rem;
+}
+
+.info-service__details__header__title h2 {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: var(--black);
+}
+
+.info-service__details__header__rating {
+  display: flex;
+  justify-content: center;
+  width: 20%;
+  font-weight: bold;
+  color: var(--primary);
+}
+
+.info-service__details__body {
+  font-size: 1rem;
+  color: var(--black);
+}
+
+/* --- */
 
 .content-card {
   display: flex;
-  width: 25%;
-  height: 200px;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  width: 30%;
+  height: 200px;
+  margin: 0 auto;
 }
 
 .price-card {
