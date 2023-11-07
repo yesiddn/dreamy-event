@@ -199,6 +199,233 @@ input:focus, select:focus {
   box-shadow: 0 5px 15px var(--primary);
 }
 
+/* event form */
+.create__new__event{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100dvh;
+  padding: 2rem 0;
+}
+
+.create-event__container {
+  position: relative;
+  width: 30%;
+  margin: 0 auto;
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px var(--primary);
+  overflow: hidden;
+}
+
+.create-event__container h2 {
+  text-align: center;
+}
+
+.event__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.content__input{
+  color: var(--secondary);
+}
+
+.create__event__form__input {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  margin: 0.5rem 0;
+  color: var(--black);
+}
+
+.create__event__form__select{
+   width: 100%; 
+    margin: 0.5rem 0;
+    color: var(--primary);
+    background-color: transparent; 
+    border: 1px solid var(--black);
+    border-radius: 10px;
+    padding: 0.5rem;
+    outline: none; 
+    cursor: pointer; 
+}
+
+.sections__form__create{
+  color: var(--secondary);
+}
+
+#event_type{
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  margin: 0.5rem 0;
+  color: var(--secondary);
+}
+
+.event__form button {
+  margin: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--primary);
+  border-radius: 10px;
+  border: none;
+  color: var(--white);
+  cursor: pointer;
+}
+
+.event__form button:hover {
+  background-color: var(--black);
+  box-shadow: 0 5px 15px var(--primary);
+}
+
+
+
+/* Estilos para boton de filtros */
+.button-filter-bar{
+  padding: 10px;
+  background: none;
+  border: 1px solid var(--primary);
+  border-radius: 10px;
+  box-shadow: 0 ;
+  
+}
+
+.button-filter-bar:hover{
+border: 2px solid var(--primary);
+}
+
+.filter__img{
+  margin-right: 8px;
+}
+
+  /* Estilos para el modal de filtro */
+.Modal__filter {
+   display: none;
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-color: rgba(218, 216, 216, 0.7);
+   z-index: 1;
+   overflow-y: scroll;
+}
+
+/* Estilos para el contenido del modal */
+.modal-content {
+  background-color: var(--white);
+  width: 60%;
+  max-width: 600px;
+  margin: 100px auto;
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-bottom: 20px;
+  padding-right: 20px;
+  border-radius: 10px;
+  max-height: 80%; 
+ overflow-y: auto;
+ box-shadow: 0 5px 15px var(--primary);
+}
+
+.header-filter{
+  display: flex;
+  justify-content: space-between;
+}
+
+.column-filter1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.column-filter2{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 0px;
+}
+
+#title-modal-filter{
+  margin: 0%;
+  align-items: center;
+  font-size: 30px;
+}
+
+/* Estilo para el botón de cerrar */
+.exit__filter{
+  align-items: left;
+  outline: none;
+  border: 0px;
+  border-radius: 5px;
+  padding: 0%;
+  width: 30px;
+  height: 28px;
+  padding-top: 2px;
+  background: none;
+}
+
+.exit__filter:hover{
+transform: scale(1.2);
+background-color: #ccc;
+}
+
+.scroll-container {
+  overflow-y: auto; 
+  max-height: calc(100% - 20px); 
+}
+
+.checkbox-grid {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.input__amount{
+  display: grid;
+}
+
+.button-filter{
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+
+.button_places {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom:10px ;
+}
+
+ .filter_elements{
+  border-bottom: 1px solid #ccc; 
+  padding-bottom: 10px; 
+ }
+
+/* img lugares  */
+.img_places_button{
+    border-radius: 5px;
+    height: 90px;
+    width: 100px;
+    background: none; 
+    border: 1px;
+    border: 1px solid #ccc;
+    background: none;
+    padding: 10px; 
+}
+
+.img_places_button:hover {
+   border: 1px solid var(--black);
+}
+
+.img_places{
+    width: 50px;
+}
+
+
+
 /* validacion de input */
 .is-invalid {
   border: 2px dashed red !important;
