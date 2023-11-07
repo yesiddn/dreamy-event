@@ -1,51 +1,23 @@
-function showAlertPassword() {
-  var alert = document.getElementById("alert");
-  var alertText = alert.querySelector("p");
+function showAlert(typeAlert) {
+  const alerts = {
+    'user-exists': {
+      message: 'El usuario ya existe.',
+      color: 'red',
+    },
+    'wrong-user': {
+      message: 'Usuario o contraseña incorrecto.',
+    },
+  };
 
-  alertText.textContent = "Error: La contraseña no coincide.";
+  let alert = document.getElementById('alert');
+  let alertText = alert.querySelector('#alert p');
 
-  alert.style.backgroundColor = "red";
-
-  alert.style.display = "flex";
+  alertText.textContent = alerts[typeAlert].message;
+  alert.style.backgroundColor = alerts[typeAlert].color;
+  alert.style.display = 'flex';
 }
 
 function closeAlert() {
-  var alert = document.getElementById("alert");
-  alert.style.display = "none";
+  let alert = document.getElementById('alert');
+  alert.style.display = 'none';
 }
-
-function showAlertUser() {
-  var alert = document.getElementById("alert");
-  var alertText = alert.querySelector("p");
-
-  alertText.textContent = "Advertencia: El usuario ya existe";
-
-  alert.style.backgroundColor = "yellow";
-
-  alert.style.display = "flex";
-}
-
-function showAlertWrongUser() {
-
-  var alert = document.getElementById("alert");
-  var alertText = alert.querySelector("p");
-
-  alertText.textContent = "Error: Usuario incorrecto"
-
-  alert.style.backgroundColor = "red";
-
-  alert.style.display = "flex";
-}
-
-function showAlertWrongPassword() {
-
-  var alert = document.getElementById("alert");
-  var alertText = alert.querySelector("p");
-
-  alertText.textContent = "Error: La contraseña es incorrecta"
-
-  alert.style.backgroundColor = "red";
-
-  alert.style.display = "flex";
-}
-
