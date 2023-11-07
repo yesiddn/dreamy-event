@@ -258,7 +258,7 @@ input:invalid:focus {
   display: flex;
   gap: 1rem;
   width: 100%;
-  padding: 1rem;
+  padding: 2rem 0;
 }
 
 .info-service__details > div:first-child {
@@ -267,6 +267,7 @@ input:invalid:focus {
 
 .info-service__details__header {
   display: flex;
+  margin-bottom: 1rem;
   color: var(--secondary);
 }
 
@@ -275,10 +276,13 @@ input:invalid:focus {
 } 
 
 .info-service__details__header p {
+  margin: 1rem 0;
   font-size: 1.3rem;
 }
 
 .info-service__details__header__title h2 {
+  margin: 0;
+  margin-bottom: 1rem;
   font-size: 1.6rem;
   font-weight: bold;
   color: var(--black);
@@ -292,45 +296,44 @@ input:invalid:focus {
   color: var(--primary);
 }
 
+.info-service__details__header__rating p {
+  margin: 0;
+}
+
 .info-service__details__body {
   font-size: 1rem;
   color: var(--black);
 }
 
-/* --- */
-
-.content-card {
+.info-service__details__price-card {
+  position: sticky;
   display: flex;
-  flex-direction: row;
+  top: 2rem;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 30%;
-  height: 200px;
+  height: 150px;
   margin: 0 auto;
+  padding: 1rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px var(--primary);
 }
 
-.price-card {
-  display: grid;
-  justify-content: center;
-  align-items: center;
-  width: 90%;
-  height: 90%;
-  border-radius: 20px;
-  border: solid 2px var(--primary);
-  box-shadow: 1px 1px 10px var(--primary);
-  padding: 2px;
-}
-
-.price-card p {
-  font-size: 30px;
+.info-service__details__price-card span {
+  margin: 0;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
   color: var(--black);
 }
 
-.price-card button {
+.info-service__details__price-card button {
   background-color: var(--primary);
   color: var(--white);
   border: none;
   border-radius: 10px;
   padding: 10px;
   font-size: 20px;
+  cursor: pointer;
 }
