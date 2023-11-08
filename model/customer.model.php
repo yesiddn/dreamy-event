@@ -39,4 +39,15 @@ class CustomerModel
       return $e->getMessage();
     }
   }
+
+  public static function getByEmail($email)
+  {
+    try {
+      $response = UserModel::getByEmail($email);
+      
+      return $response;
+    } catch (Exception $e) {
+      return $e->getMessage();
+    }
+  }
 }
