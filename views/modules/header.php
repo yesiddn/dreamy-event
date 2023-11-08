@@ -1,9 +1,9 @@
 <body>
   <header>
     <div>
-      <div class="logo">
+      <a href="home" class="logo">
         <img src="./views/assets/svg/logo.svg" alt="Logo Dreamy Event">
-      </div>
+      </a>
 
       <form action="./search.html" class="search-bar">
         <input type="text" name="search" id="search" placeholder="Buscar">
