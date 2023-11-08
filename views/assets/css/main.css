@@ -143,3 +143,48 @@ input:invalid:focus {
 .inactive {
   display: none;
 }
+
+/* alerts */
+.alert {
+  padding: 20px;
+  color: var(--black);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  display: none;
+  align-items: center;
+}
+
+.alert p {
+  font-size: 1.2rem;
+  font-weight: 600;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.alert button {
+  background: url(../svg/close.svg) no-repeat center/cover;
+  width: 32px;
+  height: 32px;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: var(--white);
+  font-weight: bold;
+  float: right;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+.btn-close {
+  background: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}

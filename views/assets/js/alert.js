@@ -2,10 +2,11 @@ function showAlert(typeAlert) {
   const alerts = {
     'user-exists': {
       message: 'El usuario ya existe.',
-      color: 'red',
+      color: '#ADBDFF',
     },
     'wrong-user': {
       message: 'Usuario o contraseña incorrecto.',
+      color: '#F02D3A',
     },
   };
 
