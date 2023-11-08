@@ -448,16 +448,12 @@ background-color: #ccc;
   margin: 10px;
 }
 
-.infos{
-  color: var(--primary);
-  font-weight: 600;
-}
-
 .title__cost__event{
   display: flex;
   justify-content: center;
   max-width: 900px;
   font-size: xx-large;
+  color: var(--primary);
 }
 
 .date__event{
@@ -466,6 +462,10 @@ background-color: #ccc;
   align-items: end;
 }
 
+.date__event span{
+  color: var(--primary);
+  font-weight: 600;
+}
 
 
 .info__service{
@@ -483,7 +483,7 @@ background-color: #ccc;
   display: flex;
   flex-direction: column;
   border: 2px solid var(--primary);
-  border-radius: 10px;
+  border-radius: 15px;
   padding: 5px 30px 5px ;
   margin-bottom: 25px;
   box-shadow: 0 5px 5px #ccc;
@@ -493,13 +493,13 @@ background-color: #ccc;
 
 .description__service p{
   color: var(--secondary);
-  font-size: 20px;
+  font-size: 18px;
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
 .description__service h2{
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 400;
   margin-top: 10px;
   margin-bottom: 5px;
@@ -510,28 +510,58 @@ background-color: #ccc;
   display: flex;
   flex-direction: column;
   border: 2px solid var(--primary);
-  border-radius: 10px;
-  box-shadow: 0 5px 5px #ccc;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px var(--primary);
   width: 600px;
   max-width: 700px;
-  padding: 5px 30px 5px ;
+  padding: 10px 40px 30px ;
 }
 
 .cost__section h2{
   font-size: 35px;
   font-weight: 600;
-  margin-top: 10px;
-  margin-bottom: 5px;
+  margin-top: 20px;
+  margin-bottom: 30px;
 }
 
 .service_cost{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  
 }
 
 .service_cost p,h3 {
   font-size: 25px;
+}
+
+.total__price{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.total__price h3{
+  color: var(--primary);
+  font-size: 40px;
+}
+
+.container__button{
+  display: flex;
+  justify-content: center;
+}
+
+.reserve__button{
+  padding: 10px;
+  font-size: 25px;
+  background-color: var(--primary);
+  border: 1px solid var(--primary);
+  color: var(--white);
+  border-radius: 10px;
+  box-shadow: 0 ;
+  width: 200px;
+  padding: 10px;
+  cursor: pointer;
 }
 
 
