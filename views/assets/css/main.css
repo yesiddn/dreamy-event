@@ -425,6 +425,11 @@ background-color: #ccc;
 }
 
 
+/* total cost event */
+.info__total__cost{
+  display: flex;
+  justify-content: space-between;
+}
 
 /* validacion de input */
 .is-invalid {
