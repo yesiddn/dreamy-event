@@ -8,50 +8,109 @@
     <title></title>
 </head>
 <body>
-
-    <div class="info__total__cost">
-        <div class="title__cost__event">
-            <h1><span id="name--event">Nombre de mi evento</span></h1>
-        </div>
-        
-        <div class="date__event">
-           <p>Fecha de orden: <span id="date--order">#####</span> <span id="time--order">00:00</span></p>
-           <p>Lugar del evento: <span id="place--event">######</span></p>
-           <p>Evento realizado el: <span id="date--made--event">#####</span>  <span id="time--made--event">00:00</span></p>
-        </div>
-
-    </div>
-
-
-
-    <h2>Servicio 1</h2>
-    <p>Proveedor: ####</p>
-
-    <h2>Servicio 1</h2>
-    <p>Proveedor: ####</p>
-
-    <h2>Servicio 1</h2>
-    <p>Proveedor: ####</p>
-
-
+   <header class="info__total__cost">
+           <div class="info__column title__cost__event">
+               <h1><span id="name--event">Nombre de mi evento</span></h1>
+           </div>
+           
+   
+           <div class="info__column date__event">
+   
+              <p>Fecha de orden: 
+                  <span class="infos" id="date--order">#####</span>
+                  <span class="infos" id="time--order">00:00</span>
+               </p>
+   
+              <p>Lugar del evento: 
+               <span class="infos" id="place--event">######</span>
+              </p>
+   
+              <p>Evento realizado el: 
+                <span class="infos" id="date--made--event">#####</span> 
+                <span class="infos" id="time--made--event">00:00</span>
+               </p>
+   
+           </div>
+    </header>
 
 
-    <h2>Resumen</h2>
+    <main class="info__service">
 
-    <p>Servicio 1</p>
-    <h3>$100.000</h3>
+        <section class="description__section">
+      
+          <div class="description__service">
+             <h2><span>Pastel para boda</span></h2>
+             <p>Proveedor: ####</p>
+          </div>  
+      
+      
+          <div class="description__service">
+              <h2><span>Catering</span></h2>
+              <p>Proveedor: ####</p>
+           </div> 
+      
+      
+           <div class="description__service">
+              <h2><span>Decoración</span></h2>
+              <p>Proveedor: ####</p>
+           </div>
+           
+      
+           <div class="description__service">
+              <h2><span>Comida/Bebida</span></h2>
+              <p>Proveedor: ####</p>
+           </div> 
+      
+      
+           <div class="description__service">
+              <h2><span>Aseo</span></h2>
+              <p>Proveedor: ####</p>
+           </div>
+      
+         </section> 
 
-    <p>Servicio 1</p>
-    <h3>$100.000</h3>
 
-    <p>Servicio 1</p>
-    <h3>$100.000</h3>
+      
+         <section class="cost__section">
+      
+            <h2>Resumen</h2>
 
+           <div class="service_cost">
+              <p><span>Pastel para boda</span></p>
+              <h3><span>$100.000</span></h3>
+           </div>
 
-    <h2>Total:</h2>
-    <h2>$300.000</h2>
+           <div class="service_cost">
+            <p><span>Catering</span></p>
+            <h3><span>$100.000</span></h3>
+           </div>
 
+           <div class="service_cost">
+              <p><span>Decoración</span></p>
+              <h3><span>$100.000</span></h3>
+           </div>
+      
+           <div class="service_cost">
+             <p><span>Comida/Bebida</span></p>
+             <h3><span>$100.000</span></h3>
+           </div>
+  
+           <div class="service_cost">
+              <p><span>Aseo</span></p>
+              <h3><span>$100.000</span></h3>
+           </div>
+           
+      
+           <div class="total__price">
+              <h3>Total:</h3>
+              <h3>$300.000</h3>
+            </div>
+      
+      
+            <button>Reservar</button>
+      
+         </section>
 
-    <button>Reservar</button>
+    </main>
 </body>
 </html>
