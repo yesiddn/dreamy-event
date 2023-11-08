@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../assets/css/normalize.css">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <section class="form-section">
+
+    <div class="form__container">
+      <h2>Registrarse como <span class="primary">proveedor</span></h2>
+
+      <div class="square"></div>
+
+      <form class="form" id="form">
+        <label for="name_company" class="form__input">
+          <!-- <span>Nombre:</span> -->
+          <input id="name-company" type="text" name="name-company" placeholder="Nombre de proveedor"
+            onkeyup="validateInputData('name-company')">
+          <!-- mensaje de error -->
+          <span class="inactive">Ingrese un valor valido.</span>
+        </label>
+
+        <label for="email-company" class="form__input">
+          <!-- <span>Email:</span>  -->
+          <input id="email-company" type="email" name="email-company" placeholder="Email de contacto"
+            onkeyup="validateInputData('email-company')">
+          <span class="inactive">Ingrese un valor valido.</span>
+        </label>
+
+        <label for="phone-company" class="form__input">
+          <!-- <span>Telefono:</span>  -->
+          <input id="phone-company" type="number" name="phone-company" placeholder="Telefono de contacto"
+            onkeyup="validateInputData('phone-company')">
+          <span class="inactive">Ingrese un valor valido.</span>
+        </label>
+
+        <label for="rut-company" class="form__input">
+          <!-- <span>Telefono:</span>  -->
+          <input id="rut-company" type="number" name="rut-company" placeholder="RUT"
+            onkeyup="validateInputData('rut-company')">
+          <span class="inactive">Ingrese un valor valido.</span>
+        </label>
+
+        <!-- city -->
+        <label for="city-company" class="form__input">
+          <!-- <span>Ciudad:</span>  -->
+          <input id="city-company" type="text" name="city-company" placeholder="Ciudad"
+            onkeyup="validateInputData('city-company')">
+          <span class="inactive">Ingrese un valor valido.</span>
+        </label>
+
+        <!-- country -->
+        <label for="country-company" class="form__input">
+          <!-- <span>Pais:</span>  -->
+          <input id="country-company" type="text" name="country-company" placeholder="Pais"
+            onkeyup="validateInputData('country-company')">
+          <span class="inactive">Ingrese un valor valido.</span>
+        </label>
+
+        <!-- img -->
+        <label for="img-company" class="form__input">
+          Foto de perfil:
+          <input id="img-company" type="file" name="img-company" placeholder="Imagen"
+            onchange="validateInputData('img-company')" accept="image/*">
+          <span class="inactive">Seleccione un tipo de archivo correcto.</span>
+        </label>
+
+        <button type="button" id="form-button">Registrase</button>
+      </form>
+    </div>
+  </section>
+
+  <script src="../assets/js/main.js"></script>
+  <script>
+    const supplierFormButton = document.getElementById('form-button');
+    supplierFormButton.addEventListener('click', () => createUser('supplier'));
+  </script>
+</body>
+
+</html>

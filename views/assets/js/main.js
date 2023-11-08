@@ -1,6 +1,5 @@
-const customerFormButton = document.getElementById('customerFormButton');
-
-customerFormButton.addEventListener('click', createCustomer);
+// const loginFormButton = document.getElementById('log-in-form-button');
+// loginFormButton.addEventListener('click', method());
 
 async function fetchData(url, method, data) {
   const response = await fetch(url, {
@@ -11,8 +10,8 @@ async function fetchData(url, method, data) {
   return await response.json();
 }
 
-function getFormCustomerData() {
-  const customerForm = document.getElementById('customerForm');
+function getFormData() {
+  const customerForm = document.getElementById('form');
   const customerData = new FormData(customerForm);
 
   return validateFormData(customerData);
@@ -48,13 +47,13 @@ function validateInputData(inputId) {
   }
 }
 
-async function createCustomer() {
-  const { isValid, formData } = getFormCustomerData();
+async function createUser(userType) {
+  const { isValid, formData } = getFormData();
   if (!isValid) {
     return false;
   }
 
-  const url = '../../control/customer.control.php';
+  const url = `../../control/${userType}.control.php`;
   const method = 'POST';
   formData.set('action', 'create');
 
