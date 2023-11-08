@@ -1,19 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../assets/css/normalize.css">
-  <link rel="stylesheet" href="../assets/css/main.css">
-  <title>Document</title>
-</head>
-
 <body>
   <header>
     <div>
       <div class="logo">
-        <img src="../assets/svg/logo.svg" alt="Logo Dreamy Event">
+        <img src="./views/assets/svg/logo.svg" alt="Logo Dreamy Event">
       </div>
 
       <form action="./search.html" class="search-bar">
@@ -26,6 +15,5 @@
       </nav>
     </div>
   </header>
-</body>
-
-</html>
+  
+  <main>
