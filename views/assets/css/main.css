@@ -34,11 +34,51 @@ header>div {
   height: 24px;
   border: none;
   outline: none;
+  background-color: transparent;
   background-image: url('../svg/hamburguer-menu.svg');
   background-repeat: no-repeat;
   background-size: 24px;
   background-position: center;
   cursor: pointer;
+}
+
+.nav-bar {
+  position: relative;
+}
+
+.nav-bar div {
+  position: absolute;
+  top: 2.5rem;
+  right: 0;
+  flex-direction: column;
+  background-color: var(--white);
+  border: 1px solid var(--primary);
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.nav-bar div button {
+  width: 150px;
+  border: none;
+  background-color: transparent;
+  color: var(--black);
+  cursor: pointer;
+}
+
+.nav-bar div button:first-child {
+  padding: 1rem 1rem 0.5rem;
+}
+
+.nav-bar div button:last-child {
+  padding: 0.5rem 1rem 1rem;
+}
+
+.nav-bar div button:hover {
+  background-color: rgba(118, 112, 230, 0.4);
+}
+
+.active {
+  display: flex;
 }
 
 .search-bar {
@@ -94,11 +134,12 @@ header>div {
 
 /* form section */
 .form-section {
-  display: flex;
+  position: absolute;
   align-items: center;
   justify-content: center;
+  width: 100%;
   min-height: 100dvh;
-  padding: 2rem 0;
+  background-color: rgba(116, 116, 129, 0.6);
 }
 
 .form__container {
@@ -106,6 +147,7 @@ header>div {
   width: 50%;
   margin: 0 auto;
   padding: 1.5rem;
+  background-color: var(--white);
   border-radius: 15px;
   box-shadow: 0 5px 15px var(--primary);
   overflow: hidden;
