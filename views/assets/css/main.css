@@ -471,8 +471,10 @@ background-color: #ccc;
 .info__service{
   padding: 20px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-around;
+  align-items: center;
+  gap: 2rem;  
 }
 
 .description__section{
@@ -528,11 +530,11 @@ background-color: #ccc;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  
+  margin: 20px; 
 }
 
-.service_cost p,h3 {
-  font-size: 25px;
+.service_cost h3 {
+  margin: 0;
 }
 
 .total__price{
@@ -829,5 +831,10 @@ input:invalid:focus, select:invalid:focus {
   .filer-bar {
     justify-content: space-evenly;
     overflow: hidden;
+  }
+
+  .info__service{
+    flex-direction: row-reverse;
+    align-items: flex-start;
   }
 }
