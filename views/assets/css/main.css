@@ -62,6 +62,10 @@ header>div {
   color: var(--white);
 }
 
+.search-bar input:focus {
+  border: none;
+}
+
 .search-bar input::placeholder {
   color: var(--white);
 }
@@ -141,7 +145,8 @@ header>div {
   color: var(--secondary);
 }
 
-input, select {
+input,
+select {
   margin-bottom: 0.5rem;
   padding: 0.5rem;
   background-color: transparent;
@@ -150,7 +155,8 @@ input, select {
   outline: none;
 }
 
-input:focus, select:focus {
+input:focus,
+select:focus {
   border: 2px solid var(--black);
 }
 
@@ -200,7 +206,7 @@ input:focus, select:focus {
 }
 
 /* event form */
-.create__new__event{
+.create__new__event {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -229,7 +235,7 @@ input:focus, select:focus {
   justify-content: center;
 }
 
-.content__input{
+.content__input {
   color: var(--secondary);
 }
 
@@ -241,23 +247,23 @@ input:focus, select:focus {
   color: var(--black);
 }
 
-.create__event__form__select{
-   width: 100%; 
-    margin: 0.5rem 0;
-    color: var(--primary);
-    background-color: transparent; 
-    border: 1px solid var(--black);
-    border-radius: 10px;
-    padding: 0.5rem;
-    outline: none; 
-    cursor: pointer; 
+.create__event__form__select {
+  width: 100%;
+  margin: 0.5rem 0;
+  color: var(--primary);
+  background-color: transparent;
+  border: 1px solid var(--black);
+  border-radius: 10px;
+  padding: 0.5rem;
+  outline: none;
+  cursor: pointer;
 }
 
-.sections__form__create{
+.sections__form__create {
   color: var(--secondary);
 }
 
-#event_type{
+#event_type {
   display: flex;
   flex-direction: column;
   width: 75%;
@@ -283,34 +289,34 @@ input:focus, select:focus {
 
 
 /* Estilos para boton de filtros */
-.button-filter-bar{
+.button-filter-bar {
   padding: 10px;
   background: none;
   border: 1px solid var(--primary);
   border-radius: 10px;
-  box-shadow: 0 ;
-  
+  box-shadow: 0;
+
 }
 
-.button-filter-bar:hover{
-border: 2px solid var(--primary);
+.button-filter-bar:hover {
+  border: 2px solid var(--primary);
 }
 
-.filter__img{
+.filter__img {
   margin-right: 8px;
 }
 
-  /* Estilos para el modal de filtro */
+/* Estilos para el modal de filtro */
 .Modal__filter {
-   display: none;
-   position: fixed;
-   top: 0;
-   left: 0;
-   width: 100%;
-   height: 100%;
-   background-color: rgba(218, 216, 216, 0.7);
-   z-index: 1;
-   overflow-y: scroll;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(218, 216, 216, 0.7);
+  z-index: 1;
+  overflow-y: scroll;
 }
 
 /* Estilos para el contenido del modal */
@@ -324,37 +330,37 @@ border: 2px solid var(--primary);
   padding-bottom: 20px;
   padding-right: 20px;
   border-radius: 10px;
-  max-height: 80%; 
- overflow-y: auto;
- box-shadow: 0 5px 15px var(--primary);
+  max-height: 80%;
+  overflow-y: auto;
+  box-shadow: 0 5px 15px var(--primary);
 }
 
-.header-filter{
+.header-filter {
   display: flex;
   justify-content: space-between;
 }
 
-.column-filter1{
+.column-filter1 {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.column-filter2{
+.column-filter2 {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   margin: 0px;
 }
 
-#title-modal-filter{
+#title-modal-filter {
   margin: 0%;
   align-items: center;
   font-size: 30px;
 }
 
 /* Estilo para el botón de cerrar */
-.exit__filter{
+.exit__filter {
   align-items: left;
   outline: none;
   border: 0px;
@@ -366,14 +372,14 @@ border: 2px solid var(--primary);
   background: none;
 }
 
-.exit__filter:hover{
-transform: scale(1.2);
-background-color: #ccc;
+.exit__filter:hover {
+  transform: scale(1.2);
+  background-color: #ccc;
 }
 
 .scroll-container {
-  overflow-y: auto; 
-  max-height: calc(100% - 20px); 
+  overflow-y: auto;
+  max-height: calc(100% - 20px);
 }
 
 .checkbox-grid {
@@ -382,11 +388,11 @@ background-color: #ccc;
   flex-wrap: wrap;
 }
 
-.input__amount{
+.input__amount {
   display: grid;
 }
 
-.button-filter{
+.button-filter {
   align-items: center;
   justify-content: center;
   display: flex;
@@ -394,34 +400,34 @@ background-color: #ccc;
 
 
 .button_places {
-    display: flex;
-    justify-content: space-around;
-    padding-bottom:10px ;
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 10px;
 }
 
- .filter_elements{
-  border-bottom: 1px solid #ccc; 
-  padding-bottom: 10px; 
- }
+.filter_elements {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+}
 
 /* img lugares  */
-.img_places_button{
-    border-radius: 5px;
-    height: 90px;
-    width: 100px;
-    background: none; 
-    border: 1px;
-    border: 1px solid #ccc;
-    background: none;
-    padding: 10px; 
+.img_places_button {
+  border-radius: 5px;
+  height: 90px;
+  width: 100px;
+  background: none;
+  border: 1px;
+  border: 1px solid #ccc;
+  background: none;
+  padding: 10px;
 }
 
 .img_places_button:hover {
-   border: 1px solid var(--black);
+  border: 1px solid var(--black);
 }
 
-.img_places{
-    width: 50px;
+.img_places {
+  width: 50px;
 }
 
 
@@ -431,11 +437,13 @@ background-color: #ccc;
   border: 2px dashed red !important;
 }
 
-input:invalid, select:invalid {
+input:invalid,
+select:invalid {
   border: 2px dashed red;
 }
 
-input:invalid:focus, select:invalid:focus {
+input:invalid:focus,
+select:invalid:focus {
   border: 2px dashed red;
 }
 
@@ -609,7 +617,7 @@ input:invalid:focus, select:invalid:focus {
   padding: 2rem 0;
 }
 
-.info-service__details > div:first-child {
+.info-service__details>div:first-child {
   width: 65%;
 }
 
@@ -621,7 +629,7 @@ input:invalid:focus, select:invalid:focus {
 
 .info-service__details__header__title {
   width: 80%;
-} 
+}
 
 .info-service__details__header p {
   margin: 1rem 0;
