@@ -8,6 +8,11 @@ function showAlert(typeAlert) {
       message: 'Usuario o contraseña incorrecto.',
       color: '#F02D3A',
     },
+    'welcome': {
+      message: 'Bienvenido a la plataforma.',
+      // color verde claro hexadecimal
+      color: '#ADFFC7',
+    },
   };
 
   let alert = document.getElementById('alert');
