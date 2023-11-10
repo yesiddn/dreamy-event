@@ -26,5 +26,5 @@
 
 <script>
   const loginFormButton = document.getElementById('log-in-form-button');
-  // loginFormButton.addEventListener('click', () => method());
+  loginFormButton.addEventListener('click', () => loginUser());
 </script>

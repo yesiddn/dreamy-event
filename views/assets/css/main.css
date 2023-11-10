@@ -140,11 +140,13 @@ header>div {
   width: 100%;
   min-height: 100dvh;
   background-color: rgba(116, 116, 129, 0.6);
+  z-index: 100;
 }
 
 .form__container {
   position: relative;
   width: 50%;
+  max-width: 512px;
   margin: 0 auto;
   padding: 1.5rem;
   background-color: var(--white);
@@ -738,14 +740,14 @@ select:invalid:focus {
 
 /* alerts */
 .alert {
-  padding: 20px;
-  color: var(--black);
   position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1;
   display: none;
   align-items: center;
+  top: 0;
+  width: 100%;
+  padding: 20px;
+  color: var(--black);
+  z-index: 1000;
 }
 
 .alert p {
