@@ -45,6 +45,9 @@ class CustomerModel
     try {
       $response = UserModel::getByEmail($email);
       
+      if (!$response) {
+        return array('status' => 401, 'message' => 'User not found');
+      }
       return $response;
     } catch (Exception $e) {
       return $e->getMessage();
