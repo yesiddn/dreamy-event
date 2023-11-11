@@ -56,7 +56,7 @@ class UserModel
       $user = $query->fetch(PDO::FETCH_ASSOC);
 
       if ($user) {
-        return $user;
+        return array('status' => 200, 'message' => 'User found', 'data' => $user);
       }
 
       return array(

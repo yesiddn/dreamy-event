@@ -64,3 +64,32 @@ async function createUser(userType) {
     console.log(error); 
   }
 }
+
+async function loginUser() {
+  const { isValid, formData } = getFormData();
+  if (!isValid) {
+    return false;
+  }
+
+  const url = `./control/login.control.php`;
+  const method = 'POST';
+  formData.set('action', 'login');
+
+  try {
+    const response = await fetchData(url, method, formData);
+
+    console.log(response);
+    if (response.status === 401) {
+      showAlert('wrong-user');
+    }
+    
+    if (response.status === 200) {
+      showAlert('welcome');
+      setTimeout(() => {
+        window.location = 'home';
+      }, 1000);
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
