@@ -7,6 +7,12 @@ class CustomerModel
   public static function createCustomer($name, $lastName, $email, $phone, $city, $country, $password, $img)
   {
     try {
+      $userExist = UserModel::getByEmail($email);
+
+      if ($userExist) {
+        return array('status' => 409, 'message' => 'User already exists');
+      }
+
       $user = UserModel::createUser($name, $lastName, $email, $phone, $city, $country, $password, $img);
       $userId = $user['id_user'];
       $file = $user['img'];
@@ -23,15 +29,19 @@ class CustomerModel
       }
 
       $newCustomer = array(
-        'id_customer' => $customerId,
-        'name' => $name,
-        'lastName' => $lastName,
-        'email' => $email,
-        'phone' => $phone,
-        'city' => $city,
-        'country' => $country,
-        'img' => $file,
-        'id_user' => $userId
+        'status' => 201,
+        'message' => 'Customer created successfully',
+        'data' => array(
+          'id_customer' => $customerId,
+          'name' => $name,
+          'lastName' => $lastName,
+          'email' => $email,
+          'phone' => $phone,
+          'city' => $city,
+          'country' => $country,
+          'img' => $file,
+          'id_user' => $userId
+        )
       );
 
       return $newCustomer;
