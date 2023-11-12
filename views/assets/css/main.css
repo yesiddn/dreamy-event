@@ -126,6 +126,49 @@ header>div {
   cursor: pointer;
 }
 
+/* 404 page */
+.error-404-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 80%;
+  height: 80dvh;
+  max-width: 700px;
+  margin: 0 auto;
+  color: var(--black);
+}
+
+.error-404-container h2 {
+  margin: 0;
+  font-size: 4rem;
+}
+
+.error-404-container img {
+  width: 100%;
+  max-width: 500px;
+  margin-top: 2rem;
+}
+
+.error-404-container h3 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.error-404-container p {
+  margin: 1rem 0;
+  font-size: 1.5rem;
+}
+
+.error-404-container a {
+  width: 150px;
+  padding: 1rem;
+  border-radius: 15px;
+  background-color: var(--primary);
+  text-decoration: none;
+  text-align: center;
+  color: var(--white);
+}
+
 /* Hero */
 
 .hero-container {
