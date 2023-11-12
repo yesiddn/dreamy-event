@@ -19,8 +19,8 @@
             <li><a href="services">Servicios</a></li>
             <li><a href="contact">Contacto</a></li>
           </ul> -->
-          <button type="button" class="log-in-btn">Iniciar sesión</button>
-          <button type="button" class="sign-up-btn">Registrarse</button>
+          <a href="log-in">Iniciar sesión</a>
+          <a href="sign-up">Registrarse</a>
         </div>
       </nav>
     </div>

@@ -6,13 +6,17 @@
 }
 
 html {
+  background-color: var(--white);
   font-family: 'Poppins', sans-serif;
 }
 
 /* header */
 header {
   position: sticky;
+  top: 0;
   border-bottom: 1px solid var(--primary);
+  background-color: var(--white);
+  z-index: 100;
 }
 
 header>div {
@@ -55,25 +59,28 @@ header>div {
   border: 1px solid var(--primary);
   border-radius: 15px;
   overflow: hidden;
+  z-index: 1000;
 }
 
-.nav-bar div button {
+.nav-bar div a {
   width: 150px;
   border: none;
   background-color: transparent;
   color: var(--black);
+  text-align: center;
+  text-decoration: none;
   cursor: pointer;
 }
 
-.nav-bar div button:first-child {
+.nav-bar div a:first-child {
   padding: 1rem 1rem 0.5rem;
 }
 
-.nav-bar div button:last-child {
+.nav-bar div a:last-child {
   padding: 0.5rem 1rem 1rem;
 }
 
-.nav-bar div button:hover {
+.nav-bar div a:hover {
   background-color: rgba(118, 112, 230, 0.4);
 }
 
@@ -177,22 +184,20 @@ header>div {
 
 /* form section */
 .form-section {
-  position: absolute;
+  display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  min-height: 100dvh;
-  background-color: rgba(116, 116, 129, 0.6);
-  z-index: 100;
+  min-height: 80dvh;
+  padding: 2rem 0;
 }
 
 .form__container {
   position: relative;
-  width: 50%;
+  width: 80%;
   max-width: 512px;
   margin: 0 auto;
   padding: 1.5rem;
-  background-color: var(--white);
   border-radius: 15px;
   box-shadow: 0 5px 15px var(--primary);
   overflow: hidden;
