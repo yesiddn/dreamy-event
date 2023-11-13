@@ -47,21 +47,27 @@ function validateInputData(inputId) {
   }
 }
 
-async function createUser(userType) {
+async function signUpCustomer(userType) {
   const { isValid, formData } = getFormData();
   if (!isValid) {
     return false;
   }
 
-  const url = `../../control/${userType}.control.php`;
+  const url = `./control/${userType}.control.php`;
   const method = 'POST';
   formData.set('action', 'create');
 
   try {
     const response = await fetchData(url, method, formData);
-    console.log(response);
+    if (response.status === 409) {
+      showAlert('user-exists');
+    }
+
+    if (response.status === 201) {
+      window.location = 'home';
+    }
   } catch (error) {
-    console.log(error); 
+    console.log(error);
   }
 }
 
@@ -78,11 +84,12 @@ async function loginUser() {
   try {
     const response = await fetchData(url, method, formData);
 
-    console.log(response);
     if (response.status === 401) {
       showAlert('wrong-user');
+    } else if (response.status === 404) {
+      showAlert('user-not-exists');
     }
-    
+
     if (response.status === 200) {
       showAlert('welcome');
       setTimeout(() => {

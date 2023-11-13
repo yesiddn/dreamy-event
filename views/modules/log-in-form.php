@@ -1,5 +1,4 @@
-<section class="form-section inactive" id="login-section">
-
+<section class="form-section" id="login-section">
   <div class="form__container">
     <h2>Bienvenido a <span class="primary">Dreamy Event</span></h2>
 

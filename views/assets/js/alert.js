@@ -4,11 +4,15 @@ function showAlert(typeAlert) {
       message: 'El usuario ya existe.',
       color: '#ADBDFF',
     },
+    'user-not-exists': {
+      message: 'El usuario no existe.',
+      color: '#F02D3A',
+    },
     'wrong-user': {
       message: 'Usuario o contraseña incorrecto.',
       color: '#F02D3A',
     },
-    'welcome': {
+    welcome: {
       message: 'Bienvenido a la plataforma.',
       // color verde claro hexadecimal
       color: '#ADFFC7',

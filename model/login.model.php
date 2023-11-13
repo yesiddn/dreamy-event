@@ -6,7 +6,7 @@ class LoginModel {
     try {
       $customer = CustomerModel::getByEmail($email);
 
-      if ($customer['status'] === 401) {
+      if ($customer['status'] === 401 || $customer['status'] === 404) {
         return $customer;
       }
 
