@@ -34,16 +34,32 @@ header>div {
 }
 
 .hamburguer-menu {
-  width: 24px;
-  height: 24px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   border: none;
   outline: none;
   background-color: transparent;
-  background-image: url('../svg/hamburguer-menu.svg');
-  background-repeat: no-repeat;
-  background-size: 24px;
-  background-position: center;
   cursor: pointer;
+}
+
+.hamburguer-menu span {
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.hamburguer-menu span:nth-child(1) {
+  width: 24px;
+  height: 24px;
+  background-image: url('../svg/hamburguer-menu.svg');
+  background-size: 24px;
+}
+
+.hamburguer-menu span:nth-child(2) {
+  width: 32px;
+  height: 32px;
+  background-image: url('../svg/profile-default.svg');
+  background-size: 32px;
 }
 
 .nav-bar {
@@ -154,7 +170,7 @@ header>div {
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  color:var(--white);
+  color: var(--white);
 }
 
 .hero-text p {
@@ -167,7 +183,7 @@ header>div {
   margin-top: 20px;
   padding: 10px 20px;
   background-color: var(--primary);
-  color:var(--white);
+  color: var(--white);
   text-decoration: none;
   border: none;
   border-radius: 5px;
@@ -535,18 +551,18 @@ select:focus {
   flex: 1;
 }
 
-.info__total__cost p{
+.info__total__cost p {
   color: var(--secondary);
   font-size: 20px;
   justify-content: right;
 }
 
-.info__column{
+.info__column {
   flex: 1;
   margin: 10px;
 }
 
-.title__cost__event{
+.title__cost__event {
   display: flex;
   justify-content: center;
   max-width: 900px;
@@ -554,51 +570,51 @@ select:focus {
   color: var(--primary);
 }
 
-.date__event{
+.date__event {
   display: flex;
   flex-direction: column;
   align-items: end;
 }
 
-.date__event span{
+.date__event span {
   color: var(--primary);
   font-weight: 600;
 }
 
 
-.info__service{
+.info__service {
   padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  gap: 2rem;  
+  gap: 2rem;
 }
 
-.description__section{
+.description__section {
   width: 600px;
 }
 
-.description__service{
+.description__service {
   display: flex;
   flex-direction: column;
   border: 2px solid var(--primary);
   border-radius: 15px;
-  padding: 5px 30px 5px ;
+  padding: 5px 30px 5px;
   margin-bottom: 25px;
   box-shadow: 0 5px 5px #ccc;
   max-width: 600px;
   max-height: 100px;
 }
 
-.description__service p{
+.description__service p {
   color: var(--secondary);
   font-size: 18px;
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
-.description__service h2{
+.description__service h2 {
   font-size: 25px;
   font-weight: 400;
   margin-top: 10px;
@@ -606,7 +622,7 @@ select:focus {
 }
 
 
-.cost__section{
+.cost__section {
   display: flex;
   flex-direction: column;
   border: 2px solid var(--primary);
@@ -614,51 +630,51 @@ select:focus {
   box-shadow: 0 5px 15px var(--primary);
   width: 600px;
   max-width: 700px;
-  padding: 10px 40px 30px ;
+  padding: 10px 40px 30px;
 }
 
-.cost__section h2{
+.cost__section h2 {
   font-size: 35px;
   font-weight: 600;
   margin-top: 20px;
   margin-bottom: 30px;
 }
 
-.service_cost{
+.service_cost {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 20px; 
+  margin: 20px;
 }
 
 .service_cost h3 {
   margin: 0;
 }
 
-.total__price{
+.total__price {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.total__price h3{
+.total__price h3 {
   color: var(--primary);
   font-size: 40px;
 }
 
-.container__button{
+.container__button {
   display: flex;
   justify-content: center;
 }
 
-.reserve__button{
+.reserve__button {
   padding: 10px;
   font-size: 25px;
   background-color: var(--primary);
   border: 1px solid var(--primary);
   color: var(--white);
   border-radius: 10px;
-  box-shadow: 0 ;
+  box-shadow: 0;
   width: 200px;
   padding: 10px;
   cursor: pointer;
@@ -978,7 +994,7 @@ select:invalid:focus {
     overflow: hidden;
   }
 
-  .info__service{
+  .info__service {
     flex-direction: row-reverse;
     align-items: flex-start;
   }

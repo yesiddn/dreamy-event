@@ -11,7 +11,10 @@
       </form>
 
       <nav class="nav-bar">
-        <button type="button" class="hamburguer-menu"></button>
+        <button type="button" class="hamburguer-menu">
+          <span></span>
+          <span></span>
+        </button>
         <div class="inactive">
           <!-- <ul>
             <li><a href="home">Inicio</a></li>
