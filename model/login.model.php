@@ -11,7 +11,7 @@ class LoginModel {
       }
 
       if ($customer['data']['password_user'] === $pass) {
-        $_SESSION['id_customer'] = $customer['data']['id_user'];
+        $_SESSION['user'] = $customer['data'];
         unset($customer['data']['password_user']);
         return $customer;
       } else {

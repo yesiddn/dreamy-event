@@ -67,11 +67,13 @@ header>div {
   position: relative;
 }
 
-.nav-bar div {
+.nav-bar ul {
   position: absolute;
-  top: 2.5rem;
+  top: 2rem;
   right: 0;
   flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
   background-color: var(--white);
   border: 1px solid var(--primary);
   border-radius: 15px;
@@ -79,8 +81,12 @@ header>div {
   z-index: 1000;
 }
 
-.nav-bar div a {
-  width: 150px;
+.nav-bar ul li {
+  list-style: none;
+}
+.nav-bar ul li a {
+  display: inline-block;
+  width: 100px;
   border: none;
   background-color: transparent;
   color: var(--black);
@@ -89,15 +95,7 @@ header>div {
   cursor: pointer;
 }
 
-.nav-bar div a:first-child {
-  padding: 1rem 1rem 0.5rem;
-}
-
-.nav-bar div a:last-child {
-  padding: 0.5rem 1rem 1rem;
-}
-
-.nav-bar div a:hover {
+.nav-bar ul li a:hover {
   background-color: rgba(118, 112, 230, 0.4);
 }
 
