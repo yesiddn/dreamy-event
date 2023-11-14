@@ -13,7 +13,7 @@
       <nav class="nav-bar">
         <button type="button" class="hamburguer-menu">
           <span></span>
-          <span></span>
+          <span id="user-profile-img"></span>
         </button>
         <div class="inactive">
           <!-- <ul>
