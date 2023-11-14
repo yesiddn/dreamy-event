@@ -58,8 +58,9 @@ header>div {
 .hamburguer-menu span:nth-child(2) {
   width: 32px;
   height: 32px;
+  border-radius: 50%;
   background-image: url('../svg/profile-default.svg');
-  background-size: 32px;
+  background-size: cover;
 }
 
 .nav-bar {
