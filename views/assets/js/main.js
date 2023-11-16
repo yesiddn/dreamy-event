@@ -1,6 +1,13 @@
 // const loginFormButton = document.getElementById('log-in-form-button');
 // loginFormButton.addEventListener('click', method());
 
+/**
+ * Función para hacer peticiones al controller.
+ * @param {string} url Ruta del controller al que se le hará la petición.
+ * @param {string} method Metodo HTTP que se usará para la petición (generalmente POST).
+ * @param {JSON.stringify} data Información que se enviará al servidor en un objeto literal convertido a string con JSON.stringify.
+ * @returns Array con los datos de la respuesta del servidor {status: ..., message: ..., data: ...}
+ */
 async function fetchData(url, method, data) {
   const response = await fetch(url, {
     method,
@@ -10,13 +17,22 @@ async function fetchData(url, method, data) {
   return await response.json();
 }
 
+/**
+ * Función para obtener los datos del formulario de registro de usuario.
+ * @returns Objeto literal con un booleano que indica si los datos del formulario son válidos y un objeto FormData con los datos del formulario.
+ */
 function getFormData() {
   const customerForm = document.getElementById('form');
   const customerData = new FormData(customerForm);
 
-  return validateFormData(customerData);
+  return { formData: customerData, isValid: validateFormData(customerData) };
 }
 
+/**
+ * Función para validar los datos de un formulario.
+ * @param {FormData} formData Objeto FormData con los datos de un formulario.
+ * @returns Objeto literal con un booleano que indica si los datos del formulario son válidos.
+ */
 function validateFormData(formData) {
   let isValid = true;
 
@@ -24,9 +40,14 @@ function validateFormData(formData) {
     isValid = validateInputData(key) && isValid;
   }
 
-  return { isValid, formData };
+  return isValid;
 }
 
+/**
+ * Función para validar los datos de un input.
+ * @param {string} inputId Id del input que se quiere validar.
+ * @returns True si el input es válido, false si no lo es.
+ */
 function validateInputData(inputId) {
   const input = document.getElementById(inputId);
   const invalidFeedback = input.nextElementSibling;
@@ -47,6 +68,11 @@ function validateInputData(inputId) {
   }
 }
 
+/**
+ * Función para registrar un nuevo usuario.
+ * @param {string} userType Tipo de usuario que se quiere registrar (customer o supplier).
+ * @returns False si los datos del formulario no son válidos para evitar que se haga la petición al servidor.
+ */
 async function signUpCustomer(userType) {
   const { isValid, formData } = getFormData();
   if (!isValid) {
@@ -71,6 +97,10 @@ async function signUpCustomer(userType) {
   }
 }
 
+/**
+ * Función para loguear un usuario.
+ * @returns False si los datos del formulario no son válidos para evitar que se haga la petición al servidor.
+ */
 async function loginUser() {
   const { isValid, formData } = getFormData();
   if (!isValid) {
