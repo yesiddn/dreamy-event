@@ -17,6 +17,10 @@ function showAlert(typeAlert) {
       // color verde claro hexadecimal
       color: '#ADFFC7',
     },
+    'user-created': {
+      message: 'Usuario creado correctamente.',
+      color: '#ADFFC7',
+    },
   };
 
   let alert = document.getElementById('alert');
