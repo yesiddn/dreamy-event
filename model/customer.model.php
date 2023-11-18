@@ -57,6 +57,8 @@ class CustomerModel
       )
     );
 
+    $_SESSION['user'] = $newCustomer['data']['user'];
+
     return $newCustomer;
   }
 
