@@ -84,6 +84,8 @@ async function loginUser() {
   try {
     const response = await fetchData(url, method, formData);
 
+    localStorage.setItem('user', JSON.stringify(response.data));
+
     if (response.status === 401) {
       showAlert('wrong-user');
     } else if (response.status === 404) {
