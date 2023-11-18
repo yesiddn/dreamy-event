@@ -64,7 +64,12 @@ async function signUpCustomer(userType) {
     }
 
     if (response.status === 201) {
-      window.location = 'home';
+      localStorage.setItem('customer', JSON.stringify(response.data));
+
+      showAlert('user-created');
+      setTimeout(() => {
+        window.location = 'home';
+      }, 1000);
     }
   } catch (error) {
     console.log(error);
@@ -84,8 +89,6 @@ async function loginUser() {
   try {
     const response = await fetchData(url, method, formData);
 
-    localStorage.setItem('user', JSON.stringify(response.data));
-
     if (response.status === 401) {
       showAlert('wrong-user');
     } else if (response.status === 404) {
@@ -93,6 +96,8 @@ async function loginUser() {
     }
 
     if (response.status === 200) {
+      localStorage.setItem('customer', JSON.stringify(response.data));
+
       showAlert('welcome');
       setTimeout(() => {
         window.location = 'home';

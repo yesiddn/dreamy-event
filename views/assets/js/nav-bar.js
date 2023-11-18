@@ -2,9 +2,9 @@ const hamburguerMenu = document.querySelector('.hamburguer-menu');
 const menu = document.querySelector('.nav-bar ul');
 const profileImg = document.querySelector('#user-profile-img');
 
-const user = JSON.parse(localStorage.getItem('user'));
-if (user) {
-  profileImg.style.backgroundImage = `url(${user.img_user})`;
+const customer = JSON.parse(localStorage.getItem('customer'));
+if (customer) {
+  profileImg.style.backgroundImage = `url('${customer.img_profile}')`;
 }
 
 hamburguerMenu.addEventListener('click', (e) => {
