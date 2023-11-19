@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include_once '../model/customer.model.php';
 
 class CustomerControl {
