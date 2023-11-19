@@ -7,13 +7,7 @@ document.addEventListener("DOMContentLoaded", function (){
 function fetchServices(){
 
   fetch('control/services.control.php')
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Error al obtener datos del servidor');
-    }
-    return response.json();
-  })
-
+  .then(response => response.json())
   .then(data => {
     if (data.codigo === "200") {
       displayServices(data.data);
@@ -21,8 +15,7 @@ function fetchServices(){
       console.error('Error al obtener servicios:', data.mensaje);
     }
   })
-
-  .catch(error => console.error('Error al obtener servicios:', error.message));
+  .catch(error => console.error('Error al obtener servicios:', error));
 }
 
 function displayServices(services){
