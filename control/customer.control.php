@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include_once '../model/customer.model.php';
 
 class CustomerControl {
@@ -27,14 +27,14 @@ class CustomerControl {
 
 if($_POST['action'] === 'create') {
   $customer = new CustomerControl();
-  $customer->name = $_POST['customer-name'];
-  $customer->lastName = $_POST['customer-last-name'];
-  $customer->email = $_POST['customer-email'];
-  $customer->phone = $_POST['customer-phone'];
-  $customer->city = $_POST['customer-city'];
-  $customer->country = $_POST['customer-country'];
-  $customer->pass = $_POST['customer-pass'];
-  $customer->img = $_FILES['customer-img'];
+  $customer->name = $_POST['name'];
+  $customer->lastName = $_POST['last-name'];
+  $customer->email = $_POST['email'];
+  $customer->phone = $_POST['phone'];
+  $customer->city = $_POST['city'];
+  $customer->country = $_POST['country'];
+  $customer->pass = $_POST['pass'];
+  $customer->img = $_FILES['img'];
   $response = $customer->createCustomer();
   echo json_encode($response);
 }

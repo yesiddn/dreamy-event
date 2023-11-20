@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./views/assets/css/normalize.css">
   <link rel="stylesheet" href="./views/assets/css/main.css">
-  <script src="./views/assets/js/main.js"></script>
-  <script src="./views/assets/js/service.js"></script>
+  <script defer src="./views/assets/js/main.js"></script>
+  <script defer src="./views/assets/js/service.js"></script>
   <title>Dreamy Event</title>
 </head>
