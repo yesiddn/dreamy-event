@@ -1,6 +1,10 @@
 // const loginFormButton = document.getElementById('log-in-form-button');
 // loginFormButton.addEventListener('click', method());
 
+var tabla = null;
+ShowServices(); 
+
+ShowServices();
 async function fetchData(url, method, data) {
   const response = await fetch(url, {
     method,
@@ -106,4 +110,32 @@ async function loginUser() {
   } catch (error) {
     console.error(error);
   }
+}
+
+
+
+
+
+function ShowServices() {
+
+  // se crea la peticion para consultar la informacion
+  var objData = new FormData();
+  objData.append("ShowServices", "OK");
+
+  fetch('../../control/info-service.control.php', {
+      method: 'POST',
+      body: objData
+      // este es para capturar el error
+  }).then(response => response.json()).catch(error => {
+      console.log('error: ', error);
+      // este  captura la respuesta si es positiva
+  }).then(response => {
+      NameService(response)
+  });
+
+}
+
+
+function NameService(response) {
+  
 }
