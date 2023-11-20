@@ -8,7 +8,11 @@ class FIlesModel {
     
     // Verificamos que el archivo sea una imagen
     if ($extention == ".JPG" || $extention == ".PNG" || $extention == "JPEG") {
-      
+      // Verificamos que la carpeta destino exista, si no la creamos
+      // if (!file_exists($mainRout)) {
+      //   mkdir($rout, 0777, true);
+      // }
+
       // Movemos el archivo al directorio de destino
       if (move_uploaded_file($file['tmp_name'], $rout . $fileName)) {
         return $mainRout;
