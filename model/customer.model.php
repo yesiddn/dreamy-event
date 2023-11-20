@@ -67,12 +67,53 @@ class CustomerModel
     try {
       $response = UserModel::getByEmail($email);
 
-      if (!$response) {
-        return array('status' => 401, 'message' => 'User not found');
+      if ($response['data'] == null) {
+        return array('status' => 404, 'message' => 'User not found');
       }
-      return $response;
     } catch (Exception $e) {
       return $e->getMessage();
     }
+
+    try {
+      $sql = "SELECT * FROM customers WHERE id_user = ?";
+      $connection = Connection::connect();
+      $query = $connection->prepare($sql);
+      $query->bindParam(1, $response['data']['id_user'], PDO::PARAM_INT);
+      $query->execute();
+      $customer = $query->fetch(PDO::FETCH_ASSOC);
+
+      if ($customer) {
+        $customerData = CustomerModel::orderCustomerData($customer, $response['data']);
+        return array('status' => 200, 'message' => 'Customer found', 'data' => $customerData);
+      }
+
+      return array(
+        'status' => 404,
+        'message' => 'Customer not found',
+        'data' => null
+      );
+    } catch (Exception $e) {
+      return $e->getMessage();
+    }
+  }
+
+  public static function orderCustomerData($customerData, $userData)
+  {
+    $data = array(
+      'id_customer' => $customerData['id_customer'],
+      'name' => $customerData['name_customer'],
+      'last_name' => $customerData['last_name_customer'],
+      'phone' => $customerData['phone_customer'],
+      'city' => $customerData['city_customer'],
+      'country' => $customerData['country_customer'],
+      'img_profile' => $customerData['img_profile_customer'],
+      'user' => array(
+        'id_user' => $userData['id_user'],
+        'email' => $userData['email_user'],
+        'password' => $userData['password_user']
+      )
+    );
+
+    return $data;
   }
 }
