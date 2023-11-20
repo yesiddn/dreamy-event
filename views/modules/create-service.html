@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../assets/css/normalize.css">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <section class="form-section">
+
+    <div class="form__container">
+      <h2>Registrar nuevo <span class="primary">servicio</span></h2>
+
+      <div class="square"></div>
+
+      <form class="form" id="form">
+
+        <!-- name -->
+        <label for="name_company" class="form__input">
+          <!-- <span>Nombre:</span> -->
+          <input id="name-service" type="text" name="name-company" placeholder="Nombre Servicio"
+            onkeyup="validateInputData('name-company')">
+          <!-- mensaje de error -->
+          <span class="inactive">Ingrese un valor valido.</span>
+        </label>
+
+        <!-- description -->
+        <label for="description-service" class="form__input">
+          Descripcion:
+          <!-- <span>description:</span>  -->
+          <textarea name="service-descripcion" id="" cols="3" rows="5"></textarea>
+          <!-- mensaje de error -->
+          <span class="inactive">Ingrese un valor valido.</span>
+        </label>
+
+        <!-- price -->
+        <label for="price-service" class="form__input">
+          <!-- <span>Telefono:</span>  -->
+          <input id="price-service" type="number" name="price-service" placeholder="Precio">
+          <span class="inactive">Ingrese un valor valido.</span>
+        </label>
+
+        <!-- location -->
+        <label for="location-service" class="form__input">
+          <!-- <span>location:</span> -->
+          <input id="location-service" type="text" name="location-service" placeholder="Ubicacion">
+          <!-- mensaje de error -->
+          <span class="inactive">Ingrese un valor valido.</span>
+        </label>
+
+        <!-- city -->
+        <label for="city-service" class="form__input">
+          <!-- <span>Ciudad:</span>  -->
+          <input id="city-service" type="text" name="city-service" placeholder="Ciudad">
+          <span class="inactive">Ingrese un valor valido.</span>
+        </label>
+
+        <!-- country -->
+        <label for="country-service" class="form__input">
+          <!-- <span>Country:</span>  -->
+          <input id="country-service" type="text" name="country-service" placeholder="Pais">
+          <span class="inactive">Ingrese un valor valido.</span>
+        </label>
+
+
+        <!-- people amount -->
+        <label for="peopleAmount-service" class="form__input">
+          <!-- <span>People amount:</span>  -->
+          <input id="peopleAmount-service" type="number" name="peopleAmount-service" placeholder="Cantidad de personas">
+          <span class="inactive">Ingrese un valor valido.</span>
+        </label>
+
+        <!-- service type -->
+        <label for="type-service" class="form__input">
+          Tipo de evento:
+
+          <select name="type-service" id="type-service" onchange="validateInputData('event-type')">
+            <option value="" hidden>Seleccione un tipo de servicio</option>
+
+            <option value="1">Boda</option>
+
+            <option value="2">Fiesta de cumpleaños</option>
+
+            <option value="3">Baby showers</option>
+
+            <option value="4">Conferencia/Seminario</option>
+
+            <option value="5">Quince años</option>
+
+            <option value="6">Reunión corporativa</option>
+
+            <option value="7">Feria/Exposición</option>
+
+            <option value="8">Celebración familiar</option>
+
+            <option value="9">Bautizo</option>
+
+            <option value="10">Comunión</option>
+
+            <option value="11">Confirmación</option>
+
+            <option value="12">Graduación</option>
+          </select>
+
+          <span class="inactive">Ingrese un valor valido.</span>
+        </label>
+
+
+
+
+
+        <button type="button" id="form-button">Registrase</button>
+      </form>
+    </div>
+  </section>
+
+  <script src="../assets/js/main.js"></script>
+  <script>
+    const supplierFormButton = document.getElementById('form-button');
+    supplierFormButton.addEventListener('click', () => createUser('supplier'));
+  </script>
+</body>
+
+</html>
