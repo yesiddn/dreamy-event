@@ -32,7 +32,7 @@
         <label for="description-service" class="form__input">
           Descripcion:
           <!-- <span>description:</span>  -->
-          <textarea name="service-descripcion" id="" cols="3" rows="5"></textarea>
+          <textarea name="service-description" id="" cols="3" rows="5"></textarea>
           <!-- mensaje de error -->
           <span class="inactive">Ingrese un valor valido.</span>
         </label>
@@ -113,12 +113,12 @@
 
 
 
-        <button type="button" id="form-button">Registrase</button>
+        <button type="button" id="service-form-button">Registrase</button>
       </form>
     </div>
   </section>
 
-  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/create-service.js"></script>
   <script>
     const supplierFormButton = document.getElementById('form-button');
     supplierFormButton.addEventListener('click', () => createUser('supplier'));
