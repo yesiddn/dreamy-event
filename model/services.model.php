@@ -33,7 +33,7 @@ class ServicesModel
   public static function createService($data)
   {
     try {
-      $query = "INSERT INTO services (description_service, price_service, location_service, city_service, country_service, amount_people_service, characteristics_service, id_service_type) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+      $query = "INSERT INTO services (name_service,description_service, price_service, location_service, city_service, country_service, amount_people_service, characteristics_service, id_service_type) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
       $connection = Connection::connect();
       $result = $connection->prepare($query);
       $result->bindParam(1, $data['description'], PDO::PARAM_STR);
