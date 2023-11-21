@@ -18,18 +18,32 @@ class ServicesModel
     }
   }
 
-  public static function getServiceInfo($id)
+  public static function getService($id)
   {
     try {
       $query = "SELECT * FROM services WHERE id_service = ?";
-      $result = Connection::connect()->prepare($query);
-      $result->bindParam(1, $id, PDO::PARAM_INT);
-      $result->execute();
-      $typeService = $result->fetch();
-      return array("codigo" => "200", "mensaje" => "ok", "data" => $typeService);
+      $response = Connection::connect()->prepare($query);
+      $response->bindParam(1, $id, PDO::PARAM_INT);
+      $response->execute();
+      $service = $response->fetch();
+      $response = null;
+
     } catch (Exception $e) {
-      return array("codigo" => "500", "mensaje" => $e->getMessage());
+      return array("status" => 500, "message" => $e->getMessage());
     }
+    try {
+      $query = "SELECT * FROM images_services WHERE id_service = ?";
+      $response = Connection::connect()->prepare($query);
+      $response->bindParam(1, $id, PDO::PARAM_INT);
+      $response->execute();
+      $images = $response->fetchAll();
+      $service['images'] = $images;
+      $response = null;
+    } catch (Exception $e) {
+      return array("status" => 500, "message" => $e->getMessage());
+    }
+
+    return array("status" => 200, "message" => "ok", "data" => $service);
   }
 
   public static function createService($data)
