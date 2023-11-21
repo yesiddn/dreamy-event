@@ -3,6 +3,10 @@ include_once 'connection.model.php';
 
 class ServicesModel
 {
+
+
+
+
   public static function getServices()
   {
     try {
@@ -17,6 +21,11 @@ class ServicesModel
       return array("codigo" => "500", "mensaje" => $e->getMessage());
     }
   }
+
+
+
+
+
 
   public static function getService($id)
   {
@@ -46,13 +55,18 @@ class ServicesModel
     return array("status" => 200, "message" => "ok", "data" => $service);
   }
 
-  public static function createService($data)
+
+
+
+
+
+  public static function createService($nameService,$descriptionService,$price,$price,$location,$city,$country,$amountPeople,$characteristics)
   {
     try {
       $query = "INSERT INTO services (name_service,description_service, price_service, location_service, city_service, country_service, amount_people_service, characteristics_service, id_service_type) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
       $connection = Connection::connect();
       $result = $connection->prepare($query);
-      $result->bindParam(1, $data['description'], PDO::PARAM_STR);
+      $result->bindParam(1, $nameService, PDO::PARAM_STR);
       $result->bindParam(2, $data['price'], PDO::PARAM_STR);
       $result->bindParam(3, $data['location'], PDO::PARAM_STR);
       $result->bindParam(4, $data['city'], PDO::PARAM_STR);
@@ -75,8 +89,13 @@ class ServicesModel
     }
   }
 
-  public static function editServiceInfo($data)
-  {
+
+
+
+
+
+  public static function editServiceInfo($data){
+  
     try {
       $query = "UPDATE services SET description_service = ?, price_service = ?, location_service = ?, city_service = ?, country_service = ?, amount_people_service = ?, characteristics_service = ?, id_service_type = ? WHERE id_service = ?";
       $result = Connection::connect()->prepare($query);
