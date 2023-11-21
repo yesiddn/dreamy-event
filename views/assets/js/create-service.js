@@ -23,11 +23,10 @@ document.addEventListener('DOMContentLoaded', function () {
         formData.append('country', countryService);
         formData.append('amountPeople', peopleAmountService);
         formData.append('characteristics', characteristicsSservice);
-        formData.append('queryType','Insert')
-        
+        formData.append('queryType','Insert');
 
         // Realizar la solicitud fetch
-        fetch('../assets/js/services.control.php', {
+        fetch('../../control/services.control.php', {
             method: 'POST',
             body: formData
         })
