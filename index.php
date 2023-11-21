@@ -11,10 +11,11 @@ if (!isset($_GET["rout"]) || $_GET["rout"] == "home") {
   include_once("./views/modules/sign-up-customer-form.php");
 } elseif ($_GET["rout"] == "log-in") {
   include_once("./views/modules/log-in-form.php");
+} elseif ($_GET["rout"] == "log-out") {
+  include_once("./views/modules/log-out.php");
 } elseif ($_GET["rout"] == "service") {
   include_once("./views/modules/info-service.php");
-}
- else {
+} else {
   include_once("./views/modules/404.php");
 }
 
