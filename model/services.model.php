@@ -6,10 +6,12 @@ class ServicesModel
   public static function getServices()
   {
     try {
-      $query = "SELECT * FROM services";
+      $query = "SELECT services.id_service, services.name_service, services.description_service, services.price, services.location, services.city, services.country, services.amount_people, services.characteristics, services.id_type_service, services.id_supplier, images_services.id_image, images_services.url_image FROM services INNER JOIN images_services ON services.id_service = images_services.id_service";
       $result = Connection::connect()->prepare($query);
       $result->execute();
       $services = $result->fetchAll();
+      $result = null;
+      
       return array("codigo" => "200", "mensaje" => "ok", "data" => $services);
     } catch (Exception $e) {
       return array("codigo" => "500", "mensaje" => $e->getMessage());
