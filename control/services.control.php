@@ -1,6 +1,5 @@
 <?php
-
-include_once "../model/services.model.php";
+include_once '../model/services.model.php';
 
 class ServiceControl{
     public $nameService;
@@ -15,7 +14,7 @@ class ServiceControl{
     public $idSupplier;
 
     public function createService(){
-        $newService = ServiceModel::createService();
+        $newService = ServiceModel::createService($this->nameService,$this->descriptionService,$this->price,$this->location,$this->city,$this->country,$this->amountPeople,$this->characteristics);
 
     }
 
@@ -30,12 +29,21 @@ class ServiceControl{
     }
 
     public function getService(){
-        $getService = ServicesModel::getServices();
+        $getService = ServiceModel::getServices();
         echo json_encode($getService);
     }
 }
 
-$getServiceControl = new ServiceControl();
-$getServiceControl->getService();
 
-
+$ServiceControl = new ServiceControl();
+if ($_POST['queryType']=='Insert') {
+    $ServiceControl->nameService = $_POST['nameService'];
+    $ServiceControl->descriptionService = $_POST['descriptionService'];
+    $ServiceControl->price = $_POST['price'];
+    $ServiceControl->location = $_POST['location'];
+    $ServiceControl->city = $_POST['city'];
+    $ServiceControl->country = $_POST['country'];
+    $ServiceControl->amountPeople = $_POST['amountPeople'];
+    $ServiceControl->characteristics = $_POST['characteristics'];
+    $ServiceControl->createService();
+}
