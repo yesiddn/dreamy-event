@@ -1,35 +1,18 @@
 <?php
 
-include_once "../model/info-service.model.php";
+include_once "../model/services.model.php";
 
 class ShowServices{
+  public $idService;
 
-    public function NameService(){
-        $objRespuesta=ShowServices::NameService();
-        echo json_encode($objRespuesta);
-    }
-
-    public function UbicationService(){
-        $objRespuesta=ShowServices::UbicationService();
-        echo json_encode($objRespuesta);
-    }
-
-    public function DescriptionService(){
-        $objRespuesta=ShowServices::DescriptionService();
-        echo json_encode($objRespuesta);
-    }
-
-    public function PriceService(){
-        $objRespuesta=ShowServices::PriceService();
-        echo json_encode($objRespuesta);
-    }
-
+  public function getService() {
+    $response = ServicesModel::getService($this->idService);
+    echo json_encode($response);
+  }
 }
 
-
-if (isset($_POST["ShowServices"]) == "OK") {
-
-    $objUsuario = new ShowServices();
-    $objUsuario->NameService();
-    
+if (isset($_POST['action']) == 'read') {
+    $showServices = new ShowServices();
+    $showServices->idService = $_POST['idService'];
+    $showServices->getService();
 }
