@@ -822,7 +822,9 @@ select:invalid:focus {
 
 /* info Service */
 .info-service {
-  padding: 2rem;
+  width: 80%;
+  max-width: 900px;
+  margin: 2rem auto;
 }
 
 /* gallery */
