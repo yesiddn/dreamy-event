@@ -719,6 +719,7 @@ select:invalid:focus {
 }
 
 .card {
+  position: relative;
   max-width: 350px;
   margin: 0 auto;
   border-radius: 10px;
@@ -726,6 +727,28 @@ select:invalid:focus {
   background-color: transparent;
   text-decoration: none;
   color: var(--black);
+}
+
+.card button {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 0;
+  right: 0;
+  margin: 1rem;
+  background-color: transparent;
+  background-image: url('../svg/heart.svg');
+  border: none;
+  z-index: 100;
+  cursor: pointer;
+}
+
+.card button:hover {
+  background-image: url('../svg/heart-fill.svg');
+}
+
+.card .favorite--active {
+  background-image: url('../svg/heart-fill.svg');
 }
 
 .card img {
