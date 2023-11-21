@@ -32,4 +32,6 @@
       </div>
     </li>
   </ul>
+  
+  <script defer src="./views/assets/js/service.js"></script>
 </section>

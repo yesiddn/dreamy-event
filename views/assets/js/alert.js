@@ -21,6 +21,18 @@ function showAlert(typeAlert) {
       message: 'Usuario creado correctamente.',
       color: '#ADFFC7',
     },
+    'favorite-added': {
+      message: 'Servicio agregado a favoritos.',
+      color: '#ADFFC7',
+    },
+    'favorite-exists': {
+      message: 'El servicio ya existe en favoritos.',
+      color: '#ADBDFF',
+    },
+    'favorite-error': {
+      message: 'Error al agregar servicio a favoritos.',
+      color: '#F02D3A',
+    },
   };
 
   let alert = document.getElementById('alert');
