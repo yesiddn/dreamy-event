@@ -12,6 +12,33 @@ async function getFavoriteServices() {
   showServices(Object.groupBy(allServices, (service) => service.id_service));
 }
 
+async function addFavoriteService(serviceId, favoriteTarget) {
+  if (!localStorage.getItem('customer')) {
+    window.location.href = 'log-in';
+  }
+
+  const customer = JSON.parse(localStorage.getItem('customer'));
+  const data = new FormData();
+  data.set('action', 'create');
+
+  const url = './control/favorite.control.php';
+  const method = 'POST';
+
+  data.set('idCustomer', customer.id_customer);
+  data.set('idService', serviceId);
+
+  const response = await fetchData(url, method, data);
+
+  if (response.status === 500) {
+    showAlert('favorite-error');
+  } else if (response.status === 400) {
+    showAlert('favorite-exists');
+  } else if (response.status === 201) {
+    favoriteTarget.classList.add('favorite--active');
+    showAlert('favorite-added')
+  }
+}
+
 function showServices(services) {
   const cardsContainer = document.getElementById('cards__container');
 
