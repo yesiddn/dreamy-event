@@ -16,7 +16,20 @@ class ServiceControl
 
   public function createService()
   {
-    $newService = ServicesModel::createService($this->nameService, $this->descriptionService, $this->price, $this->location, $this->city, $this->country, $this->amountPeople, $this->characteristics);
+
+    $data = [
+      'name' => $this->nameService,
+      'description' => $this->descriptionService,
+      'price' => $this->price,
+      'location' => $this->location,
+      'city' => $this->city,
+      'country' => $this->country,
+      'amount' => $this->amountPeople,
+      'characteristics' => $this->characteristics,
+      'service-type' => 1,
+      'supplier-type' => 1,
+    ];
+    $newService = ServicesModel::createService($data);
   }
 
   public function getServices()
@@ -32,6 +45,7 @@ if ($_POST["action"] == "read") {
     $getServices->getServices();
   }
 }
+
 
 $ServiceControl = new ServiceControl();
 if ($_POST['queryType'] == 'Insert') {

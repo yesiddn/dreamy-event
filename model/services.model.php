@@ -60,20 +60,26 @@ class ServicesModel
 
 
 
-  public static function createService($nameService,$descriptionService,$price,$price,$location,$city,$country,$amountPeople,$characteristics)
+  public static function createService($data)
   {
     try {
-      $query = "INSERT INTO services (name_service,description_service, price_service, location_service, city_service, country_service, amount_people_service, characteristics_service, id_service_type) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+
+      $query = "INSERT INTO services (name_service, description_service, price, location, city, country, amount_people, characteristics, id_type_service, id_supplier) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
       $connection = Connection::connect();
       $result = $connection->prepare($query);
-      $result->bindParam(1, $nameService, PDO::PARAM_STR);
-      $result->bindParam(2, $data['price'], PDO::PARAM_STR);
-      $result->bindParam(3, $data['location'], PDO::PARAM_STR);
-      $result->bindParam(4, $data['city'], PDO::PARAM_STR);
-      $result->bindParam(5, $data['country'], PDO::PARAM_STR);
-      $result->bindParam(6, $data['amount'], PDO::PARAM_INT);
-      $result->bindParam(7, $data['characteristics'], PDO::PARAM_STR);
-      $result->bindParam(8, $data['type'], PDO::PARAM_INT);
+
+      $result->bindParam(1, $data['name'], PDO::PARAM_STR);
+      $result->bindParam(2, $data['description'], PDO::PARAM_STR);
+      $result->bindParam(3, $data['price'], PDO::PARAM_STR);
+      $result->bindParam(4, $data['location'], PDO::PARAM_STR);
+      $result->bindParam(5, $data['city'], PDO::PARAM_STR);
+      $result->bindParam(6, $data['country'], PDO::PARAM_STR);
+      $result->bindParam(7, $data['amount'], PDO::PARAM_INT);
+      $result->bindParam(8, $data['characteristics'], PDO::PARAM_STR);
+      $result->bindParam(9, $data['service-type'], PDO::PARAM_INT);
+      $result->bindParam(10, $data['supplier-type'], PDO::PARAM_INT);
 
       if ($result->execute()) {
         $serviceId = $connection->lastInsertId();
