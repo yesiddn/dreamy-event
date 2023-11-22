@@ -12,7 +12,6 @@ async function getFavoriteServices() {
   showServices(Object.groupBy(allServices, (service) => service.id_service));
 }
 
-
 function showServices(services) {
   const cardsContainer = document.getElementById('cards__container');
 
@@ -29,7 +28,7 @@ function showServices(services) {
     favorite.classList.add('favorite--active');
     favorite.addEventListener('click', (e) => {
       e.preventDefault();
-      // removeFromFavorites(serviceItem, favorite);
+      removeFromFavorites(serviceItem[0].id_service, card);
     });
 
     const img = document.createElement('img');
@@ -67,4 +66,19 @@ function showServices(services) {
   }
 }
 
-getFavoriteServices();
+async function removeFromFavorites(idService, card) {
+  const data = new FormData();
+  data.set('action', 'delete');
+  data.set('idCustomer', customer.id_customer);
+  data.set('idService', idService);
+
+  const url = './control/favorite.control.php';
+  const method = 'POST';
+
+  const response = await fetchData(url, method, data);
+
+  if (response.status === 200) {
+    card.remove();
+    showAlert('favorite-removed');
+  }
+}
