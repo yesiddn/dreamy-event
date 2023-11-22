@@ -3,11 +3,18 @@ include_once 'connection.model.php';
 
 class ServicesModel
 {
-  public static function getServices()
+  public static function getServices($idCustomer)
   {
     try {
-      $query = "SELECT services.id_service, services.name_service, services.description_service, services.price, services.location, services.city, services.country, services.amount_people, services.characteristics, services.id_type_service, services.id_supplier, images_services.id_image, images_services.url_image FROM services INNER JOIN images_services ON services.id_service = images_services.id_service";
-      $result = Connection::connect()->prepare($query);
+      if ($idCustomer == "null") {
+        $query = "SELECT services.id_service, services.name_service, services.description_service, services.price, services.location, services.city, services.country, services.amount_people, services.characteristics, services.id_type_service, services.id_supplier, images_services.id_image, images_services.url_image FROM services INNER JOIN images_services ON services.id_service = images_services.id_service";        
+        $result = Connection::connect()->prepare($query);
+      } else {
+        $query = "SELECT services.id_service, services.name_service, services.description_service, services.price, services.location, services.city, services.country, services.amount_people, services.characteristics, services.id_type_service, services.id_supplier, images_services.id_image, images_services.url_image, favorites.id_favorite_service AS is_favorite FROM services INNER JOIN images_services ON services.id_service = images_services.id_service LEFT JOIN favorites ON services.id_service = favorites.id_service WHERE favorites.id_customer = ? OR favorites.id_customer IS NULL";
+        $result = Connection::connect()->prepare($query);
+        $result->bindParam(1, $idCustomer, PDO::PARAM_INT);
+      }
+
       $result->execute();
       $services = $result->fetchAll();
       $result = null;
