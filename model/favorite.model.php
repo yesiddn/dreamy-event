@@ -46,4 +46,21 @@ class FavoriteServiceModel {
       return array("codigo" => "500", "mensaje" => $e->getMessage());
     }
   }
+
+  public static function deleteFavoriteService($idService, $idCustomer) {
+    try {
+      $sql = "DELETE FROM favorites WHERE id_service = ? AND id_customer = ?";
+      $query = Connection::connect()->prepare($sql);
+      $query->bindParam(1, $idService, PDO::PARAM_INT);
+      $query->bindParam(2, $idCustomer, PDO::PARAM_INT);
+
+      if ($query->execute()) {
+        return array('status' => 200, 'message' => 'Servicio eliminado de favoritos');
+      } else {
+        return array('status' => 500, 'message' => 'No se pudo eliminar el servicio de favoritos');
+      }
+    } catch (Exception $e) {
+      return array('status' => 500, 'message' => $e->getMessage());
+    }
+  }
 }
