@@ -1,7 +1,8 @@
-async function getServices(category) {
+async function getServices(category, idCustomer) {
   const data = new FormData();
   data.set('action', 'read');
   data.set('category', category);
+  data.set('idCustomer', idCustomer);
 
   const url = './control/services.control.php';
   const method = 'POST';
@@ -25,9 +26,18 @@ function showServices(services) {
     const favorite = document.createElement('button');
     favorite.type = 'button';
     favorite.classList.add('favorite');
+
+    if (serviceItem[0].is_favorite) {
+      favorite.classList.add('favorite--active');
+    }
+    
     favorite.addEventListener('click', (e) => {
       e.preventDefault();
-      addFavoriteService(serviceItem, favorite);
+      if (favorite.classList.contains('favorite--active')) {
+        removeFromFavorites(serviceItem[0].id_service, favorite);
+      } else {
+        addFavoriteService(serviceItem[0].id_service, favorite);
+      }
     });
 
     const img = document.createElement('img');
@@ -65,31 +75,8 @@ function showServices(services) {
   }
 }
 
-async function addFavoriteService(serviceData, favoriteTarget) {
-  if (!localStorage.getItem('customer')) {
-    window.location.href = 'log-in';
-  }
-
-  const customer = JSON.parse(localStorage.getItem('customer'));
-  const data = new FormData();
-  data.set('action', 'create');
-
-  const url = './control/favorite.control.php';
-  const method = 'POST';
-
-  data.set('idCustomer', customer.id_customer);
-  data.set('idService', serviceData[0].id_service);
-
-  const response = await fetchData(url, method, data);
-
-  if (response.status === 500) {
-    showAlert('favorite-error');
-  } else if (response.status === 400) {
-    showAlert('favorite-exists');
-  } else if (response.status === 201) {
-    favoriteTarget.classList.add('favorite--active');
-    showAlert('favorite-added')
-  }
+if (customer !== null) {
+  getServices('all', customer.id_customer);
+} else {
+  getServices('all', null);
 }
-
-getServices('all');
