@@ -1,16 +1,42 @@
-async function getServices(category, idCustomer) {
+async function getFavoriteServices() {
   const data = new FormData();
   data.set('action', 'read');
-  data.set('category', category);
-  data.set('idCustomer', idCustomer);
+  data.set('idCustomer', customer.id_customer);
 
-  const url = './control/services.control.php';
+  const url = './control/favorite.control.php';
   const method = 'POST';
 
-  const services = await fetchData(url, method, data);
+  const response = await fetchData(url, method, data);
 
-  const allServices = services.data;
+  const allServices = response.data;
   showServices(Object.groupBy(allServices, (service) => service.id_service));
+}
+
+async function addFavoriteService(serviceId, favoriteTarget) {
+  if (!localStorage.getItem('customer')) {
+    window.location.href = 'log-in';
+  }
+
+  const customer = JSON.parse(localStorage.getItem('customer'));
+  const data = new FormData();
+  data.set('action', 'create');
+
+  const url = './control/favorite.control.php';
+  const method = 'POST';
+
+  data.set('idCustomer', customer.id_customer);
+  data.set('idService', serviceId);
+
+  const response = await fetchData(url, method, data);
+
+  if (response.status === 500) {
+    showAlert('favorite-error');
+  } else if (response.status === 400) {
+    showAlert('favorite-exists');
+  } else if (response.status === 201) {
+    favoriteTarget.classList.add('favorite--active');
+    showAlert('favorite-added')
+  }
 }
 
 function showServices(services) {
@@ -26,18 +52,10 @@ function showServices(services) {
     const favorite = document.createElement('button');
     favorite.type = 'button';
     favorite.classList.add('favorite');
-
-    if (serviceItem[0].is_favorite) {
-      favorite.classList.add('favorite--active');
-    }
-    
+    favorite.classList.add('favorite--active');
     favorite.addEventListener('click', (e) => {
       e.preventDefault();
-      if (favorite.classList.contains('favorite--active')) {
-        removeFromFavorites(serviceItem[0].id_service, favorite);
-      } else {
-        addFavoriteService(serviceItem[0].id_service, favorite);
-      }
+      removeFromFavorites(serviceItem[0].id_service, card);
     });
 
     const img = document.createElement('img');
@@ -75,8 +93,19 @@ function showServices(services) {
   }
 }
 
-if (customer !== null) {
-  getServices('all', customer.id_customer);
-} else {
-  getServices('all', null);
+async function removeFromFavorites(idService, card) {
+  const data = new FormData();
+  data.set('action', 'delete');
+  data.set('idCustomer', customer.id_customer);
+  data.set('idService', idService);
+
+  const url = './control/favorite.control.php';
+  const method = 'POST';
+
+  const response = await fetchData(url, method, data);
+
+  if (response.status === 200) {
+    card.remove();
+    showAlert('favorite-removed');
+  }
 }

@@ -15,6 +15,8 @@ if (!isset($_GET["rout"]) || $_GET["rout"] == "home") {
   include_once("./views/modules/log-out.php");
 } elseif ($_GET["rout"] == "service") {
   include_once("./views/modules/info-service.php");
+} elseif ($_GET["rout"] == "my-favorites") {
+  include_once("./views/modules/favorite-services-list.php");
 } else {
   include_once("./views/modules/404.php");
 }

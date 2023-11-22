@@ -33,6 +33,10 @@ function showAlert(typeAlert) {
       message: 'Error al agregar servicio a favoritos.',
       color: '#F02D3A',
     },
+    'favorite-removed': {
+      message: 'Servicio eliminado de favoritos.',
+      color: '#ADFFC7',
+    },
   };
 
   let alert = document.getElementById('alert');

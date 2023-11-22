@@ -20,6 +20,7 @@
             if (isset($_SESSION["user"])) {
               echo '
                 <li><a href="profile">Mi perfil</a></li>
+                <li><a href="my-favorites">Mis favoritos</a></li>
                 <li><a href="log-out">Cerrar sesión</a></li>
               ';
             } else {
