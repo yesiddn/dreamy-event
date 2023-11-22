@@ -13,8 +13,11 @@ document.addEventListener('DOMContentLoaded', function () {
         let peopleAmountService = document.querySelector('#peopleAmount-service').value;
         let characteristicsSservice = document.querySelector('#characteristics-service').value;
 
-        // Crear un objeto FormData y agregar las variables
+        let pictureService = document.querySelector('#pictures-service-files').files;
+        
+
         var formData = new FormData();
+        formData.append('queryType', 'Insert');
         formData.append('nameService', nameService);
         formData.append('descriptionService', serviceDescript);
         formData.append('price', priceService);
@@ -23,7 +26,9 @@ document.addEventListener('DOMContentLoaded', function () {
         formData.append('country', countryService);
         formData.append('amountPeople', peopleAmountService);
         formData.append('characteristics', characteristicsSservice);
-        formData.append('queryType','Insert');
+        formData.append('servicePics', pictureService);
+
+
 
         // Realizar la solicitud fetch
         fetch('../../control/services.control.php', {
@@ -37,6 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
             .catch(error => {
                 // Manejar errores
             });
+
     });
 
 

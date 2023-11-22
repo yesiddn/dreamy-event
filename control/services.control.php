@@ -1,5 +1,6 @@
 <?php
 include_once "../model/services.model.php";
+include_once "../model/files.model.php";
 
 class ServiceControl
 {
@@ -13,6 +14,8 @@ class ServiceControl
   public $characteristics;
   public $idTypeService;
   public $idSupplier;
+
+  public $servicePics;
 
   public function createService()
   {
@@ -28,8 +31,11 @@ class ServiceControl
       'characteristics' => $this->characteristics,
       'service-type' => 1,
       'supplier-type' => 1,
+      'service-pics'=> $this->servicePics,
     ];
     $newService = ServicesModel::createService($data);
+    $fileService = FIlesModel::saveImage($data['service-pics']);
+
   }
 
   public function getServices()
@@ -47,8 +53,9 @@ if ($_POST["action"] == "read") {
 }
 
 
-$ServiceControl = new ServiceControl();
+
 if ($_POST['queryType'] == 'Insert') {
+  $ServiceControl = new ServiceControl();
   $ServiceControl->nameService = $_POST['nameService'];
   $ServiceControl->descriptionService = $_POST['descriptionService'];
   $ServiceControl->price = $_POST['price'];
@@ -57,5 +64,10 @@ if ($_POST['queryType'] == 'Insert') {
   $ServiceControl->country = $_POST['country'];
   $ServiceControl->amountPeople = $_POST['amountPeople'];
   $ServiceControl->characteristics = $_POST['characteristics'];
+  $ServiceControl->servicePics = $_FILES['servicePics'];
   $ServiceControl->createService();
+
+
+
+
 }

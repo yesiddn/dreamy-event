@@ -24,7 +24,6 @@
 
         <!-- name -->
         <label for="name_company" class="form__input">
-          <!-- <span>Nombre:</span> -->
           <input id="name-service" type="text" name="name-company" placeholder="Nombre Servicio"
             onkeyup="validateInputData('name-company')">
           <!-- mensaje de error -->
@@ -34,7 +33,6 @@
         <!-- description -->
         <label for="description-service" class="form__input">
           Descripcion:
-          <!-- <span>description:</span>  -->
           <textarea name="service-description" id="description-service" cols="3" rows="5"></textarea>
           <!-- mensaje de error -->
           <span class="inactive">Ingrese un valor valido.</span>
@@ -42,14 +40,12 @@
 
         <!-- price -->
         <label for="price-service" class="form__input">
-          <!-- <span>Telefono:</span>  -->
           <input id="price-service" type="number" name="price-service" placeholder="Precio">
           <span class="inactive">Ingrese un valor valido.</span>
         </label>
 
         <!-- location -->
         <label for="location-service" class="form__input">
-          <!-- <span>location:</span> -->
           <input id="location-service" type="text" name="location-service" placeholder="Ubicacion">
           <!-- mensaje de error -->
           <span class="inactive">Ingrese un valor valido.</span>
@@ -57,14 +53,12 @@
 
         <!-- city -->
         <label for="city-service" class="form__input">
-          <!-- <span>Ciudad:</span>  -->
           <input id="city-service" type="text" name="city-service" placeholder="Ciudad">
           <span class="inactive">Ingrese un valor valido.</span>
         </label>
 
         <!-- country -->
         <label for="country-service" class="form__input">
-          <!-- <span>Country:</span>  -->
           <input id="country-service" type="text" name="country-service" placeholder="Pais">
           <span class="inactive">Ingrese un valor valido.</span>
         </label>
@@ -72,7 +66,6 @@
 
         <!-- people amount -->
         <label for="peopleAmount-service" class="form__input">
-          <!-- <span>People amount:</span>  -->
           <input id="peopleAmount-service" type="number" name="peopleAmount-service" placeholder="Cantidad de personas">
           <span class="inactive">Ingrese un valor valido.</span>
         </label>
@@ -80,8 +73,16 @@
         <!-- characteristics -->
         <label for="characteristics-service" class="form__input">
           Caracteriticas:
-          <!-- <span>description:</span>  -->
           <textarea name="characteristics-description" id="characteristics-service" cols="3" rows="5"></textarea>
+          <!-- mensaje de error -->
+          <span class="inactive">Ingrese un valor valido.</span>
+        </label>
+
+
+        <!-- file -->
+        <label for="pictures-service-files" class="form__input">
+          Sube una o varias imagenes:
+          <input type="file" name="pictures-service-files" id="pictures-service-files" multiple>
           <!-- mensaje de error -->
           <span class="inactive">Ingrese un valor valido.</span>
         </label>

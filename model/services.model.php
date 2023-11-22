@@ -82,6 +82,7 @@ class ServicesModel
       $result->bindParam(10, $data['supplier-type'], PDO::PARAM_INT);
 
       if ($result->execute()) {
+        
         $serviceId = $connection->lastInsertId();
       } else {
         return array("codigo" => "500", "mensaje" => $connection->errorInfo()[2]);
