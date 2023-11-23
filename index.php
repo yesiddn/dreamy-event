@@ -9,6 +9,8 @@ if (!isset($_GET["rout"]) || $_GET["rout"] == "home") {
   include_once("./views/modules/list-of-services.php");
 } elseif ($_GET["rout"] == "sign-up") {
   include_once("./views/modules/sign-up-customer-form.php");
+} elseif ($_GET["rout"] == "sign-up-supplier") {
+  include_once("./views/modules/sign-up-supplier-form.php");
 } elseif ($_GET["rout"] == "log-in") {
   include_once("./views/modules/log-in-form.php");
 } elseif ($_GET["rout"] == "log-out") {
