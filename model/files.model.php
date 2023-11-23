@@ -1,5 +1,5 @@
 <?php
-class FIlesModel {
+class FilesModel {
   public static function saveImage($file) {
     $fileName = $file['name'];
     $rout = '../userFiles/';

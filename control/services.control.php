@@ -34,7 +34,7 @@ class ServiceControl
       'service-pics'=> $this->servicePics,
     ];
     $newService = ServicesModel::createService($data);
-    $fileService = FIlesModel::saveImage($data['service-pics']);
+    $fileService = FilesModel::saveImage($data['service-pics']);
 
   }
 
@@ -64,7 +64,8 @@ if ($_POST['queryType'] == 'Insert') {
   $ServiceControl->country = $_POST['country'];
   $ServiceControl->amountPeople = $_POST['amountPeople'];
   $ServiceControl->characteristics = $_POST['characteristics'];
-  $ServiceControl->servicePics = $_FILES['servicePics'];
+
+  $ServiceControl->servicePics = $_FILES['pictures-service-files'];
   $ServiceControl->createService();
 
 
