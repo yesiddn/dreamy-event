@@ -25,6 +25,10 @@ function showAlert(typeAlert) {
       message: 'Servicio agregado a favoritos.',
       color: '#ADFFC7',
     },
+    'supplier-created': {
+      message: 'Proveedor creado correctamente.',
+      color: '#ADFFC7',
+    },
     'favorite-exists': {
       message: 'El servicio ya existe en favoritos.',
       color: '#ADBDFF',
