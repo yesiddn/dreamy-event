@@ -3,6 +3,7 @@ const menu = document.querySelector('.nav-bar ul');
 const profileImg = document.querySelector('#user-profile-img');
 
 const customer = JSON.parse(localStorage.getItem('customer'));
+const supplier = JSON.parse(localStorage.getItem('supplier'));
 if (customer) {
   profileImg.style.backgroundImage = `url('${customer.img_profile}')`;
 }

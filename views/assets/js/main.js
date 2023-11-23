@@ -47,7 +47,7 @@ function validateInputData(inputId) {
   }
 }
 
-async function signUpCustomer(userType) {
+async function signUp(userType) {
   const { isValid, formData } = getFormData();
   if (!isValid) {
     return false;
@@ -57,6 +57,10 @@ async function signUpCustomer(userType) {
   const method = 'POST';
   formData.set('action', 'create');
 
+  if (userType === 'supplier') {
+    formData.set('id_user', customer.user.id_user);
+  }
+  
   try {
     const response = await fetchData(url, method, formData);
     if (response.status === 409) {
@@ -64,9 +68,14 @@ async function signUpCustomer(userType) {
     }
 
     if (response.status === 201) {
-      localStorage.setItem('customer', JSON.stringify(response.data));
+      if (response.data.id_customer) {
+        localStorage.setItem('customer', JSON.stringify(response.data));
+        showAlert('user-created');
+      } else if (response.data.id_supplier) {
+        localStorage.setItem('supplier', JSON.stringify(response.data));
+        showAlert('supplier-created');
+      }
 
-      showAlert('user-created');
       setTimeout(() => {
         window.location = 'home';
       }, 1000);
