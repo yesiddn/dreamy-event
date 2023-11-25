@@ -56,7 +56,6 @@
   </div>
 </section>
 
-<script src="../assets/js/main.js"></script>
 <script>
   const supplierFormButton = document.getElementById('form-button');
   supplierFormButton.addEventListener('click', () => signUp('supplier'));
