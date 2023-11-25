@@ -31,11 +31,10 @@ class ServiceControl
       'characteristics' => $this->characteristics,
       'service-type' => 1,
       'supplier-type' => 1,
-      'service-pics'=> $this->servicePics,
+      'service-pics' => $this->servicePics,
     ];
     $newService = ServicesModel::createService($data);
-    $fileService = FilesModel::saveImage($data['service-pics']);
-
+    $fileService = FilesModel::createServiceImages($newService['data']['id'], $data['service-pics']);
   }
 
   public function getServices()
@@ -56,19 +55,31 @@ if ($_POST["action"] == "read") {
 
 if ($_POST['queryType'] == 'Insert') {
   $ServiceControl = new ServiceControl();
-  $ServiceControl->nameService = $_POST['nameService'];
-  $ServiceControl->descriptionService = $_POST['descriptionService'];
-  $ServiceControl->price = $_POST['price'];
-  $ServiceControl->location = $_POST['location'];
-  $ServiceControl->city = $_POST['city'];
-  $ServiceControl->country = $_POST['country'];
-  $ServiceControl->amountPeople = $_POST['amountPeople'];
-  $ServiceControl->characteristics = $_POST['characteristics'];
+  $ServiceControl->nameService = $_POST['name-service'];
+  $ServiceControl->descriptionService = $_POST['description-service'];
+  $ServiceControl->price = $_POST['price-service'];
+  $ServiceControl->location = $_POST['location-service'];
+  $ServiceControl->city = $_POST['city-service'];
+  $ServiceControl->country = $_POST['country-service'];
+  $ServiceControl->amountPeople = $_POST['peopleAmount-service'];
+  $ServiceControl->characteristics = $_POST['characteristics-service'];
+ 
+  
+  $filesData = $_FILES['images'];
+  $newArrayFiles = [];
+  foreach ($filesData['name'] as $index => $name) {
+    $newArrayFiles[] = [
+      'name' => $name,
+      'type' => $filesData['type'][$index],
+      'tmp_name' => $filesData['tmp_name'][$index],
+      'error' => $filesData['error'][$index],
+      'size' => $filesData['size'][$index]
+    ];
+  }
 
-  $ServiceControl->servicePics = $_FILES['pictures-service-files'];
+
+
+
+  $ServiceControl->servicePics = $newArrayFiles;
   $ServiceControl->createService();
-
-
-
-
 }

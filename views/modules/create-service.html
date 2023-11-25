@@ -20,11 +20,11 @@
 
       <div class="square"></div>
 
-      <form class="form" id="form">
+      <form class="form" id="newServiceForm">
 
         <!-- name -->
         <label for="name_company" class="form__input">
-          <input id="name-service" type="text" name="name" placeholder="Nombre Servicio"
+          <input id="name-service" type="text" name="name-service" placeholder="Nombre Servicio"
             onkeyup="validateInputData('name-company')">
           <!-- mensaje de error -->
           <span class="inactive">Ingrese un valor valido.</span>
@@ -33,7 +33,7 @@
         <!-- description -->
         <label for="description-service" class="form__input">
           Descripcion:
-          <textarea name="service-description" id="description-service" cols="3" rows="5"></textarea>
+          <textarea  id="description-service" name="description-service" cols="3" rows="5"></textarea>
           <!-- mensaje de error -->
           <span class="inactive">Ingrese un valor valido.</span>
         </label>
@@ -82,7 +82,7 @@
         <!-- file -->
         <label for="pictures-service-files" class="form__input">
           Sube una o varias imagenes:
-          <input type="file" name="pictures-service-files" id="pictures-service-files" multiple>
+          <input type="file" id="pictures-service-files" multiple>
           <!-- mensaje de error -->
           <span class="inactive">Ingrese un valor valido.</span>
         </label>
@@ -90,7 +90,6 @@
         <!-- service type -->
         <label for="type-service" class="form__input">
           Tipo de evento:
-
           <select name="type-service" id="type-service" onchange="validateInputData('event-type')">
             <option value="" hidden>Seleccione un tipo de servicio</option>
 
