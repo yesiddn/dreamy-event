@@ -1,7 +1,7 @@
 async function getFavoriteServices() {
   const data = new FormData();
   data.set('action', 'read');
-  data.set('idCustomer', customer.id_customer);
+  data.set('idCustomer', user.id_customer);
 
   const url = './control/favorite.control.php';
   const method = 'POST';
@@ -13,11 +13,11 @@ async function getFavoriteServices() {
 }
 
 async function addFavoriteService(serviceId, favoriteTarget) {
-  if (!localStorage.getItem('customer')) {
+  if (!localStorage.getItem('user')) {
     window.location.href = 'log-in';
   }
 
-  const customer = JSON.parse(localStorage.getItem('customer'));
+  const customer = JSON.parse(localStorage.getItem('user'));
   const data = new FormData();
   data.set('action', 'create');
 
@@ -35,7 +35,7 @@ async function addFavoriteService(serviceId, favoriteTarget) {
     showAlert('favorite-exists');
   } else if (response.status === 201) {
     favoriteTarget.classList.add('favorite--active');
-    showAlert('favorite-added')
+    showAlert('favorite-added');
   }
 }
 
@@ -96,7 +96,7 @@ function showServices(services) {
 async function removeFromFavorites(idService, card) {
   const data = new FormData();
   data.set('action', 'delete');
-  data.set('idCustomer', customer.id_customer);
+  data.set('idCustomer', user.id_customer);
   data.set('idService', idService);
 
   const url = './control/favorite.control.php';

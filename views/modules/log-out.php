@@ -1,6 +1,5 @@
 <script>
-  localStorage.removeItem('customer');
-  localStorage.removeItem('supplier');
+  localStorage.removeItem('user');
   window.location.href = 'home';
 </script>
 

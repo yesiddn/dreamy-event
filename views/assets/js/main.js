@@ -58,9 +58,9 @@ async function signUp(userType) {
   formData.set('action', 'create');
 
   if (userType === 'supplier') {
-    formData.set('id_user', customer.user.id_user);
+    formData.set('id_user', user.user.id_user);
   }
-  
+
   try {
     const response = await fetchData(url, method, formData);
     if (response.status === 409) {
@@ -69,7 +69,7 @@ async function signUp(userType) {
 
     if (response.status === 201) {
       if (response.data.id_customer) {
-        localStorage.setItem('customer', JSON.stringify(response.data));
+        localStorage.setItem('user', JSON.stringify(response.data));
         showAlert('user-created');
       } else if (response.data.id_supplier) {
         localStorage.setItem('supplier', JSON.stringify(response.data));
@@ -105,8 +105,7 @@ async function loginUser() {
     }
 
     if (response.status === 200) {
-      localStorage.setItem('customer', JSON.stringify(response.data));
-
+      localStorage.setItem('user', JSON.stringify(response.data));
       showAlert('welcome');
       setTimeout(() => {
         window.location = 'home';
