@@ -61,6 +61,31 @@ class SupplierModel
     return $newSupplier;
   }
 
+  public static function getSupplier($idUser)
+  {
+    try {
+      $sql = "SELECT * FROM suppliers WHERE id_user = ?";
+      $query = Connection::connect()->prepare($sql);
+      $query->bindParam(1, $idUser, PDO::PARAM_INT);
+      $query->execute();
+      $supplier = $query->fetch(PDO::FETCH_ASSOC);
+
+      if (!$supplier) {
+        return array('status' => 404, 'message' => 'Supplier not found', 'data' => null);
+      }
+
+      $data = self::orderSupplierData($supplier);
+      
+      return array(
+        'status' => 200,
+        'message' => 'Customer found',
+        'data' => $data
+      );
+    } catch (Exception $e) {
+      return $e->getMessage();
+    }
+  }
+
   public static function getSupplierByEmail($email)
   {
     try {
@@ -68,15 +93,35 @@ class SupplierModel
       $query = Connection::connect()->prepare($sql);
       $query->bindParam(1, $email, PDO::PARAM_STR);
       $query->execute();
-      $customer = $query->fetch(PDO::FETCH_ASSOC);
+      $supplier = $query->fetch(PDO::FETCH_ASSOC);
+
+      if (!$supplier) {
+        return array('status' => 404, 'message' => 'Supplier not found', 'data' => null);
+      }
+
+      $data = self::orderSupplierData($supplier);
 
       return array(
         'status' => 200,
         'message' => 'Customer found',
-        'data' => $customer
+        'data' => $data
       );
     } catch (Exception $e) {
       return $e->getMessage();
     }
   }
+
+  public static function orderSupplierData($supplier)
+  {
+    return array(
+      'id_supplier' => $supplier['id_supplier'],
+      'name' => $supplier['name_company'],
+      'email' => $supplier['email_company'],
+      'phone' => $supplier['phone_company'],
+      'rut' => $supplier['rut_company'],
+      'city' => $supplier['city_company'],
+      'country' => $supplier['country_company'],
+      'img' => $supplier['image_company'],
+    );
+  } 
 }
