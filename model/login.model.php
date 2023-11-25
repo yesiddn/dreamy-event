@@ -1,5 +1,6 @@
 <?php
 include_once 'customer.model.php';
+include_once 'supplier.model.php';
 
 class LoginModel
 {
@@ -11,16 +12,29 @@ class LoginModel
       if ($customer['status'] === 404) {
         return $customer;
       }
-
-      if ($customer['data']['user']['password'] === $pass) {
-        unset($customer['data']['user']['password']);
-        $_SESSION['user'] = $customer['data']['user'];
-        return $customer;
-      } else {
-        return array('status' => 401, 'message' => 'User or password incorrect');
-      }
     } catch (Exception $e) {
       return $e->getMessage();
     }
+
+    if ($customer['data']['user']['password'] === $pass) {
+      unset($customer['data']['user']['password']);
+      $_SESSION['user'] = $customer['data']['user'];
+    } else {
+      return array('status' => 401, 'message' => 'User or password incorrect');
+    }
+
+    try {
+      $supplier = SupplierModel::getSupplier($customer['data']['user']['id_user']);
+
+      if ($supplier['status'] === 404) {
+        return $customer;
+      }
+
+      $customer['data']['supplier'] = $supplier['data'];
+      $_SESSION['supplier'] = $supplier['data'];
+    } catch (Exception $e) {
+      return $e->getMessage();
+    }
+    return $customer;
   }
 }
