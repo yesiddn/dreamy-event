@@ -1,16 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../assets/css/normalize.css">
-  <link rel="stylesheet" href="../assets/css/main.css">
-  <title>Document</title>
-</head>
-
-<body>
-
+<?php
+include_once "./views/modules/head.php";
+?>
   <section class="form-section">
 
     <div class="form__container">
@@ -18,7 +8,7 @@
 
       <div class="square"></div>
 
-      <form class="form" id="form">
+      <form class="form" id="form" method="post">
 
         <!-- name event  -->
         <label for="event-name" class="form__input">
@@ -31,18 +21,9 @@
 
         <!-- date event  -->
         <label for="event-date" class="form__input">
-          Fecha:
-          <input id="event-date" type="date" name="event-date" placeholder="Fecha"
+          Fecha/Hora:
+          <input id="event-date" type="datetime-local" name="event-date" placeholder="Fecha"
             onchange="validateInputData('event-date')">
-
-          <span class="inactive">Ingrese un valor valido.</span>
-        </label>
-
-        <!-- time event -->
-        <label for="event-time" class="form__input">
-          Hora:
-          <input id="event-time" type="time" name="event-time" placeholder="Hora"
-            onchange="validateInputData('event-time')">
 
           <span class="inactive">Ingrese un valor valido.</span>
         </label>
@@ -82,17 +63,14 @@
           <span class="inactive">Ingrese un valor valido.</span>
         </label>
 
-        <button type="button" id="form-button">Crear</button>
+        <button type="submit" id="form-button">Crear</button>
       </form>
     </div>
   </section>
 
-  <script src="../assets/js/main.js"></script>
-  <script>
+  <script src="./views/assets/js/main.js"></script>
+  <!-- <script>
     const newEventFormButton = document.getElementById('form-button');
     newEventFormButton.addEventListener('click', () => createUser('event'));
-  </script>
+  </script> -->
 
-</body>
-
-</html>

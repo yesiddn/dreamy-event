@@ -4,7 +4,7 @@ include_once 'user.model.php';
 
 class CustomerModel
 {
-  public static function createCustomer($name, $lastName, $email, $phone, $city, $country, $password, $img)
+  public static function createCustomer($name, $lastName, $email, $phone, $city, $country, $password, $img, $eventId)
   {
     try {
       $userExist = UserModel::getByEmail($email);
@@ -21,7 +21,7 @@ class CustomerModel
 
     try {
       $img = FilesModel::saveImage($img);
-
+ 
       $sql = "INSERT INTO customers (name_customer, last_name_customer, phone_customer, city_customer, country_customer, img_profile_customer, id_user) VALUES (?, ?, ?, ?, ?, ?, ?)";
       $connection = Connection::connect();
       $query = $connection->prepare($sql);

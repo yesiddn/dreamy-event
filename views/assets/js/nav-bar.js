@@ -1,11 +1,15 @@
+
 const hamburguerMenu = document.querySelector('.hamburguer-menu');
 const menu = document.querySelector('.nav-bar ul');
 const profileImg = document.querySelector('#user-profile-img');
 
 const customer = JSON.parse(localStorage.getItem('customer'));
 if (customer) {
+  const idCustomer = customer.id_customer;
+  localStorage.setItem('idCustomer', idCustomer);
   profileImg.style.backgroundImage = `url('${customer.img_profile}')`;
 }
+
 
 hamburguerMenu.addEventListener('click', (e) => {
   const isClickInsideButton = hamburguerMenu.contains(e.target) || e.target === hamburguerMenu;
@@ -24,3 +28,4 @@ document.addEventListener('click', (event) => {
     menu.classList.add('inactive');
   }
 });
+
