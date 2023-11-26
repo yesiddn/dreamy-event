@@ -10,6 +10,10 @@ html {
   font-family: 'Poppins', sans-serif;
 }
 
+main {
+  margin: 2rem;
+}
+
 h2 {
   margin: 0;
   font-size: 1.8rem;
@@ -763,7 +767,7 @@ select:invalid:focus {
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 2rem 0;
 }
 
 .card {
@@ -1088,7 +1092,7 @@ select:invalid:focus {
   margin: 2rem auto;
 }
 
-.event-list {
+.events-list {
   display: flex;
   flex-direction: column;
   row-gap: 1.5rem;
@@ -1099,11 +1103,11 @@ select:invalid:focus {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  /* margin: 0 auto; */
+  max-width: 900px;
+  margin: 0 auto;
   padding: 20px;
   border-radius: 15px;
-  border: solid 2px var(--primary);
-  box-shadow: 0 0px 10px var(--primary);
+  box-shadow: 0 5px 15px var(--primary);
   text-decoration: none;
   color: var(--black);
 }
@@ -1112,26 +1116,36 @@ select:invalid:focus {
   width: 60%;
 }
 
+.event__header h3 {
+  margin: 0 0 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 1.5rem;
+}
+
 .event__header__details {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
-  column-gap: 10%;
+  gap: 1rem;
 }
 
 .event__price {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
   font-size: 1.5rem;
 }
 
-.event__title {
-  display: flex;
-  font-size: 30px;
+.event__price h4 {
+  margin: 0;
+  font-weight: 600;
+  font-size: 1.5rem;
 }
 
-.span-color {
+.highlight-text {
+  font-weight: bold;
   color: var(--primary);
 }
 
