@@ -1,6 +1,4 @@
-<?php
-include_once "./views/modules/head.php";
-?>
+
   <section class="form-section">
 
     <div class="form__container">
