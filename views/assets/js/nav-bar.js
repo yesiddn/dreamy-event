@@ -1,3 +1,4 @@
+
 const hamburguerMenu = document.querySelector('.hamburguer-menu');
 const menu = document.querySelector('.nav-bar ul');
 const profileImg = document.querySelector('#user-profile-img');
@@ -6,6 +7,7 @@ const user = JSON.parse(localStorage.getItem('user'));
 if (user) {
   profileImg.style.backgroundImage = `url('${user.img_profile}')`;
 }
+
 
 hamburguerMenu.addEventListener('click', (e) => {
   const isClickInsideButton =
@@ -28,3 +30,4 @@ document.addEventListener('click', (event) => {
     menu.classList.add('inactive');
   }
 });
+

@@ -21,6 +21,8 @@ if (!isset($_GET["rout"]) || $_GET["rout"] == "home") {
   include_once("./views/modules/favorite-services-list.php");
 } elseif ($_GET["rout"] == "my-events") {
   include_once("./views/modules/events.php");
+} elseif ($_GET["rout"] == "new-event"){
+ include_once("./views/modules/new-event-form.php");
 } else {
   include_once("./views/modules/404.php");
 }

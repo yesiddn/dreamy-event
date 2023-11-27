@@ -75,8 +75,8 @@ function showServices(services) {
   }
 }
 
-if (user !== null) {
-  getServices('all', user.id_customer);
-} else {
+if (!user) {
   getServices('all', null);
+} else {
+  getServices('all', user.id_customer);
 }
