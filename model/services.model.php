@@ -3,31 +3,54 @@ include_once 'connection.model.php';
 
 class ServicesModel
 {
-  public static function getServices()
+  public static function getServices($idCustomer)
   {
     try {
-      $query = "SELECT * FROM services";
-      $result = Connection::connect()->prepare($query);
+      if ($idCustomer == "null") {
+        $query = "SELECT services.id_service, services.name_service, services.description_service, services.price, services.location, services.city, services.country, services.amount_people, services.characteristics, services.id_type_service, services.id_supplier, images_services.id_image, images_services.url_image FROM services INNER JOIN images_services ON services.id_service = images_services.id_service";        
+        $result = Connection::connect()->prepare($query);
+      } else {
+        $query = "SELECT services.id_service, services.name_service, services.description_service, services.price, services.location, services.city, services.country, services.amount_people, services.characteristics, services.id_type_service, services.id_supplier, images_services.id_image, images_services.url_image, favorites.id_customer AS is_favorite FROM services INNER JOIN images_services ON services.id_service = images_services.id_service LEFT JOIN favorites ON services.id_service = favorites.id_service AND favorites.id_customer = ?";
+        $result = Connection::connect()->prepare($query);
+        $result->bindParam(1, $idCustomer, PDO::PARAM_INT);
+      }
+
       $result->execute();
       $services = $result->fetchAll();
+      $result = null;
+      
       return array("codigo" => "200", "mensaje" => "ok", "data" => $services);
     } catch (Exception $e) {
       return array("codigo" => "500", "mensaje" => $e->getMessage());
     }
   }
 
-  public static function getServiceInfo($id)
+  public static function getService($id)
   {
     try {
       $query = "SELECT * FROM services WHERE id_service = ?";
-      $result = Connection::connect()->prepare($query);
-      $result->bindParam(1, $id, PDO::PARAM_INT);
-      $result->execute();
-      $typeService = $result->fetch();
-      return array("codigo" => "200", "mensaje" => "ok", "data" => $typeService);
+      $response = Connection::connect()->prepare($query);
+      $response->bindParam(1, $id, PDO::PARAM_INT);
+      $response->execute();
+      $service = $response->fetch();
+      $response = null;
+
     } catch (Exception $e) {
-      return array("codigo" => "500", "mensaje" => $e->getMessage());
+      return array("status" => 500, "message" => $e->getMessage());
     }
+    try {
+      $query = "SELECT * FROM images_services WHERE id_service = ?";
+      $response = Connection::connect()->prepare($query);
+      $response->bindParam(1, $id, PDO::PARAM_INT);
+      $response->execute();
+      $images = $response->fetchAll();
+      $service['images'] = $images;
+      $response = null;
+    } catch (Exception $e) {
+      return array("status" => 500, "message" => $e->getMessage());
+    }
+
+    return array("status" => 200, "message" => "ok", "data" => $service);
   }
 
   public static function createService($data)

@@ -21,10 +21,30 @@ function showAlert(typeAlert) {
       message: 'Usuario creado correctamente.',
       color: '#ADFFC7',
     },
-    'Without logging in':{
+    'favorite-added': {
+      message: 'Servicio agregado a favoritos.',
+      color: '#ADFFC7',
+    },
+    'supplier-created': {
+      message: 'Proveedor creado correctamente.',
+      color: '#ADFFC7',
+    },
+    'favorite-exists': {
+      message: 'El servicio ya existe en favoritos.',
+      color: '#ADBDFF',
+    },
+    'favorite-error': {
+      message: 'Error al agregar servicio a favoritos.',
+      color: '#F02D3A',
+    },
+    'favorite-removed': {
+      message: 'Servicio eliminado de favoritos.',
+      color: '#ADFFC7',
+    },
+     'Without logging in':{
       message: 'Por favor inicie sesión o cree una cuenta.',
       color: 'rgb(219, 54, 87)',
-    },
+     }
   };
 
   let alert = document.getElementById('alert');

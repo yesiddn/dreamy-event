@@ -9,9 +9,17 @@ if (!isset($_GET["rout"]) || $_GET["rout"] == "home") {
   include_once("./views/modules/list-of-services.php");
 } elseif ($_GET["rout"] == "sign-up") {
   include_once("./views/modules/sign-up-customer-form.php");
+} elseif ($_GET["rout"] == "sign-up-supplier") {
+  include_once("./views/modules/sign-up-supplier-form.php");
 } elseif ($_GET["rout"] == "log-in") {
   include_once("./views/modules/log-in-form.php");
-}elseif ($_GET["rout"] == "new-event"){
+} elseif ($_GET["rout"] == "log-out") {
+  include_once("./views/modules/log-out.php");
+} elseif ($_GET["rout"] == "service") {
+  include_once("./views/modules/info-service.php");
+} elseif ($_GET["rout"] == "my-favorites") {
+  include_once("./views/modules/favorite-services-list.php");
+} elseif ($_GET["rout"] == "new-event"){
  include_once("./views/modules/new-event-form.php");
 } else {
   include_once("./views/modules/404.php");
