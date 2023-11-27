@@ -1,48 +1,39 @@
-const idCustomer = localStorage.getItem('idCustomer');
-// console.log('idCustomer:', idCustomer);
+const form = document.getElementById('form');
 
+form.addEventListener('submit', function (event) {
+  event.preventDefault();
+  createEvent();
+});
 
-  const form = document.getElementById('form');
+function createEvent() {
+  const nameEvent = document.getElementById('event-name').value;
+  const dateEvent = document.getElementById('event-date').value;
+  const typeEvent = document.getElementById('event-type').value;
 
-  form.addEventListener('submit', function(event) {
-  event.preventDefault(); 
-  createEvent(); 
-  });
-
-
-  function createEvent() {
-    const nameEvent = document.getElementById('event-name').value;
-    const dateEvent = document.getElementById('event-date').value;
-    const typeEvent = document.getElementById('event-type').value;
-  
-    if (idCustomer){
+  if (user) {
     const formData = new FormData();
     formData.append('action', 'create');
     formData.append('event-name', nameEvent);
     formData.append('event-date', dateEvent);
     formData.append('event-type', typeEvent);
-    formData.append('idCustomer', idCustomer); 
-    
+    formData.append('idCustomer', user.id_customer);
 
     fetch('control/event.control.php', {
       method: 'POST',
       body: formData,
     })
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         if (data.codigo === '200') {
           document.getElementById('event-name').value = '';
           document.getElementById('event-date').value = '';
           document.getElementById('event-type').value = '';
         }
-     
-
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('Error:', error);
       });
-    }else{
-      showAlert('Without logging in');
-      }
+  } else {
+    showAlert('Without logging in');
   }
-  
+}

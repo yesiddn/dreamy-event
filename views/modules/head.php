@@ -7,7 +7,5 @@
   <link rel="stylesheet" href="./views/assets/css/normalize.css">
   <link rel="stylesheet" href="./views/assets/css/main.css">
   <script defer src="./views/assets/js/main.js"></script>
-  <script defer src="./views/assets/js/service.js"></script>
-  <script defer src="./views/assets/js/event.js"></script>
   <title>Dreamy Event</title>
 </head>
