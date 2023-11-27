@@ -42,7 +42,7 @@ const idCustomer = localStorage.getItem('idCustomer');
         console.error('Error:', error);
       });
     }else{
-      alert('Por favor inicie su sesión para crear el evento o cree una cuenta');
+      showAlert('Without logging in');
       }
   }
   

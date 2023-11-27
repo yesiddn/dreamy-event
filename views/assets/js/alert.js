@@ -21,6 +21,10 @@ function showAlert(typeAlert) {
       message: 'Usuario creado correctamente.',
       color: '#ADFFC7',
     },
+    'Without logging in':{
+      message: 'Por favor inicie sesión o cree una cuenta.',
+      color: 'rgb(219, 54, 87)',
+    },
   };
 
   let alert = document.getElementById('alert');
