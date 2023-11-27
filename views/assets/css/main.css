@@ -10,6 +10,15 @@ html {
   font-family: 'Poppins', sans-serif;
 }
 
+main {
+  margin: 2rem;
+}
+
+h2 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
 /* header */
 header {
   position: sticky;
@@ -23,7 +32,7 @@ header>div {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  max-width: 700px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 1rem;
 }
@@ -89,6 +98,7 @@ header>div {
   list-style: none;
   cursor: pointer;
 }
+
 .nav-bar ul li a {
   display: inline-block;
   width: 100%;
@@ -668,19 +678,19 @@ select:invalid:focus {
 /* list of services */
 .cards-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   justify-content: center;
   gap: 2rem;
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
-  padding: 2rem;
-  gap: 2rem;
+  padding: 2rem 0;
 }
 
 .card {
   position: relative;
-  max-width: 350px;
+  width: 100%;
+  max-width: 400px;
   margin: 0 auto;
   border-radius: 10px;
   box-shadow: 0 5px 15px var(--primary);
@@ -713,9 +723,9 @@ select:invalid:focus {
 
 .card img {
   width: 100%;
-  height: auto;
-  max-height: 10rem;
+  height: 12rem;
   border-radius: 10px 10px 0 0;
+  object-fit: cover;
 }
 
 .card__content {
@@ -732,6 +742,10 @@ select:invalid:focus {
 
 .card__title h2 {
   margin: 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 1.2rem;
 }
 
 .card__title span {
@@ -742,12 +756,15 @@ select:invalid:focus {
 }
 
 .card__content p {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
   font-size: 1rem;
 }
 
 .card__content p:last-child {
   margin-top: 1rem;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 700;
   text-align: center;
   color: var(--primary);
@@ -983,6 +1000,70 @@ select:invalid:focus {
   width: 100%;
   max-width: 900px;
   margin: 2rem auto;
+}
+
+/* my events */
+.my-events {
+  width: 100%;
+  max-width: 900px;
+  margin: 2rem auto;
+}
+
+.events-list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.event {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px var(--primary);
+  text-decoration: none;
+  color: var(--black);
+}
+
+.event__header {
+  width: 60%;
+}
+
+.event__header h3 {
+  margin: 0 0 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 1.5rem;
+}
+
+.event__header__details {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.event__price {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.event__price h4 {
+  margin: 0;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+.highlight-text {
+  font-weight: bold;
+  color: var(--primary);
 }
 
 @media (min-width: 768px) {

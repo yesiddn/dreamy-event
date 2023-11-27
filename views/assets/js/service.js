@@ -58,7 +58,7 @@ function showServices(services) {
     rating.textContent = `★${'¡FALTA!'}`;
 
     const location = document.createElement('p');
-    location.textContent = `Ubicación: ${serviceItem[0].location}`;
+    location.textContent = serviceItem[0].location;
 
     const price = document.createElement('p');
     price.textContent = `$${serviceItem[0].price}`;

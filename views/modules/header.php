@@ -20,8 +20,10 @@
             if (isset($_SESSION["user"])) {
               echo '
                 <li><a href="profile">Mi perfil</a></li>
-              ';
-
+                <li><a href="my-events">Mis eventos</a></li>
+                <li><a href="my-favorites">Mis favoritos</a></li>
+                ';
+                
               if (!isset($_SESSION["supplier"])) {
                 echo '
                   <li><a href="sign-up-supplier">Registrar mi comercio</a></li>
@@ -29,12 +31,11 @@
               } else {
                 echo '
                   <li><a href="my-services">Mis servicios</a></li>
+                  ';
+                }
+                echo '
+                  <li><a href="log-out">Cerrar sesión</a></li>
                 ';
-              }
-              echo '
-                <li><a href="my-favorites">Mis favoritos</a></li>
-                <li><a href="log-out">Cerrar sesión</a></li>
-              ';
             } else {
               echo '
                 <li><a href="log-in">Iniciar sesión</a></li>
