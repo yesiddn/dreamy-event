@@ -361,88 +361,6 @@ select:focus {
   box-shadow: 0 5px 15px var(--primary);
 }
 
-/* event form */
-.create__new__event {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100dvh;
-  padding: 2rem 0;
-}
-
-.create-event__container {
-  position: relative;
-  width: 30%;
-  margin: 0 auto;
-  padding: 1.5rem;
-  border-radius: 15px;
-  box-shadow: 0 5px 15px var(--primary);
-  overflow: hidden;
-}
-
-.create-event__container h2 {
-  text-align: center;
-}
-
-.event__form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.content__input {
-  color: var(--secondary);
-}
-
-.create__event__form__input {
-  display: flex;
-  flex-direction: column;
-  width: 75%;
-  margin: 0.5rem 0;
-  color: var(--black);
-}
-
-.create__event__form__select {
-  width: 100%;
-  margin: 0.5rem 0;
-  color: var(--primary);
-  background-color: transparent;
-  border: 1px solid var(--black);
-  border-radius: 10px;
-  padding: 0.5rem;
-  outline: none;
-  cursor: pointer;
-}
-
-.sections__form__create {
-  color: var(--secondary);
-}
-
-#event_type {
-  display: flex;
-  flex-direction: column;
-  width: 75%;
-  margin: 0.5rem 0;
-  color: var(--secondary);
-}
-
-.event__form button {
-  margin: 1rem;
-  padding: 0.5rem 1rem;
-  background-color: var(--primary);
-  border-radius: 10px;
-  border: none;
-  color: var(--white);
-  cursor: pointer;
-}
-
-.event__form button:hover {
-  background-color: var(--black);
-  box-shadow: 0 5px 15px var(--primary);
-}
-
-
 
 /* Estilos para boton de filtros */
 .button-filter-bar {
@@ -451,7 +369,6 @@ select:focus {
   border: 1px solid var(--primary);
   border-radius: 10px;
   box-shadow: 0;
-
 }
 
 .button-filter-bar:hover {
@@ -1079,3 +996,19 @@ select:invalid:focus {
     align-items: flex-start;
   }
 }
+
+.create__event-button{
+  color: var(--white);
+  text-decoration: none;
+  border-radius: 10px;
+  background-color: var(--primary); 
+  padding: 0.630rem;
+  margin-top: 15%;
+  margin-left: 5%;
+  cursor: pointer;
+}
+
+/* .create__event-button:hover{
+background-color: var(--black);
+box-shadow: 0px 4px 8px var(--black);
+} */
