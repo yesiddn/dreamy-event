@@ -204,11 +204,11 @@ function showInfoService(data) {
     'info-service__details__price-card'
   );
 
-  const infoServiceDetailsPriceCardSpan = document.createElement('span');
+  const infoServiceDetailsPriceCardSpan = document.createElement('p');
   infoServiceDetailsPriceCardSpan.textContent = `${data.price}€ / 24h`;
 
   const infoServiceDetailsPriceCardButton = document.createElement('button');
-  infoServiceDetailsPriceCardButton.textContent = 'Reservar';
+  infoServiceDetailsPriceCardButton.textContent = 'Agregar a un evento';
 
   infoServiceDetailsPriceCard.appendChild(infoServiceDetailsPriceCardSpan);
   infoServiceDetailsPriceCard.appendChild(infoServiceDetailsPriceCardButton);
