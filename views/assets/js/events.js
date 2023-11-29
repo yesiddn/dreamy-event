@@ -11,27 +11,6 @@ async function getEvents() {
 }
 
 function showEvents(events) {
-  // <a class="event" href="#">
-  //   <div class="event__header">
-  //     <h3 title="Cumpleaños">Cumpleaño</h3>
-
-  //     <div class="event__header__details">
-  //       <p>
-  //         cantidad de servicios <span class="highlight-text">3</span>
-  //       </p>
-  //       <p>
-  //         Fecha:<span class="highlight-text">10/12/2023</span>
-  //       </p>
-  //     </div>
-  //   </div>
-
-  //   <div class="event__price">
-  //     <h4>
-  //       Total: <span class="highlight-text">$500.000</span>
-  //     </h4>
-  //   </div>
-  // </a>;
-
   const eventsContainer = document.querySelector('.events-list');
 
   events.forEach((event) => {
@@ -93,7 +72,6 @@ function showEvents(events) {
 
     eventTotal.appendChild(spanTotal);
 
-
     // append childs
     eventPrice.appendChild(eventTotal);
     eventDetails.appendChild(eventServices);
@@ -111,4 +89,47 @@ async function initEvents() {
   showEvents(events.data);
 }
 
-initEvents();
+function insertEvents(data, eventsContainer) {
+  data.forEach((event) => {
+    const eventContainer = document.createElement('li');
+    eventContainer.textContent = event.name;
+
+    eventContainer.addEventListener('click', (e) => {
+      e.preventDefault();
+      const idService = location.search.split('?/')[1];
+      // addServiceToEvent(event.idEvent, idService);
+      console.log(idService);
+    });
+
+    eventsContainer.appendChild(eventContainer);
+  });
+}
+
+function insertCreateEvent(eventsContainer) {
+  const eventContainer = document.createElement('li');
+  const eventIcon = document.createElement('span');
+
+  eventContainer.appendChild(eventIcon);  
+  eventContainer.appendChild(document.createTextNode('Crear evento'));
+
+  eventContainer.addEventListener('click', () => {
+    const idService = location.search.split('?/')[1];
+    window.location = `new-event?/${idService}`;
+  });
+
+  eventsContainer.appendChild(eventContainer);
+}
+
+async function showEventsInPriceCard() {
+  const eventsContainer = document.querySelector(
+    '.info-service__details__price-card__events'
+  );
+
+  const events = await getEvents();
+
+  if ((events.status = 200)) {
+    insertEvents(events.data, eventsContainer);
+  }
+
+  insertCreateEvent(eventsContainer);
+}
