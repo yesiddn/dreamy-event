@@ -31,4 +31,6 @@
       <button>Reservar</button>
     </div>
   </div> -->
+
+  <script defer src="./views/assets/js/events.js"></script>
 </section>

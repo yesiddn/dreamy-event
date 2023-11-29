@@ -21,4 +21,9 @@
   </div>
 
   <script defer src="./views/assets/js/events.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      initEvents();
+    });
+  </script>
 </section>
