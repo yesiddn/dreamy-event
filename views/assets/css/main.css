@@ -828,9 +828,9 @@ select:invalid:focus {
 
 /* info Service */
 .info-service {
-  width: 80%;
+  width: 100%;
   max-width: 900px;
-  margin: 2rem auto;
+  margin: 0 auto;
 }
 
 /* gallery */
@@ -920,7 +920,7 @@ select:invalid:focus {
 .info-service__details__price-card {
   position: sticky;
   display: flex;
-  top: 2rem;
+  top: 5rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -941,12 +941,49 @@ select:invalid:focus {
 }
 
 .info-service__details__price-card button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   background-color: var(--primary);
   color: var(--white);
   border: none;
   border-radius: 10px;
-  padding: 10px;
+  padding: 8px;
   font-size: 1rem;
+  cursor: pointer;
+}
+
+.info-service__details__price-card button span {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background-image: url('../svg/arrow-down.svg');
+  background-position: center;
+  background-size: cover;
+}
+
+.info-service__details__price-card__events {
+  position: absolute;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 80%;
+  width: 80%;
+  margin: 0 auto;
+  padding: 0.5rem;
+  gap: 0.5rem;
+  background-color: var(--white);
+  border: 1px solid var(--primary);
+  border-radius: 10px;
+}
+
+.info-service__details__price-card__events li {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+  list-style: none;
   cursor: pointer;
 }
 

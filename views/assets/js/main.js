@@ -204,14 +204,49 @@ function showInfoService(data) {
     'info-service__details__price-card'
   );
 
-  const infoServiceDetailsPriceCardSpan = document.createElement('p');
-  infoServiceDetailsPriceCardSpan.textContent = `${data.price}€ / 24h`;
+  const infoServiceDetailsPriceCardP = document.createElement('p');
+  infoServiceDetailsPriceCardP.textContent = `${data.price}€ / 24h`;
 
   const infoServiceDetailsPriceCardButton = document.createElement('button');
   infoServiceDetailsPriceCardButton.textContent = 'Agregar a un evento';
 
-  infoServiceDetailsPriceCard.appendChild(infoServiceDetailsPriceCardSpan);
+  const infoServiceDetailsPriceCardButtonIcon = document.createElement('span');
+
+  infoServiceDetailsPriceCardButton.appendChild(
+    infoServiceDetailsPriceCardButtonIcon
+  );
+
+  const infoServiceDetailsPriceCardEvents = document.createElement('ul');
+  infoServiceDetailsPriceCardEvents.classList.add(
+    'info-service__details__price-card__events'
+  );
+  infoServiceDetailsPriceCardEvents.classList.add('inactive');
+
+  infoServiceDetailsPriceCard.appendChild(infoServiceDetailsPriceCardP);
   infoServiceDetailsPriceCard.appendChild(infoServiceDetailsPriceCardButton);
+  infoServiceDetailsPriceCard.appendChild(infoServiceDetailsPriceCardEvents);
+
+  infoServiceDetailsPriceCardButton.addEventListener('click', (e) => {
+    if (
+      e.target === infoServiceDetailsPriceCardButton ||
+      infoServiceDetailsPriceCardButton.contains(e.target)
+    ) {
+      infoServiceDetailsPriceCardEvents.classList.toggle('inactive');
+      infoServiceDetailsPriceCardButtonIcon.classList.toggle('active');
+    }
+  });
+
+  document.addEventListener('click', (e) => {
+    const isClickInsideMenu =
+      infoServiceDetailsPriceCardEvents.contains(e.target) ||
+      e.target === infoServiceDetailsPriceCardButton ||
+      infoServiceDetailsPriceCardButton.contains(e.target);
+
+    if (!isClickInsideMenu) {
+      infoServiceDetailsPriceCardEvents.classList.add('inactive');
+      infoServiceDetailsPriceCardButtonIcon.classList.remove('active');
+    }
+  });
 
   infoServiceDetails.appendChild(infoServiceDetailsSubContainer);
   infoServiceDetails.appendChild(infoServiceDetailsPriceCard);
