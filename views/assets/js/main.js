@@ -232,7 +232,7 @@ function showInfoService(data) {
       infoServiceDetailsPriceCardButton.contains(e.target)
     ) {
       infoServiceDetailsPriceCardEvents.classList.toggle('inactive');
-      infoServiceDetailsPriceCardButtonIcon.classList.toggle('active');
+      infoServiceDetailsPriceCardEvents.classList.toggle('active');
     }
   });
 
@@ -244,7 +244,7 @@ function showInfoService(data) {
 
     if (!isClickInsideMenu) {
       infoServiceDetailsPriceCardEvents.classList.add('inactive');
-      infoServiceDetailsPriceCardButtonIcon.classList.remove('active');
+      infoServiceDetailsPriceCardEvents.classList.remove('active');
     }
   });
 
@@ -254,6 +254,8 @@ function showInfoService(data) {
   const infoService = document.querySelector('.info-service');
   infoService.appendChild(infoServiceGallery);
   infoService.appendChild(infoServiceDetails);
+
+  showEventsInPriceCard();
 }
 
 if (location.pathname.includes('/service')) {
