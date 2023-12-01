@@ -14,6 +14,7 @@ class ServiceControl
   public $characteristics;
   public $idTypeService;
   public $idSupplier;
+  public $idCustomer;
 
   public $servicePics;
 
@@ -39,13 +40,14 @@ class ServiceControl
 
   public function getServices()
   {
-    $getService = ServicesModel::getServices();
+    $getService = ServicesModel::getServices($this->idCustomer);
     echo json_encode($getService);
   }
 }
 
 if ($_POST["action"] == "read") {
   $getServices = new ServiceControl();
+  $getServices->idCustomer = $_POST["idCustomer"];
   if ($_POST["category"] == "all") {
     $getServices->getServices();
   }

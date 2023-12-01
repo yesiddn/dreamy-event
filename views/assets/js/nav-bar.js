@@ -1,15 +1,18 @@
+
 const hamburguerMenu = document.querySelector('.hamburguer-menu');
 const menu = document.querySelector('.nav-bar ul');
 const profileImg = document.querySelector('#user-profile-img');
 
-const customer = JSON.parse(localStorage.getItem('customer'));
-if (customer) {
-  profileImg.style.backgroundImage = `url('${customer.img_profile}')`;
+const user = JSON.parse(localStorage.getItem('user'));
+if (user) {
+  profileImg.style.backgroundImage = `url('${user.img_profile}')`;
 }
 
+
 hamburguerMenu.addEventListener('click', (e) => {
-  const isClickInsideButton = hamburguerMenu.contains(e.target) || e.target === hamburguerMenu;
-  
+  const isClickInsideButton =
+    hamburguerMenu.contains(e.target) || e.target === hamburguerMenu;
+
   if (isClickInsideButton) {
     menu.classList.toggle('active');
     menu.classList.toggle('inactive');
@@ -17,10 +20,14 @@ hamburguerMenu.addEventListener('click', (e) => {
 });
 
 document.addEventListener('click', (event) => {
-  const isClickInsideMenu = menu.contains(event.target) || event.target === hamburguerMenu || hamburguerMenu.contains(event.target);
-  
+  const isClickInsideMenu =
+    menu.contains(event.target) ||
+    event.target === hamburguerMenu ||
+    hamburguerMenu.contains(event.target);
+
   if (!isClickInsideMenu) {
     menu.classList.remove('active');
     menu.classList.add('inactive');
   }
 });
+
