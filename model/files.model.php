@@ -1,5 +1,5 @@
 <?php
-class FIlesModel {
+class FilesModel {
   public static function saveImage($file) {
     $fileName = $file['name'];
     $rout = '../userFiles/';
@@ -20,13 +20,13 @@ class FIlesModel {
         return array("codigo" => "404", "mensaje" => "Error al subir el archivo");
       }
     } else {
-      return array("codigo" => "404", "mensaje" => "El tipo de archivo no es compatible las extenciones permitidas son jpg,png y jpeg.");
+      return array("codigo" => "404", "mensaje" => "El tipo de archivo no es compatible las extenciones permitidas son jpg,png o jpeg.");
     }
   }
 
   public static function saveImageInDB($idService, $imageRout) {
     try {
-      $query = "INSERT INTO images_services (image_service, id_service) VALUES (?, ?)";
+      $query = "INSERT INTO images_services (url_image, id_service) VALUES (?, ?)";
       $result = Connection::connect()->prepare($query);
       $result->bindParam(1, $imageRout, PDO::PARAM_STR);
       $result->bindParam(2, $idService, PDO::PARAM_INT);
