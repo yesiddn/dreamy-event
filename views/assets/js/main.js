@@ -2,12 +2,16 @@
 // loginFormButton.addEventListener('click', method());
 
 async function fetchData(url, method, data) {
-  const response = await fetch(url, {
-    method,
-    body: data,
-  });
-
-  return await response.json();
+  try {
+    const response = await fetch(url, {
+      method,
+      body: data,
+    });
+  
+    return await response.json();
+  } catch (error) {
+    return error;
+  }
 }
 
 function getFormData() {
