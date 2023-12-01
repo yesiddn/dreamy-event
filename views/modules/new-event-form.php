@@ -63,6 +63,7 @@
   </div>
 </section>
 
+<script src="./views/assets/js/events.js"></script>
 <script defer src="./views/assets/js/event.js"></script>
 <!-- <script>
     const newEventFormButton = document.getElementById('form-button');

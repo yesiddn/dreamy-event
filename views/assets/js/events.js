@@ -62,6 +62,10 @@ function showEvents(events) {
     spanTotal.classList.add('highlight-text');
 
     // total con toLocaleString y sin decimales
+    if (event.total === null) {
+      event.total = 0;
+    }
+
     const total = event.total.toLocaleString('es-CO', {
       style: 'currency',
       currency: 'COP',
@@ -97,8 +101,7 @@ function insertEvents(data, eventsContainer) {
     eventContainer.addEventListener('click', (e) => {
       e.preventDefault();
       const idService = location.search.split('?/')[1];
-      // addServiceToEvent(event.idEvent, idService);
-      console.log(idService);
+      addServiceToEvent(event.idEvent, idService);
     });
 
     eventsContainer.appendChild(eventContainer);
@@ -109,7 +112,7 @@ function insertCreateEvent(eventsContainer) {
   const eventContainer = document.createElement('li');
   const eventIcon = document.createElement('span');
 
-  eventContainer.appendChild(eventIcon);  
+  eventContainer.appendChild(eventIcon);
   eventContainer.appendChild(document.createTextNode('Crear evento'));
 
   eventContainer.addEventListener('click', () => {
@@ -128,8 +131,33 @@ async function showEventsInPriceCard() {
   const events = await getEvents();
 
   if ((events.status = 200)) {
-    insertEvents(events.data, eventsContainer);
+    if (events.data[0].idEvent !== null) {
+      insertEvents(events.data, eventsContainer);
+    }
   }
 
   insertCreateEvent(eventsContainer);
+}
+
+async function addServiceToEvent(idEvent, idService) {
+  const data = new FormData();
+  data.set('action', 'addService');
+  data.set('idEvent', idEvent);
+  data.set('idService', idService);
+
+  const url = './control/events.control.php';
+  const method = 'POST';
+
+  const response = await fetchData(url, method, data);
+  if (response.status === 201) {
+    showAlert('service added to event');
+
+    const eventsContainer = document.querySelector(
+      '.info-service__details__price-card__events'
+    );
+    eventsContainer.classList.toggle('inactive');
+    eventsContainer.classList.toggle('active');
+  } else {
+    showAlert('service has already been added to the event');
+  }
 }
