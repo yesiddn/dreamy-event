@@ -16,15 +16,28 @@ class EventsController {
     $response = EventsModel::addServiceToEvent($this->idEvent, $this->idService);
     echo json_encode($response);
   }
+
+  public function deleteEvent() {
+    $response = EventsModel::deleteEvent($this->idEvent);
+    echo json_encode($response);
+  }
 }
 
 if (isset($_POST["action"]) && $_POST["action"] == "read") {
   $events = new EventsController();
   $events->idCustomer = $_POST["idCustomer"];
   $events->getEvents();
-} elseif (isset($_POST["action"]) && $_POST["action"] == "addService") {
+} 
+
+if (isset($_POST["action"]) && $_POST["action"] == "addService") {
   $events = new EventsController();
   $events->idEvent = $_POST["idEvent"];
   $events->idService = $_POST["idService"];
   $events->addServiceToEvent();
+}
+
+if (isset($_POST["action"]) && $_POST["action"] == "delete") {
+  $events = new EventsController();
+  $events->idEvent = $_POST["idEvent"];
+  $events->deleteEvent();
 }
