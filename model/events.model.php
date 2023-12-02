@@ -74,4 +74,29 @@ class EventsModel {
 
     return $data;
   }
+
+  public static function deleteEvent($idEvent) {
+    $sql = "DELETE FROM events WHERE id_event = ?;";
+
+    $query = Connection::connect()->prepare($sql);
+    $query->bindParam(1, $idEvent, PDO::PARAM_INT);
+    $response = $query->execute();
+    $query = null;
+
+    if (!$response) {
+      return array(
+        'status' => 400,
+        'message' => 'Event not deleted',
+        'data' => null
+      );
+    }
+
+    return array(
+      'status' => 200,
+      'message' => 'Event deleted',
+      'data' => array(
+        'idEvent' => $idEvent
+      )
+    );
+  }
 }
