@@ -248,6 +248,28 @@ async function deleteEvent(idEvent) {
   }
 }
 
+async function editEvent() {
+  const idEvent = location.search.split('?/')[1];
+  const form = document.querySelector('#form');
+  
+  const data = new FormData(form);
+  data.set('action', 'update');
+  data.set('idEvent', idEvent);
+
+  const url = './control/events.control.php';
+  const method = 'POST';
+
+  const response = await fetchData(url, method, data);
+
+  if (response.status === 200) {
+    showAlert('event updated');
+    window.location = 'my-events';
+  } else {
+    showAlert('something went wrong');
+  }
+
+}
+
 async function fillEventForm() {
   const event = await getEventById(location.search.split('?/')[1]);
 

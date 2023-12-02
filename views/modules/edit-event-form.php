@@ -67,5 +67,11 @@
     document.addEventListener('DOMContentLoaded', () => {
       fillEventForm();
     });
+
+    const editEventFormButton = document.getElementById('form-button');
+    editEventFormButton.addEventListener('click', () => {
+      event.preventDefault();
+      editEvent();
+    });
   </script>
 </section>
