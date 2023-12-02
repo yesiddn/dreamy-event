@@ -65,6 +65,10 @@ function showAlert(typeAlert) {
       message: 'Evento eliminado correctamente.',
       color: '#ADFFC7',
     },
+    'event updated': {
+      message: 'Evento editado correctamente.',
+      color: '#ADFFC7',
+    },
     'something went wrong': {
       message: 'Algo salió mal.',
       color: '#F02D3A',
