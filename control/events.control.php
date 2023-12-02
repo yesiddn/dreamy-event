@@ -26,6 +26,11 @@ class EventsController {
     echo json_encode($response);
   }
 
+  public function updateEvent() {
+    $response = EventsModel::updateEvent($this->idEvent, $this->name, $this->date, $this->typeEvent);
+    echo json_encode($response);
+  }
+
   public function deleteEvent() {
     $response = EventsModel::deleteEvent($this->idEvent);
     echo json_encode($response);
@@ -55,4 +60,13 @@ if (isset($_POST["action"]) && $_POST["action"] == "read by id") {
   $events = new EventsController();
   $events->idEvent = $_POST["idEvent"];
   $events->getEventById();
+}
+
+if (isset($_POST["action"]) && $_POST["action"] == "update") {
+  $events = new EventsController();
+  $events->idEvent = $_POST["idEvent"];
+  $events->name = $_POST["event-name"];
+  $events->date = $_POST["event-date"];
+  $events->typeEvent = $_POST["event-type"];
+  $events->updateEvent();
 }
