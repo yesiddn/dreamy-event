@@ -10,6 +10,19 @@ async function getEvents() {
   return events;
 }
 
+async function getEventById(idEvent) {
+  const data = new FormData();
+  data.set('action', 'read by id');
+  data.set('idEvent', idEvent);
+
+  const url = './control/events.control.php';
+  const method = 'POST';
+
+  const event = await fetchData(url, method, data);
+
+  return event;
+}
+
 function showEvents(events) {
   const eventsContainer = document.querySelector('.events-list');
   eventsContainer.innerHTML = '';
@@ -18,7 +31,7 @@ function showEvents(events) {
     // event container
     const eventContainer = document.createElement('a');
     eventContainer.classList.add('event');
-    eventContainer.href = `/event?/${event.idEvent}`;
+    eventContainer.href = `event?/${event.idEvent}`;
 
     // event header
     const eventHeader = document.createElement('div');
@@ -84,7 +97,7 @@ function showEvents(events) {
 
     // event options -> editar
     const eventEdit = document.createElement('a');
-    eventEdit.href = `/edit-event?/${event.idEvent}`;
+    eventEdit.href = `edit-event?/${event.idEvent}`;
     eventEdit.classList.add('event__options__edit');
 
     const eventEditIcon = document.createElement('span');
@@ -233,4 +246,16 @@ async function deleteEvent(idEvent) {
   } else {
     showAlert('something went wrong');
   }
+}
+
+async function fillEventForm() {
+  const event = await getEventById(location.search.split('?/')[1]);
+
+  const name = document.querySelector('#event-name');
+  const date = document.querySelector('#event-date');
+  const type = document.querySelector('#event-type');
+
+  name.value = event.data.name;
+  date.value = event.data.date;
+  type.value = event.data.idEventType;
 }
