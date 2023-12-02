@@ -87,6 +87,37 @@ class EventsModel {
     );
   }
 
+  public static function updateEvent($idEvent, $name, $date, $typeEvent) {
+    $sql = "UPDATE events SET name_event = ?, date = ?, id_event_type = ? WHERE id_event = ?;";
+
+    $query = Connection::connect()->prepare($sql);
+    $query->bindParam(1, $name, PDO::PARAM_STR);
+    $query->bindParam(2, $date, PDO::PARAM_STR);
+    $query->bindParam(3, $typeEvent, PDO::PARAM_INT);
+    $query->bindParam(4, $idEvent, PDO::PARAM_INT);
+    $response = $query->execute();
+    $query = null;
+
+    if (!$response) {
+      return array(
+        'status' => 400,
+        'message' => 'Event not updated',
+        'data' => null
+      );
+    }
+
+    return array(
+      'status' => 200,
+      'message' => 'Event updated',
+      'data' => array(
+        'idEvent' => $idEvent,
+        'name' => $name,
+        'date' => $date,
+        'idEventType' => $typeEvent
+      )
+    );
+  }
+
   public static function orderEventsData($eventData) {
     $data = array();
 
