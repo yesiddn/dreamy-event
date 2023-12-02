@@ -1153,6 +1153,7 @@ select:invalid:focus {
   width: 100%;
   gap: 0.5rem;
   padding: 0.5rem 1rem;
+  border: none;
   text-decoration: none;
   color: var(--black);
   cursor: pointer;

@@ -12,6 +12,7 @@ async function getEvents() {
 
 function showEvents(events) {
   const eventsContainer = document.querySelector('.events-list');
+  eventsContainer.innerHTML = '';
 
   events.forEach((event) => {
     // event container
@@ -93,9 +94,14 @@ function showEvents(events) {
     eventEdit.appendChild(eventEditIcon);
 
     // event options -> eliminar
-    const eventDelete = document.createElement('a');
-    eventDelete.href = `/delete-event?/${event.idEvent}`;
+    const eventDelete = document.createElement('button');
+    eventDelete.setAttribute('type', 'button');
     eventDelete.classList.add('event__options__delete');
+
+    eventDelete.addEventListener('click', async (e) => {
+      e.preventDefault();
+      await deleteEvent(event.idEvent);
+    });
 
     const eventDeleteIcon = document.createElement('span');
     eventDeleteIcon.classList.add('icon-trash');
@@ -208,5 +214,23 @@ async function addServiceToEvent(idEvent, idService) {
     eventsContainer.classList.toggle('active');
   } else {
     showAlert('service has already been added to the event');
+  }
+}
+
+async function deleteEvent(idEvent) {
+  const data = new FormData();
+  data.set('action', 'delete');
+  data.set('idEvent', idEvent);
+
+  const url = './control/events.control.php';
+  const method = 'POST';
+
+  const response = await fetchData(url, method, data);
+
+  if (response.status === 200) {
+    showAlert('event deleted');
+    initEvents();
+  } else {
+    showAlert('something went wrong');
   }
 }
