@@ -61,6 +61,14 @@ function showAlert(typeAlert) {
       message: 'El servicio ya ha sido agregado al evento.',
       color: '#ADBDFF',
     },
+    'event deleted': {
+      message: 'Evento eliminado correctamente.',
+      color: '#ADFFC7',
+    },
+    'something went wrong': {
+      message: 'Algo salió mal.',
+      color: '#F02D3A',
+    },
   };
 
   let alert = document.getElementById('alert');
