@@ -23,11 +23,21 @@ function createEvent() {
       body: formData,
     })
       .then((response) => response.json())
-      .then((data) => {
-        if (data.codigo === '200') {
-          document.getElementById('event-name').value = '';
-          document.getElementById('event-date').value = '';
-          document.getElementById('event-type').value = '';
+      .then((response) => {
+        if (response.codigo === '200') {
+          showAlert('event created successfully');
+
+          if (location.search.includes('?/')) {
+            addServiceToEvent(
+              response.data.idEvent,
+              location.search.split('?/')[1]
+            );
+            setTimeout(() => {
+              window.location.href = `service?/${location.search.split('?/')[1]}`;
+            }, 2000);
+          } else {
+            window.location.href = 'my-events';
+          }
         }
       })
       .catch((error) => {

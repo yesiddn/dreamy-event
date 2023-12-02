@@ -2,12 +2,16 @@
 // loginFormButton.addEventListener('click', method());
 
 async function fetchData(url, method, data) {
-  const response = await fetch(url, {
-    method,
-    body: data,
-  });
-
-  return await response.json();
+  try {
+    const response = await fetch(url, {
+      method,
+      body: data,
+    });
+  
+    return await response.json();
+  } catch (error) {
+    return error;
+  }
 }
 
 function getFormData() {
@@ -204,14 +208,49 @@ function showInfoService(data) {
     'info-service__details__price-card'
   );
 
-  const infoServiceDetailsPriceCardSpan = document.createElement('span');
-  infoServiceDetailsPriceCardSpan.textContent = `${data.price}€ / 24h`;
+  const infoServiceDetailsPriceCardP = document.createElement('p');
+  infoServiceDetailsPriceCardP.textContent = `${data.price}€ / 24h`;
 
   const infoServiceDetailsPriceCardButton = document.createElement('button');
-  infoServiceDetailsPriceCardButton.textContent = 'Reservar';
+  infoServiceDetailsPriceCardButton.textContent = 'Agregar a un evento';
 
-  infoServiceDetailsPriceCard.appendChild(infoServiceDetailsPriceCardSpan);
+  const infoServiceDetailsPriceCardButtonIcon = document.createElement('span');
+
+  infoServiceDetailsPriceCardButton.appendChild(
+    infoServiceDetailsPriceCardButtonIcon
+  );
+
+  const infoServiceDetailsPriceCardEvents = document.createElement('ul');
+  infoServiceDetailsPriceCardEvents.classList.add(
+    'info-service__details__price-card__events'
+  );
+  infoServiceDetailsPriceCardEvents.classList.add('inactive');
+
+  infoServiceDetailsPriceCard.appendChild(infoServiceDetailsPriceCardP);
   infoServiceDetailsPriceCard.appendChild(infoServiceDetailsPriceCardButton);
+  infoServiceDetailsPriceCard.appendChild(infoServiceDetailsPriceCardEvents);
+
+  infoServiceDetailsPriceCardButton.addEventListener('click', (e) => {
+    if (
+      e.target === infoServiceDetailsPriceCardButton ||
+      infoServiceDetailsPriceCardButton.contains(e.target)
+    ) {
+      infoServiceDetailsPriceCardEvents.classList.toggle('inactive');
+      infoServiceDetailsPriceCardEvents.classList.toggle('active');
+    }
+  });
+
+  document.addEventListener('click', (e) => {
+    const isClickInsideMenu =
+      infoServiceDetailsPriceCardEvents.contains(e.target) ||
+      e.target === infoServiceDetailsPriceCardButton ||
+      infoServiceDetailsPriceCardButton.contains(e.target);
+
+    if (!isClickInsideMenu) {
+      infoServiceDetailsPriceCardEvents.classList.add('inactive');
+      infoServiceDetailsPriceCardEvents.classList.remove('active');
+    }
+  });
 
   infoServiceDetails.appendChild(infoServiceDetailsSubContainer);
   infoServiceDetails.appendChild(infoServiceDetailsPriceCard);
@@ -219,6 +258,8 @@ function showInfoService(data) {
   const infoService = document.querySelector('.info-service');
   infoService.appendChild(infoServiceGallery);
   infoService.appendChild(infoServiceDetails);
+
+  showEventsInPriceCard();
 }
 
 if (location.pathname.includes('/service')) {

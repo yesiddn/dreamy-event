@@ -41,10 +41,34 @@ function showAlert(typeAlert) {
       message: 'Servicio eliminado de favoritos.',
       color: '#ADFFC7',
     },
-     'Without logging in':{
+    'Without logging in': {
       message: 'Por favor inicie sesión o cree una cuenta.',
-      color: 'rgb(219, 54, 87)',
-     }
+      color: '#F02D3A',
+    },
+    'event created successfully': {
+      message: 'Evento creado correctamente.',
+      color: '#ADFFC7',
+    },
+    'service added to event': {
+      message: 'Servicio agregado al evento.',
+      color: '#ADFFC7',
+    },
+    'service not added to event': {
+      message: 'Error al agregar servicio al evento.',
+      color: '#F02D3A',
+    },
+    'service has already been added to the event': {
+      message: 'El servicio ya ha sido agregado al evento.',
+      color: '#ADBDFF',
+    },
+    'event deleted': {
+      message: 'Evento eliminado correctamente.',
+      color: '#ADFFC7',
+    },
+    'something went wrong': {
+      message: 'Algo salió mal.',
+      color: '#F02D3A',
+    },
   };
 
   let alert = document.getElementById('alert');
