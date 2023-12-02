@@ -76,6 +76,53 @@ function showEvents(events) {
 
     eventTotal.appendChild(spanTotal);
 
+    // event options
+    const eventOptions = document.createElement('div');
+    eventOptions.classList.add('event__options');
+    eventOptions.classList.add('inactive');
+
+    // event options -> editar
+    const eventEdit = document.createElement('a');
+    eventEdit.href = `/edit-event?/${event.idEvent}`;
+    eventEdit.classList.add('event__options__edit');
+
+    const eventEditIcon = document.createElement('span');
+    eventEditIcon.classList.add('icon-pencil');
+
+    eventEdit.textContent = 'Editar';
+    eventEdit.appendChild(eventEditIcon);
+
+    // event options -> eliminar
+    const eventDelete = document.createElement('a');
+    eventDelete.href = `/delete-event?/${event.idEvent}`;
+    eventDelete.classList.add('event__options__delete');
+
+    const eventDeleteIcon = document.createElement('span');
+    eventDeleteIcon.classList.add('icon-trash');
+
+    eventDelete.textContent = 'Eliminar';
+    eventDelete.appendChild(eventDeleteIcon);
+
+    eventOptions.appendChild(eventEdit);
+    eventOptions.appendChild(eventDelete);
+
+    // event options -> show options
+    const eventOptionsShow = document.createElement('span');
+    eventOptionsShow.classList.add('icon-ellipsis');
+
+    eventOptionsShow.addEventListener('click', (e) => {
+      e.preventDefault();
+      eventOptions.classList.toggle('inactive');
+      eventOptions.classList.toggle('active');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (e.target !== eventOptionsShow) {
+        eventOptions.classList.remove('active');
+        eventOptions.classList.add('inactive');
+      }
+    });
+
     // append childs
     eventPrice.appendChild(eventTotal);
     eventDetails.appendChild(eventServices);
@@ -84,6 +131,8 @@ function showEvents(events) {
     eventHeader.appendChild(eventDetails);
     eventContainer.appendChild(eventHeader);
     eventContainer.appendChild(eventPrice);
+    eventContainer.appendChild(eventOptionsShow);
+    eventContainer.appendChild(eventOptions);
     eventsContainer.appendChild(eventContainer);
   });
 }
