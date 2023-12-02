@@ -5,11 +5,20 @@ class EventsController {
   public $idEvent;
   public $idService;
   public $idCustomer;
+  public $name;
+  public $date;
+  public $typeEvent;
 
   public function getEvents()
   {
     $favoriteService = EventsModel::getEvents($this->idCustomer);
     echo json_encode($favoriteService);
+  }
+
+  public function getEventById()
+  {
+    $event = EventsModel::getEventById($this->idEvent);
+    echo json_encode($event);
   }
 
   public function addServiceToEvent() {
@@ -40,4 +49,10 @@ if (isset($_POST["action"]) && $_POST["action"] == "delete") {
   $events = new EventsController();
   $events->idEvent = $_POST["idEvent"];
   $events->deleteEvent();
+}
+
+if (isset($_POST["action"]) && $_POST["action"] == "read by id") {
+  $events = new EventsController();
+  $events->idEvent = $_POST["idEvent"];
+  $events->getEventById();
 }
