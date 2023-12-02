@@ -1,5 +1,8 @@
 <section class="my-events">
-  <h2>Mis eventos</h2>
+  <div class="my-events__header">
+    <h2>Mis eventos</h2>
+    <a href="new-event" class="my-events__header__create">Nuevo evento<span></span></a>
+  </div>
 
   <div class="events-list">
     <!-- <a class="event" href="#">

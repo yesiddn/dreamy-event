@@ -1073,6 +1073,37 @@ select:invalid:focus {
   margin: 2rem auto;
 }
 
+.my-events__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.my-events__header__create {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 15px;
+  background-color: var(--primary);
+  text-decoration: none;
+  color: var(--white);
+}
+
+.my-events__header__create:hover {
+  background-color: var(--black);
+  box-shadow: 0 5px 15px var(--primary);
+}
+
+.my-events__header__create span {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background: url('../svg/plus-white.svg') no-repeat center/cover;
+}
+
 .events-list {
   display: flex;
   flex-direction: column;
@@ -1150,6 +1181,7 @@ select:invalid:focus {
 .event__options__edit, .event__options__delete {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   gap: 0.5rem;
   padding: 0.5rem 1rem;
