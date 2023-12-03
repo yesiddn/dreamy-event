@@ -105,7 +105,12 @@ async function removeFromFavorites(idService, card) {
   const response = await fetchData(url, method, data);
 
   if (response.status === 200) {
-    card.remove();
+    if (!card.classList.contains('favorite--active')) {
+      card.remove();
+    } else {
+      card.classList.remove('favorite--active');
+    }
+
     showAlert('favorite-removed');
   }
 }

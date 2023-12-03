@@ -28,6 +28,38 @@ class EventsModel {
     );
   }
 
+  public static function getEventById($idEvent) {
+    $sql = "SELECT * FROM events WHERE id_event = ?";
+
+    $query = Connection::connect()->prepare($sql);
+    $query->bindParam(1, $idEvent, PDO::PARAM_INT);
+    $query->execute();
+    $response = $query->fetch();
+    $query = null;
+
+    if (!$response) {
+      return array(
+        'status' => 404,
+        'message' => 'Event not found',
+        'data' => null
+      );
+    }
+
+    $event = array(
+      'idEvent' => $response['id_event'],
+      'name' => $response['name_event'],
+      'date' => $response['date'],
+      'idEventType' => $response['id_event_type'],
+      'idCustomer' => $response['id_customer']
+    );
+
+    return array(
+      'status' => 200,
+      'message' => 'Event found',
+      'data' => $event
+    );
+  }
+
   public static function addServiceToEvent($idEvent, $idService) {
     $sql = "INSERT INTO event_has_services (id_event, id_service) VALUES (?, ?);";
 
@@ -51,6 +83,37 @@ class EventsModel {
       'data' => array(
         'idEvent' => $idEvent,
         'idService' => $idService
+      )
+    );
+  }
+
+  public static function updateEvent($idEvent, $name, $date, $typeEvent) {
+    $sql = "UPDATE events SET name_event = ?, date = ?, id_event_type = ? WHERE id_event = ?;";
+
+    $query = Connection::connect()->prepare($sql);
+    $query->bindParam(1, $name, PDO::PARAM_STR);
+    $query->bindParam(2, $date, PDO::PARAM_STR);
+    $query->bindParam(3, $typeEvent, PDO::PARAM_INT);
+    $query->bindParam(4, $idEvent, PDO::PARAM_INT);
+    $response = $query->execute();
+    $query = null;
+
+    if (!$response) {
+      return array(
+        'status' => 400,
+        'message' => 'Event not updated',
+        'data' => null
+      );
+    }
+
+    return array(
+      'status' => 200,
+      'message' => 'Event updated',
+      'data' => array(
+        'idEvent' => $idEvent,
+        'name' => $name,
+        'date' => $date,
+        'idEventType' => $typeEvent
       )
     );
   }
