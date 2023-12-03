@@ -32,3 +32,30 @@
     </div>
   </div> -->
 </section>
+
+
+<section class="comments__container">
+  <form class="commentForm">
+  <div class="comments__content">
+    <textarea name="comment-textarea"  id="comment-textarea" cols="60" rows="10" placeholder="Comparte detalles de tu experiencia en este lugar"></textarea>
+    <div class="stars">
+      <input type="radio" id="star5" name="stars" value="5">
+      <label for="star5"></label>
+      <input type="radio" id="star4" name="stars" value="4">
+      <label for="star4"></label>
+      <input type="radio" id="star3" name="stars" value="3">
+      <label for="star3"></label>
+      <input type="radio" id="star2" name="stars" value="2">
+      <label for="star2"></label>
+      <input type="radio" id="star1" name="stars" value="1">
+      <label for="star1"></label>
+    </div>
+    <h3>Calificación del servicio</h3>
+  </div>
+  <div class="button__container">
+    <button type="submit">Agregar</button>
+  </div>
+  </form>
+</section>
+
+<script src='views/assets/js/comments.js'></script>
