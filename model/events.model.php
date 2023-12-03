@@ -186,4 +186,31 @@ class EventsModel {
       )
     );
   }
+
+  public static function deleteEventService($idEvent, $idService) {
+    $sql = "DELETE FROM event_has_services WHERE id_event = ? AND id_service = ?;";
+
+    $query = Connection::connect()->prepare($sql);
+    $query->bindParam(1, $idEvent, PDO::PARAM_INT);
+    $query->bindParam(2, $idService, PDO::PARAM_INT);
+    $response = $query->execute();
+    $query = null;
+
+    if (!$response) {
+      return array(
+        'status' => 400,
+        'message' => 'Service not deleted',
+        'data' => null
+      );
+    }
+
+    return array(
+      'status' => 200,
+      'message' => 'Service deleted',
+      'data' => array(
+        'idEvent' => $idEvent,
+        'idService' => $idService
+      )
+    );
+  }
 }
