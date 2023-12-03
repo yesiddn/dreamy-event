@@ -4,6 +4,7 @@ include_once "../model/files.model.php";
 
 class ServiceControl
 {
+  public $idEvent;
   public $nameService;
   public $descriptionService;
   public $price;
@@ -43,6 +44,12 @@ class ServiceControl
     $getService = ServicesModel::getServices($this->idCustomer);
     echo json_encode($getService);
   }
+
+  public function getEventServices()
+  {
+    $getEventServices = ServicesModel::getEventServices($this->idEvent);
+    echo json_encode($getEventServices);
+  }
 }
 
 if ($_POST["action"] == "read") {
@@ -53,9 +60,13 @@ if ($_POST["action"] == "read") {
   }
 }
 
+if ($_POST["action"] == "read event services") {
+  $getServices = new ServiceControl();
+  $getServices->idEvent = $_POST["eventId"];
+  $getServices->getEventServices();  
+}
 
-
-if ($_POST['queryType'] == 'Insert') {
+if (isset($_POST['queryType']) == 'Insert') {
   $ServiceControl = new ServiceControl();
   $ServiceControl->nameService = $_POST['name-service'];
   $ServiceControl->descriptionService = $_POST['description-service'];
@@ -65,8 +76,7 @@ if ($_POST['queryType'] == 'Insert') {
   $ServiceControl->country = $_POST['country-service'];
   $ServiceControl->amountPeople = $_POST['peopleAmount-service'];
   $ServiceControl->characteristics = $_POST['characteristics-service'];
- 
-  
+
   $filesData = $_FILES['images'];
   $newArrayFiles = [];
   foreach ($filesData['name'] as $index => $name) {
@@ -78,9 +88,6 @@ if ($_POST['queryType'] == 'Insert') {
       'size' => $filesData['size'][$index]
     ];
   }
-
-
-
 
   $ServiceControl->servicePics = $newArrayFiles;
   $ServiceControl->createService();
