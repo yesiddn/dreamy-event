@@ -28,6 +28,7 @@ async function showEventInfo() {
   const data = await getEventInfo();
 
   const header = document.querySelector('.resume-event__header');
+  header.innerHTML = '';
 
   const title = document.createElement('h2');
   title.textContent = data.name;
@@ -51,6 +52,10 @@ async function showEventResumen() {
   const data = await getEventResumen();
 
   const resumeEventBody = document.querySelector('.resume-event__body');
+  resumeEventBody.innerHTML = '';
+
+  const titleBody = document.createElement('h3');
+  titleBody.textContent = 'Resume';
 
   data.forEach((service) => {
     const resumeEventService = document.createElement('div');
@@ -79,6 +84,7 @@ async function showEventResumen() {
 
   resumeEventTotal.appendChild(title);
   resumeEventTotal.appendChild(price);
+  resumeEventBody.appendChild(titleBody);
   resumeEventBody.appendChild(resumeEventTotal);
 
   const button = document.createElement('button');
@@ -105,6 +111,7 @@ async function getServicesByEventId(eventId) {
 
 function showEventServices(services) {
   const cardsContainer = document.getElementById('cards__container');
+  cardsContainer.innerHTML = '';
 
   services.forEach((service) => {
     const card = document.createElement('a');
@@ -136,7 +143,10 @@ function showEventServices(services) {
 
     deleteServiceFromEvent.addEventListener('click', (e) => {
       e.preventDefault();
-      removeServiceFromEvent(service.id_service);
+      removeServiceFromEvent(
+        window.location.search.split('?/')[1],
+        service.id_service
+      );
     });
 
     cardTitle.appendChild(title);
@@ -148,6 +158,25 @@ function showEventServices(services) {
     card.appendChild(deleteServiceFromEvent);
     cardsContainer.appendChild(card);
   });
+}
+
+async function removeServiceFromEvent(idEvent, idService) {
+  const data = new FormData();
+  data.set('action', 'delete event service');
+  data.set('idEvent', idEvent);
+  data.set('idService', idService);
+
+  const url = './control/events.control.php';
+  const method = 'POST';
+
+  const response = await fetchData(url, method, data);
+
+  if (response.status === 200) {
+    showAlert('service removed from event');
+    showEventInfo();
+    showEventResumen();
+    getServicesByEventId(window.location.search.split('?/')[1]);
+  }
 }
 
 showEventInfo();

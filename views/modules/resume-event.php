@@ -21,8 +21,8 @@
     </div>
 
     <div class="resume-event__body">
-      <h3>Resumen</h3>
       <!-- 
+      <h3>Resumen</h3>
   
       <div class="resume-event__body__service">
         <h4>Pastel de cumpleaños</h4>

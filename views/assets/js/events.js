@@ -219,12 +219,7 @@ async function addServiceToEvent(idEvent, idService) {
   const response = await fetchData(url, method, data);
   if (response.status === 201) {
     showAlert('service added to event');
-
-    const eventsContainer = document.querySelector(
-      '.info-service__details__price-card__events'
-    );
-    eventsContainer.classList.toggle('inactive');
-    eventsContainer.classList.toggle('active');
+    window.location = 'resume-event?/' + idEvent;
   } else {
     showAlert('service has already been added to the event');
   }
