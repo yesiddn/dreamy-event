@@ -29,7 +29,7 @@ class EventsModel {
   }
 
   public static function getEventById($idEvent) {
-    $sql = "SELECT * FROM events WHERE id_event = ?";
+    $sql = "SELECT * FROM events WHERE id_event = ?;";
 
     $query = Connection::connect()->prepare($sql);
     $query->bindParam(1, $idEvent, PDO::PARAM_INT);
@@ -50,13 +50,37 @@ class EventsModel {
       'name' => $response['name_event'],
       'date' => $response['date'],
       'idEventType' => $response['id_event_type'],
-      'idCustomer' => $response['id_customer']
+      'idCustomer' => $response['id_customer'],
     );
 
     return array(
       'status' => 200,
       'message' => 'Event found',
       'data' => $event
+    );
+  }
+
+  public static function getEventResume($idEvent) {
+    $sql = "SELECT services.name_service, services.price FROM services INNER JOIN event_has_services ON services.id_service = event_has_services.id_service WHERE event_has_services.id_event = ?;";
+
+    $query = Connection::connect()->prepare($sql);
+    $query->bindParam(1, $idEvent, PDO::PARAM_INT);
+    $query->execute();
+    $response = $query->fetchAll();
+    $query = null;
+
+    if (!$response) {
+      return array(
+        'status' => 404,
+        'message' => 'Services not found',
+        'data' => null
+      );
+    }
+
+    return array(
+      'status' => 200,
+      'message' => 'Services found',
+      'data' => $response
     );
   }
 
