@@ -15,10 +15,14 @@ class EventsController {
     echo json_encode($favoriteService);
   }
 
-  public function getEventById()
-  {
+  public function getEventById() {
     $event = EventsModel::getEventById($this->idEvent);
     echo json_encode($event);
+  }
+
+  public function getEventResume() {
+    $eventServices = EventsModel::getEventResume($this->idEvent);
+    echo json_encode($eventServices);
   }
 
   public function addServiceToEvent() {
@@ -69,4 +73,16 @@ if (isset($_POST["action"]) && $_POST["action"] == "update") {
   $events->date = $_POST["event-date"];
   $events->typeEvent = $_POST["event-type"];
   $events->updateEvent();
+}
+
+if (isset($_POST["action"]) && $_POST["action"] == "read event") {
+  $events = new EventsController();
+  $events->idEvent = $_POST["idEvent"];
+  $events->getEventById();
+}
+
+if (isset($_POST["action"]) && $_POST["action"] == "read event resumen") {
+  $events = new EventsController();
+  $events->idEvent = $_POST["idEvent"];
+  $events->getEventResume();
 }
