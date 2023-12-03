@@ -31,7 +31,7 @@ function showEvents(events) {
     // event container
     const eventContainer = document.createElement('a');
     eventContainer.classList.add('event');
-    eventContainer.href = `event?/${event.idEvent}`;
+    eventContainer.href = `resume-event?/${event.idEvent}`;
 
     // event header
     const eventHeader = document.createElement('div');
