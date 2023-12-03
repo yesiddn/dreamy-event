@@ -73,6 +73,10 @@ function showAlert(typeAlert) {
       message: 'Algo salió mal.',
       color: '#F02D3A',
     },
+    'service removed from event': {
+      message: 'Servicio eliminado del evento.',
+      color: '#ADFFC7',
+    },
   };
 
   let alert = document.getElementById('alert');
