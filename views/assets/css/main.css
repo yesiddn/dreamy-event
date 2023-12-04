@@ -784,7 +784,7 @@ select:invalid:focus {
 }
 
 /* Filter bar */
-.filer-bar {
+.filter-bar {
   display: flex;
   align-items: center;
   padding: 1rem;
@@ -793,16 +793,17 @@ select:invalid:focus {
   overflow: scroll;
 }
 
-.filer-bar li {
+.filter-bar li {
   list-style: none;
 }
 
-.filer-bar li img {
+.filter-bar li img {
   display: block;
   margin: 0 auto;
+  width: 100%;
 }
 
-.filer-bar li span {
+.filter-bar li span {
   display: block;
   margin-top: 0.5rem;
   font-size: 1rem;
@@ -810,17 +811,16 @@ select:invalid:focus {
   color: var(--black);
 }
 
-.filer-bar li .line {
+.filter-bar li .line {
   display: block;
   height: 4px;
   background-color: var(--primary);
   border-radius: 2px;
 }
 
-.filer-bar li a {
+.filter-bar li a {
   text-decoration: none;
 }
-
 /* info Service */
 .info-service {
   width: 100%;
