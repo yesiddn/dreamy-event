@@ -77,6 +77,14 @@ function showAlert(typeAlert) {
       message: 'Servicio eliminado del evento.',
       color: '#ADFFC7',
     },
+    'comment-exists': {
+      message: 'Gracias por tu calificación y tu comentario',
+      color: '#ADFFC7',
+    },
+    'comment-no-exists': {
+      message: 'No se ha podido agregar tu calificación y comentario',
+      color: '#F02D3A',
+    },
   };
 
   let alert = document.getElementById('alert');
