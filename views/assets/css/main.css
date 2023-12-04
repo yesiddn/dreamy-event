@@ -1192,22 +1192,21 @@ select:invalid:focus {
   margin: 2rem 0;
 }
 
+/* list of events */
 .event {
   position: relative;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   width: 100%;
   max-width: 900px;
+  gap: 2rem;
   margin: 0 auto;
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0 5px 15px var(--primary);
   text-decoration: none;
   color: var(--secondary);
-}
-
-.event__header {
-  width: 60%;
 }
 
 .event__header h3 {
@@ -1237,6 +1236,7 @@ select:invalid:focus {
   margin: 0;
   font-weight: 600;
   font-size: 1.5rem;
+  text-align: center;
   color: var(--black);
 }
 
@@ -1374,9 +1374,9 @@ select:invalid:focus {
     z-index: 0;
   }
 
-    .info-service__details__price-card button span {
-      transform: rotate(0deg);
-    }
+  .info-service__details__price-card button span {
+    transform: rotate(0deg);
+  }
 
   .info-service__details__price-card__events {
     top: 90%;
@@ -1388,6 +1388,14 @@ select:invalid:focus {
     bottom: auto;
     border-bottom: var(--primary) 10px solid;
     border-top: 10px solid transparent;
+  }
+
+  .event {
+    flex-direction: row;
+  }
+
+  .event__header {
+    width: 60%;
   }
 }
 
