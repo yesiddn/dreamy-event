@@ -183,7 +183,7 @@ function showInfoService(data) {
   );
 
   const infoServiceDetailsHeaderRatingP = document.createElement('p');
-  infoServiceDetailsHeaderRatingP.textContent = `4.5⭐`;
+  infoServiceDetailsHeaderRatingP.textContent = `★${data.rating}`;
 
   infoServiceDetailsHeaderRating.appendChild(infoServiceDetailsHeaderRatingP);
 

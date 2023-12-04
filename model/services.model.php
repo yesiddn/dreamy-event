@@ -28,7 +28,7 @@ class ServicesModel
   public static function getService($id)
   {
     try {
-      $query = "SELECT * FROM services WHERE id_service = ?";
+      $query = "SELECT services.*, ROUND(AVG(COALESCE(comments.calificacion_comentario, 0)), 1) AS rating FROM services INNER JOIN comments ON comments.id_servicio = services.id_service WHERE id_service = ?";
       $response = Connection::connect()->prepare($query);
       $response->bindParam(1, $id, PDO::PARAM_INT);
       $response->execute();
