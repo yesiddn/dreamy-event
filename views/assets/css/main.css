@@ -1333,7 +1333,6 @@ select:invalid:focus {
   .event-details .cards-container {
     width: 60%;
   }
-}
 
 .create__event-button {
   color: var(--white);
