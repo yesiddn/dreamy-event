@@ -199,7 +199,7 @@ async function showEventsInPriceCard() {
   const events = await getEvents();
 
   if ((events.status = 200)) {
-    if (events.data[0].idEvent !== null) {
+    if (events.data !== null) {
       insertEvents(events.data, eventsContainer);
     }
   }
