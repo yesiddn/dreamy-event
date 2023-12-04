@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
     formData.append('action', 'create');
     formData.append('comment', commentTextarea.value);
     formData.append('ratingComment', stars ? stars.value : ''); 
-    formData.append('idCustomer', customer.id_customer);
+    formData.append('idCustomer', user.id_customer);
     formData.append('idService', idService);
 
     fetch('./control/comments.control.php', {
