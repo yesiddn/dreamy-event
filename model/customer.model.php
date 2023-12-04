@@ -13,7 +13,7 @@ class CustomerModel
         return array('status' => 409, 'message' => 'User already exists');
       }
 
-      $response = UserModel::createUser($email, $password);
+      $response = UserModel::createUser($email, $password, $name);
       $user = $response['data'];
     } catch (Exception $e) {
       return $e->getMessage();
@@ -21,7 +21,7 @@ class CustomerModel
 
     try {
       $img = FilesModel::saveImage($img);
-
+ 
       $sql = "INSERT INTO customers (name_customer, last_name_customer, phone_customer, city_customer, country_customer, img_profile_customer, id_user) VALUES (?, ?, ?, ?, ?, ?, ?)";
       $connection = Connection::connect();
       $query = $connection->prepare($sql);

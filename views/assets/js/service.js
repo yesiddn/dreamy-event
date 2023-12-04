@@ -16,7 +16,6 @@ async function getServices(category, idCustomer) {
 function showServices(services) {
   const cardsContainer = document.getElementById('cards__container');
 
-  // recorrer objeto services
   for (const service in services) {
     const serviceItem = services[service];
     const card = document.createElement('a');
@@ -30,7 +29,7 @@ function showServices(services) {
     if (serviceItem[0].is_favorite) {
       favorite.classList.add('favorite--active');
     }
-    
+
     favorite.addEventListener('click', (e) => {
       e.preventDefault();
       if (favorite.classList.contains('favorite--active')) {
@@ -58,7 +57,7 @@ function showServices(services) {
     rating.textContent = `★${'¡FALTA!'}`;
 
     const location = document.createElement('p');
-    location.textContent = `Ubicación: ${serviceItem[0].location}`;
+    location.textContent = serviceItem[0].location;
 
     const price = document.createElement('p');
     price.textContent = `$${serviceItem[0].price}`;
@@ -75,8 +74,8 @@ function showServices(services) {
   }
 }
 
-if (customer !== null) {
-  getServices('all', customer.id_customer);
-} else {
+if (!user) {
   getServices('all', null);
+} else {
+  getServices('all', user.id_customer);
 }

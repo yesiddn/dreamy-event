@@ -31,8 +31,8 @@
       <button>Reservar</button>
     </div>
   </div> -->
+    <script defer src="./views/assets/js/events.js"></script>
 </section>
-
 
 <section class="comments__container">
   <form class="commentForm">
@@ -58,15 +58,13 @@
   </form>
 </section>
 
-
-
-
 <section class="opinions">
   <h2>Opiniones de Usuarios</h2>
   <div class="opinions-container" id="opinions-container">
     
-    </div>
-  </section>
+  </div>
   
   <script src='views/assets/js/comments.js'></script>
   <script src='views/assets/js/showComments.js'></script>
+</section>
+

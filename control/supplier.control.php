@@ -1,33 +1,33 @@
 <?php
+session_start();
+include_once '../model/supplier.model.php';
 
 class SupplierControl {
-  public $nameCompany;
+  public $name;
   public $email;
   public $phone;
   public $rut;
   public $city;
   public $country;
-  public $image;
+  public $img;
   public $userId;
 
-  public function addSupplier() {
-    $objRespuesta = supplierModel::mdlSupplier($this->nameCompany,$this->email,$this->phone,$this->rut,$this->city,$this->country,$this->image,$this->userId);
-    echo json_encode($objRespuesta);
-}
+  public function createSupplier() {
+    $newSupplier = SupplierModel::createSupplier($this->name, $this->email, $this->phone, $this->rut, $this->city, $this->country, $this->img, $this->userId);
 
+    echo json_encode($newSupplier);
+  }
 }
 
 if($_POST['action'] == 'create') {
   $customer = new SupplierControl();
-  $customer->nameCompany = $_POST['name_company'];
+  $customer->name = $_POST['name'];
   $customer->email = $_POST['email'];
   $customer->phone = $_POST['phone'];
   $customer->rut = $_POST['rut'];
   $customer->city = $_POST['city'];
   $customer->country = $_POST['country'];
-  $customer->image = $_POST['image'];
+  $customer->img = $_FILES['img'];
   $customer->userId = $_POST['id_user'];
+  $customer->createSupplier();
 }
-
-
- 

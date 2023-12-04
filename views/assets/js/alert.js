@@ -25,6 +25,10 @@ function showAlert(typeAlert) {
       message: 'Servicio agregado a favoritos.',
       color: '#ADFFC7',
     },
+    'supplier-created': {
+      message: 'Proveedor creado correctamente.',
+      color: '#ADFFC7',
+    },
     'favorite-exists': {
       message: 'El servicio ya existe en favoritos.',
       color: '#ADBDFF',
@@ -37,7 +41,42 @@ function showAlert(typeAlert) {
       message: 'Servicio eliminado de favoritos.',
       color: '#ADFFC7',
     },
-
+    'Without logging in': {
+      message: 'Por favor inicie sesión o cree una cuenta.',
+      color: '#F02D3A',
+    },
+    'event created successfully': {
+      message: 'Evento creado correctamente.',
+      color: '#ADFFC7',
+    },
+    'service added to event': {
+      message: 'Servicio agregado al evento.',
+      color: '#ADFFC7',
+    },
+    'service not added to event': {
+      message: 'Error al agregar servicio al evento.',
+      color: '#F02D3A',
+    },
+    'service has already been added to the event': {
+      message: 'El servicio ya ha sido agregado al evento.',
+      color: '#ADBDFF',
+    },
+    'event deleted': {
+      message: 'Evento eliminado correctamente.',
+      color: '#ADFFC7',
+    },
+    'event updated': {
+      message: 'Evento editado correctamente.',
+      color: '#ADFFC7',
+    },
+    'something went wrong': {
+      message: 'Algo salió mal.',
+      color: '#F02D3A',
+    },
+    'service removed from event': {
+      message: 'Servicio eliminado del evento.',
+      color: '#ADFFC7',
+    },
     'comment-exists': {
       message: 'Gracias por tu calificación y tu comentario',
       color: '#ADFFC7',

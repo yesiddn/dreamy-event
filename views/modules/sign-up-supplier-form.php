@@ -1,32 +1,32 @@
-<section class="form-section" id="signup-section">
+<section class="form-section">
   <div class="form__container">
-    <h2>Registrase</h2>
+    <h2>Registrarse como <span class="primary">proveedor</span></h2>
 
     <div class="square"></div>
 
     <form class="form" id="form">
       <label for="name" class="form__input">
         <!-- <span>Nombre:</span> -->
-        <input id="name" type="text" name="name" placeholder="Nombre" onkeyup="validateInputData('name')">
+        <input id="name" type="text" name="name" placeholder="Nombre de proveedor" onkeyup="validateInputData('name')">
         <!-- mensaje de error -->
-        <span class="inactive">Ingrese un valor valido.</span>
-      </label>
-
-      <label for="last-name" class="form__input">
-        <!-- <span>Last name:</span> -->
-        <input id="last-name" type="text" name="last-name" placeholder="Last name" onkeyup="validateInputData('last-name')">
         <span class="inactive">Ingrese un valor valido.</span>
       </label>
 
       <label for="email" class="form__input">
         <!-- <span>Email:</span>  -->
-        <input id="email" type="email" name="email" placeholder="Email" onkeyup="validateInputData('email')">
+        <input id="email" type="email" name="email" placeholder="Email de contacto" onkeyup="validateInputData('email')">
         <span class="inactive">Ingrese un valor valido.</span>
       </label>
 
       <label for="phone" class="form__input">
         <!-- <span>Telefono:</span>  -->
-        <input id="phone" type="number" name="phone" placeholder="Telefono" onkeyup="validateInputData('phone')">
+        <input id="phone" type="number" name="phone" placeholder="Telefono de contacto" onkeyup="validateInputData('phone')">
+        <span class="inactive">Ingrese un valor valido.</span>
+      </label>
+
+      <label for="rut" class="form__input">
+        <!-- <span>Telefono:</span>  -->
+        <input id="rut" type="number" name="rut" placeholder="RUT" onkeyup="validateInputData('rut')">
         <span class="inactive">Ingrese un valor valido.</span>
       </label>
 
@@ -44,13 +44,6 @@
         <span class="inactive">Ingrese un valor valido.</span>
       </label>
 
-      <!-- password -->
-      <label for="pass" class="form__input">
-        <!-- <span>Password:</span> -->
-        <input id="pass" type="password" name="pass" placeholder="Password" onkeyup="validateInputData('pass')">
-        <span class="inactive">Ingrese un valor valido.</span>
-      </label>
-
       <!-- img -->
       <label for="img" class="form__input">
         Foto de perfil:
@@ -64,6 +57,6 @@
 </section>
 
 <script>
-  const customerFormButton = document.getElementById('form-button');
-  customerFormButton.addEventListener('click', () => signUp('customer'));
+  const supplierFormButton = document.getElementById('form-button');
+  supplierFormButton.addEventListener('click', () => signUp('supplier'));
 </script>
