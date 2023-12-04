@@ -58,4 +58,15 @@
   </form>
 </section>
 
-<script src='views/assets/js/comments.js'></script>
+
+
+
+<section class="opinions">
+  <h2>Opiniones de Usuarios</h2>
+  <div class="opinions-container" id="opinions-container">
+    
+    </div>
+  </section>
+  
+  <script src='views/assets/js/comments.js'></script>
+  <script src='views/assets/js/showComments.js'></script>

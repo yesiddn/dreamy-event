@@ -1096,8 +1096,15 @@ select:invalid:focus {
   padding-right: 15px;
 }
 
+/* Opinions*/
 
-
+.opinions{
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  margin-top: 50px;
+}
 
 /* alerts */
 .alert {
@@ -1162,3 +1169,50 @@ select:invalid:focus {
     align-items: flex-start;
   }
 }
+
+
+ 
+  .opinions {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    
+}
+
+.opinions h2 {
+    color: #333;
+    text-align: center;
+}
+
+.opinion {
+    border: 1px solid #ddd;
+    margin-bottom: 15px;
+    padding: 15px;
+    background-color: #fff;
+    box-shadow: 0 5px 15px var(--primary);
+    border-radius: 10px;
+
+}
+
+.usuario {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.calification {
+    color: #f39c12;
+    margin-bottom: 10px;
+}
+
+.comment {
+    color: #777;
+}
+
+
+
