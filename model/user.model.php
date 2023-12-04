@@ -1,10 +1,11 @@
 <?php
 include_once 'connection.model.php';
 include_once 'files.model.php';
+include_once 'reg-success-email.model.php';
 
 class UserModel
 {
-  public static function createUser($email, $password)
+  public static function createUser($email, $password, $name)
   {
     try {
       $sql = "INSERT INTO users (email_user,password_user) VALUES (?, ?)";
@@ -15,6 +16,8 @@ class UserModel
 
       if ($query->execute()){
         $userId = $connection->lastInsertId();
+        $email = RegEmail::SignUpEmailConfirmation($email,$name);
+
       } else {
         return $connection->errorInfo()[2];
       }

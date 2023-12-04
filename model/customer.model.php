@@ -4,7 +4,7 @@ include_once 'user.model.php';
 
 class CustomerModel
 {
-  public static function createCustomer($name, $lastName, $email, $phone, $city, $country, $password, $img, $eventId)
+  public static function createCustomer($name, $lastName, $email, $phone, $city, $country, $password, $img)
   {
     try {
       $userExist = UserModel::getByEmail($email);
@@ -13,7 +13,7 @@ class CustomerModel
         return array('status' => 409, 'message' => 'User already exists');
       }
 
-      $response = UserModel::createUser($email, $password);
+      $response = UserModel::createUser($email, $password, $name);
       $user = $response['data'];
     } catch (Exception $e) {
       return $e->getMessage();
