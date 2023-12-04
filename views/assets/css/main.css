@@ -1340,6 +1340,7 @@ select:invalid:focus {
     grid-template-columns: 3fr 1fr 1fr;
     grid-template-rows: repeat(2, minmax(130px, 2fr));
     width: 100%;
+    height: auto;
     gap: 1rem;
   }
 

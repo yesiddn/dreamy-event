@@ -54,7 +54,7 @@ function showServices(services) {
 
     // falta la opción de calificación
     const rating = document.createElement('span');
-    rating.textContent = `★${'¡FALTA!'}`;
+    rating.textContent = `★${serviceItem[0].rating}`;
 
     const location = document.createElement('p');
     location.textContent = serviceItem[0].location;
