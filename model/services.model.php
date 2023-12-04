@@ -25,6 +25,30 @@ class ServicesModel
     }
   }
 
+  public static function getServicesSupplier($idSupplier)
+  {
+    try {
+        $query = "SELECT services.id_service, services.name_service, services.description_service, services.price, services.location, services.city,
+        services.country,services.amount_people, services.characteristics, services.id_type_service, services.id_supplier,
+        suppliers.name_company, users.id_user, customers.id_customer, images_services.id_image, images_services.url_image
+        FROM services INNER JOIN images_services ON services.id_service = images_services.id_service 
+        INNER JOIN suppliers ON suppliers.id_supplier = services.id_supplier 
+        INNER JOIN users ON users.id_user = suppliers.id_user 
+        LEFT JOIN customers ON customers.id_user = users.id_user
+        WHERE services.id_supplier = suppliers.id_supplier AND customers.id_customer = ?";
+        $result = Connection::connect()->prepare($query);
+        $result->bindParam(1, $idSupplier, PDO::PARAM_INT);
+        $result->execute();
+        $services = $result->fetchAll();
+        $result = null;
+      
+      return array("codigo" => "200", "mensaje" => "ok", "data" => $services);
+    } catch (Exception $e) {
+      echo json_encode(array("codigo" => "500", "mensaje" => $e->getMessage()));
+    }
+  }
+
+
   public static function getService($id)
   {
     try {

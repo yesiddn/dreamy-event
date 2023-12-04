@@ -788,6 +788,132 @@ select:invalid:focus {
   font-size: 24px;
 }
 
+
+/* list of services in supplier */
+.cards-container2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.card2 {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px var(--primary);
+  background-color: transparent;
+  text-decoration: none;
+  color: var(--black);
+}
+
+.card2 .options {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  padding: 8px;
+  top: 0;
+  right: 0;
+  margin: 1rem;
+  background-color:#7c7c82;
+  background-image: url('../svg/option.svg');
+  border: none;
+  z-index: 100;
+  cursor: pointer;
+  border-radius: 15px;
+}
+
+.card2:hover .options-menu {
+  display: block;
+}
+
+.card2 img {
+  width: 100%;
+  height: 12rem;
+  border-radius: 10px 10px 0 0;
+  object-fit: cover;
+}
+
+.card__content2 {
+  padding: 1rem;
+}
+
+.card__title2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.card__title2 h2 {
+  margin: 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 1.2rem;
+}
+
+.card__title2 span {
+  margin-top: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.card__content2 p {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 1rem;
+}
+
+.card2 .price2  {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--primary);
+}
+
+.options-menu {
+  display: none;
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background-color: #fff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 10px;
+  z-index: 1;
+}
+
+.options-menu button {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  margin: 8px 0;
+  text-align: left;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.options-menu button:hover {
+  background-color: #f0f0f0;
+}
+
+.options-menu button::before {
+  content: url('../svg/option.svg');
+  margin-right: 8px;
+}
+
 /* Filter bar */
 .filer-bar {
   display: flex;
