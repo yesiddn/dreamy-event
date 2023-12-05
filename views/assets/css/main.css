@@ -791,9 +791,52 @@ select:invalid:focus {
 
 /* list of services in supplier */
 .cards-container2 {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 900px;
+  margin: 2rem auto;
+}
+
+.my-services__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  width: 100%; /* Ajustar el ancho al 100% */
+  padding: 0;
+}
+
+.my-services__header__create {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 15px;
+  background-color: var(--primary);
+  text-decoration: none;
+  color: var(--white);
+}
+
+.my-services__header__create:hover {
+  background-color: var(--black);
+  box-shadow: 0 5px 15px var(--primary);
+}
+
+.my-services__header__create span {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background: url('../svg/plus-white.svg') no-repeat center/cover;
+}
+
+.service-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  justify-content: center;
+  align-items: center;
   gap: 2rem;
   width: 100%;
   max-width: 900px;
@@ -811,6 +854,7 @@ select:invalid:focus {
   background-color: transparent;
   text-decoration: none;
   color: var(--black);
+  overflow: hidden;
 }
 
 .card2 .options {
@@ -829,9 +873,83 @@ select:invalid:focus {
   border-radius: 15px;
 }
 
-.card2:hover .options-menu {
-  display: block;
+.options.active {
+  display: flex;
 }
+
+/* Estilos para las opciones de "Editar" y "Eliminar" */
+.options {
+  position: absolute;
+  top:2rem;
+  right: 1rem;
+  top: 0.5rem;
+  right: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--white);
+  box-shadow: 0 5px 15px var(--primary);
+  border-radius: 10px;
+  overflow: hidden;
+  z-index:100;
+}
+
+.options__edit,
+.options__delete {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 200%;
+  gap: 5rem;
+  padding: 2rem 2rem;
+  border: none;
+  text-decoration: none;
+  color: var(--black);
+  cursor: pointer;
+  z-index:initial;
+}
+
+.options__edit:hover,
+.options__delete:hover {
+  background-color: rgba(230, 155, 112, 0.4);
+  z-index:100;
+}
+
+.options__edit span,
+.options__delete span {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  z-index:100;
+}
+
+.options__edit span {
+  background: url('../svg/pencil.svg') no-repeat center/cover;
+  z-index:100;
+}
+
+.options__delete span {
+  background: url('../svg/trash.svg') no-repeat center/cover;
+  z-index:100;
+}
+
+/* Estilo para el ícono de "Elipsis" */
+.icon-ellipsis {
+  position: absolute;
+  display: inline-block;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 24px;
+  height: 24px;
+  background: url('../svg/elipsis.svg') no-repeat center/cover;
+  z-index:100;
+}
+
+/* Resto de tus estilos, si los tienes */
+
+
+
 
 .card2 img {
   width: 100%;
@@ -912,6 +1030,12 @@ select:invalid:focus {
 .options-menu button::before {
   content: url('../svg/option.svg');
   margin-right: 8px;
+}
+
+/* textareas de form crear servicio */
+.txtArea{
+  background-color: transparent;
+  border-radius: 10px;
 }
 
 /* Filter bar */
