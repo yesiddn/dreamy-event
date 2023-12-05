@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
           const listItem = document.createElement('li');
           listItem.innerHTML = `
              <img src="${service.image_type_service}" alt="${service.name_type_service}" class="filter-bar-img">
+             <span class="line"></span>
              <span>${service.name_type_service}</span>
           `;
           serviceList.appendChild(listItem);
@@ -28,4 +29,3 @@ document.addEventListener('DOMContentLoaded', function () {
     .catch(error => console.error('Error:', error));
  
  });
- 
