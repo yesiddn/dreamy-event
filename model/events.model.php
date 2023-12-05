@@ -77,11 +77,57 @@ class EventsModel {
       );
     }
 
+    $data = array();
+
+    $data["services"] = $response;
+
+    $total = self::getTotal($response);
+    $referenceCode = self::generateReferenceCode($total, 'yesidrodriguez305@gmail.com', $idEvent);
+
+    $data["checkoutData"] = array(
+      'merchantId' => '508029',
+      'accountId' => '512321',
+      'description' => 'Pago por servicios de evento.',
+      'referenceCode' => $referenceCode,
+      'amount' => $total,
+      'extra1' => $idEvent,
+      'tax' => '0',
+      'taxReturnBase' => '0',
+      'currency' => 'COP',
+      'signature' => self::generateSignature('508029', $referenceCode, $total, 'COP'),
+      'test' => '0',
+      'buyerEmail' => 'yesidrodriguez305@gmail.com',
+      'responseUrl' => 'http://192.168.0.42/dreamy-event/response-checkout',
+    );
+
     return array(
       'status' => 200,
       'message' => 'Services found',
-      'data' => $response
+      'data' => $data
     );
+  }
+
+  public static function getTotal($services) {
+    $total = 0;
+
+    foreach ($services as $service) {
+      $total += $service['price'];
+    }
+
+    return $total;
+  }
+
+  public static function generateReferenceCode($total, $buyerEmail, $idEvent) {
+    $referenceCode = md5("$total~$buyerEmail~$idEvent");
+
+    return $referenceCode;
+  }
+
+  public static function generateSignature($merchantId, $referenceCode, $amount, $currency) {
+    $apiKey = '4Vj8eK4rloUd272L48hsrarnUA';
+    $signature = md5("$apiKey~$merchantId~$referenceCode~$amount~$currency");
+
+    return $signature;
   }
 
   public static function addServiceToEvent($idEvent, $idService) {
