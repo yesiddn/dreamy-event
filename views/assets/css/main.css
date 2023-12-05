@@ -791,6 +791,7 @@ select:invalid:focus {
   gap: 1.5rem;
   background-color: var(--white);
   overflow: scroll;
+  justify-content: center;
 }
 
 .filter-bar li {
@@ -800,7 +801,7 @@ select:invalid:focus {
 .filter-bar li img {
   display: block;
   margin: 0 auto;
-  width: 100%;
+  
 }
 
 .filter-bar li span {
