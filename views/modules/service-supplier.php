@@ -1,5 +1,10 @@
 <section class="cards-container" id="cards__container2">
   
+<div class="my-events__header">
+    <h2>Mis eventos</h2>
+    <a href="new-event" class="my-events__header__create">Nuevo servicio<span></span></a>
+  </div>
+
   <!-- <a href="#" class="card">
     <button></button>
     <img src="./views/assets/img/img2.jpeg" alt="Imagen 2">
