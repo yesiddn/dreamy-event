@@ -636,6 +636,7 @@ select:focus {
   border-radius: 10px;
   text-align: center;
   color: var(--white);
+  cursor: pointer;
 }
 
 .event-details .cards-container {

@@ -50,6 +50,10 @@ async function showEventInfo() {
 
 async function showEventResumen() {
   const data = await getEventResumen();
+  if (data === null) return;
+  
+  const services = data.services
+  const checkoutData = data.checkoutData
 
   const resumeEventBody = document.querySelector('.resume-event__body');
   resumeEventBody.innerHTML = '';
@@ -57,7 +61,7 @@ async function showEventResumen() {
   const titleBody = document.createElement('h3');
   titleBody.textContent = 'Resume';
 
-  data.forEach((service) => {
+  services.forEach((service) => {
     const resumeEventService = document.createElement('div');
     resumeEventService.classList.add('resume-event__body__service');
 
@@ -79,7 +83,7 @@ async function showEventResumen() {
   title.textContent = 'Total:';
 
   const price = document.createElement('p');
-  const total = data.reduce((acc, service) => acc + Number(service.price), 0);
+  const total = services.reduce((acc, service) => acc + Number(service.price), 0);
   price.textContent = `$${total}`;
 
   resumeEventTotal.appendChild(title);
@@ -87,13 +91,33 @@ async function showEventResumen() {
   resumeEventBody.appendChild(titleBody);
   resumeEventBody.appendChild(resumeEventTotal);
 
+  // form checkout
+  const form = document.createElement('form');
+  form.action = 'https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/';
+  form.method = 'POST';
+  form.id = 'form-checkout';
+
+  // recorrer objeto checkoutData
+  for (const key in checkoutData) {
+    if (Object.hasOwnProperty.call(checkoutData, key)) {
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = key;
+      input.value = checkoutData[key];
+
+      form.appendChild(input);
+    }
+  }
+
   const button = document.createElement('button');
-  button.type = 'button';
+  button.type = 'submit';
   button.classList.add('resume-event__body__button');
   button.id = 'reserve';
   button.textContent = 'Reservar servicios';
 
-  resumeEventBody.appendChild(button);
+  form.appendChild(button);
+  resumeEventBody.appendChild(form);
+  // resumeEventBody.appendChild(button);
 }
 
 async function getServicesByEventId(eventId) {
