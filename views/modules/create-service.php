@@ -2,7 +2,7 @@
   <section class="form-section">
 
     <div class="form__container">
-      <h2>Registrar nuevo <span class="primary">servicio</span></h2>
+      <h2>Registrar <span class="primary">servicio</span></h2>
 
       <div class="square"></div>
 
@@ -10,6 +10,7 @@
 
         <!-- name -->
         <label for="name_company" class="form__input">
+          Nombre Servicio:
           <input id="name-service" type="text" name="name-service" placeholder="Nombre Servicio"
             onkeyup="validateInputData('name-company')">
           <!-- mensaje de error -->
@@ -26,12 +27,14 @@
 
         <!-- price -->
         <label for="price-service" class="form__input">
+          Precio:
           <input id="price-service" type="number" name="price-service" placeholder="Precio">
           <span class="inactive">Ingrese un valor valido.</span>
         </label>
 
         <!-- location -->
         <label for="location-service" class="form__input">
+          Ubicación:
           <input id="location-service" type="text" name="location-service" placeholder="Ubicacion">
           <!-- mensaje de error -->
           <span class="inactive">Ingrese un valor valido.</span>
@@ -39,12 +42,14 @@
 
         <!-- city -->
         <label for="city-service" class="form__input">
+          Ciudad:
           <input id="city-service" type="text" name="city-service" placeholder="Ciudad">
           <span class="inactive">Ingrese un valor valido.</span>
         </label>
 
         <!-- country -->
         <label for="country-service" class="form__input">
+          País:
           <input id="country-service" type="text" name="country-service" placeholder="Pais">
           <span class="inactive">Ingrese un valor valido.</span>
         </label>
@@ -52,6 +57,7 @@
 
         <!-- people amount -->
         <label for="peopleAmount-service" class="form__input">
+        Cantidad de personas:
           <input id="peopleAmount-service" type="number" name="peopleAmount-service" placeholder="Cantidad de personas">
           <span class="inactive">Ingrese un valor valido.</span>
         </label>
@@ -75,7 +81,7 @@
 
         <!-- service type -->
         <label for="type-service" class="form__input">
-          Tipo de evento:
+          Tipo de servicio:
           <select name="type-service" id="type-service" onchange="validateInputData('event-type')">
             <option value="" hidden>Seleccione un tipo de servicio</option>
 
@@ -107,14 +113,11 @@
           <span class="inactive">Ingrese un valor valido.</span>
         </label>
 
-
-
-
-
         <button type="button" id="service-form-button">Registrase</button>
       </form>
     </div>
+    <script defer src="./views/assets/js/create-service.js"></script>
   </section>
 
-  <script src="../assets/js/create-service.js"></script>
+
 

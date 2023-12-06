@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
         // Realizar la solicitud fetch
-        fetch('../../control/services.control.php', {
+        fetch('./control/services.control.php', {
             method: 'POST',
             body: formData
         })
