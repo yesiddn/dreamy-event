@@ -23,6 +23,30 @@
         <span class="inactive">Ingrese un valor valido.</span>
       </label>
 
+      <!-- address event -->
+      <label for="event-address" class="form__input">
+        Dirección:
+        <input id="event-address" type="text" name="event-address" placeholder="Dirección" onkeyup="validateInputData('event-address')">
+
+        <span class="inactive">Ingrese un valor valido.</span>
+      </label>
+
+      <!-- city event -->
+      <label for="event-city" class="form__input">
+        Ciudad:
+        <input id="event-city" type="text" name="event-city" placeholder="Ciudad" onkeyup="validateInputData('event-city')">
+
+        <span class="inactive">Ingrese un valor valido.</span>
+      </label>
+
+      <!-- country event -->
+      <label for="event-country" class="form__input">
+        País:
+        <input id="event-country" type="text" name="event-country" placeholder="País" onkeyup="validateInputData('event-country')">
+
+        <span class="inactive">Ingrese un valor valido.</span>
+      </label>
+
       <!-- type event -->
       <label for="event-type" class="form__input">
         Tipo de evento:
