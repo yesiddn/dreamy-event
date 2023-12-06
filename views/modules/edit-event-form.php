@@ -1,7 +1,7 @@
 <section class="form-section">
 
   <div class="form__container">
-    <h2>Crear <span class="primary">Evento</span></h2>
+    <h2>Editar <span class="primary">Evento</span></h2>
 
     <div class="square"></div>
 
@@ -58,14 +58,20 @@
         <span class="inactive">Ingrese un valor valido.</span>
       </label>
 
-      <button type="submit" id="form-button">Crear</button>
+      <button type="submit" id="form-button">Editar</button>
     </form>
   </div>
-</section>
+  
+  <script defer src="./views/assets/js/events.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      fillEventForm();
+    });
 
-<script src="./views/assets/js/events.js"></script>
-<script defer src="./views/assets/js/event.js"></script>
-<!-- <script>
-    const newEventFormButton = document.getElementById('form-button');
-    newEventFormButton.addEventListener('click', () => createUser('event'));
-  </script> -->
+    const editEventFormButton = document.getElementById('form-button');
+    editEventFormButton.addEventListener('click', () => {
+      event.preventDefault();
+      editEvent();
+    });
+  </script>
+</section>

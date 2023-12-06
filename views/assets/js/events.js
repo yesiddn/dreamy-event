@@ -10,35 +10,28 @@ async function getEvents() {
   return events;
 }
 
+async function getEventById(idEvent) {
+  const data = new FormData();
+  data.set('action', 'read by id');
+  data.set('idEvent', idEvent);
+
+  const url = './control/events.control.php';
+  const method = 'POST';
+
+  const event = await fetchData(url, method, data);
+
+  return event;
+}
+
 function showEvents(events) {
-  // <a class="event" href="#">
-  //   <div class="event__header">
-  //     <h3 title="Cumpleaños">Cumpleaño</h3>
-
-  //     <div class="event__header__details">
-  //       <p>
-  //         cantidad de servicios <span class="highlight-text">3</span>
-  //       </p>
-  //       <p>
-  //         Fecha:<span class="highlight-text">10/12/2023</span>
-  //       </p>
-  //     </div>
-  //   </div>
-
-  //   <div class="event__price">
-  //     <h4>
-  //       Total: <span class="highlight-text">$500.000</span>
-  //     </h4>
-  //   </div>
-  // </a>;
-
   const eventsContainer = document.querySelector('.events-list');
+  eventsContainer.innerHTML = '';
 
   events.forEach((event) => {
     // event container
     const eventContainer = document.createElement('a');
     eventContainer.classList.add('event');
-    eventContainer.href = `/event?/${event.idEvent}`;
+    eventContainer.href = `resume-event?/${event.idEvent}`;
 
     // event header
     const eventHeader = document.createElement('div');
@@ -83,6 +76,10 @@ function showEvents(events) {
     spanTotal.classList.add('highlight-text');
 
     // total con toLocaleString y sin decimales
+    if (event.total === null) {
+      event.total = 0;
+    }
+
     const total = event.total.toLocaleString('es-CO', {
       style: 'currency',
       currency: 'COP',
@@ -93,6 +90,57 @@ function showEvents(events) {
 
     eventTotal.appendChild(spanTotal);
 
+    // event options
+    const eventOptions = document.createElement('div');
+    eventOptions.classList.add('event__options');
+    eventOptions.classList.add('inactive');
+
+    // event options -> editar
+    const eventEdit = document.createElement('a');
+    eventEdit.href = `edit-event?/${event.idEvent}`;
+    eventEdit.classList.add('event__options__edit');
+
+    const eventEditIcon = document.createElement('span');
+    eventEditIcon.classList.add('icon-pencil');
+
+    eventEdit.textContent = 'Editar';
+    eventEdit.appendChild(eventEditIcon);
+
+    // event options -> eliminar
+    const eventDelete = document.createElement('button');
+    eventDelete.setAttribute('type', 'button');
+    eventDelete.classList.add('event__options__delete');
+
+    eventDelete.addEventListener('click', async (e) => {
+      e.preventDefault();
+      await deleteEvent(event.idEvent);
+    });
+
+    const eventDeleteIcon = document.createElement('span');
+    eventDeleteIcon.classList.add('icon-trash');
+
+    eventDelete.textContent = 'Eliminar';
+    eventDelete.appendChild(eventDeleteIcon);
+
+    eventOptions.appendChild(eventEdit);
+    eventOptions.appendChild(eventDelete);
+
+    // event options -> show options
+    const eventOptionsShow = document.createElement('span');
+    eventOptionsShow.classList.add('icon-ellipsis');
+
+    eventOptionsShow.addEventListener('click', (e) => {
+      e.preventDefault();
+      eventOptions.classList.toggle('inactive');
+      eventOptions.classList.toggle('active');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (e.target !== eventOptionsShow) {
+        eventOptions.classList.remove('active');
+        eventOptions.classList.add('inactive');
+      }
+    });
 
     // append childs
     eventPrice.appendChild(eventTotal);
@@ -102,6 +150,8 @@ function showEvents(events) {
     eventHeader.appendChild(eventDetails);
     eventContainer.appendChild(eventHeader);
     eventContainer.appendChild(eventPrice);
+    eventContainer.appendChild(eventOptionsShow);
+    eventContainer.appendChild(eventOptions);
     eventsContainer.appendChild(eventContainer);
   });
 }
@@ -111,4 +161,118 @@ async function initEvents() {
   showEvents(events.data);
 }
 
-initEvents();
+function insertEvents(data, eventsContainer) {
+  data.forEach((event) => {
+    const eventContainer = document.createElement('li');
+    eventContainer.textContent = event.name;
+
+    eventContainer.addEventListener('click', (e) => {
+      e.preventDefault();
+      const idService = location.search.split('?/')[1];
+      addServiceToEvent(event.idEvent, idService);
+    });
+
+    eventsContainer.appendChild(eventContainer);
+  });
+}
+
+function insertCreateEvent(eventsContainer) {
+  const eventContainer = document.createElement('li');
+  const eventIcon = document.createElement('span');
+
+  eventContainer.appendChild(eventIcon);
+  eventContainer.appendChild(document.createTextNode('Crear evento'));
+
+  eventContainer.addEventListener('click', () => {
+    const idService = location.search.split('?/')[1];
+    window.location = `new-event?/${idService}`;
+  });
+
+  eventsContainer.appendChild(eventContainer);
+}
+
+async function showEventsInPriceCard() {
+  const eventsContainer = document.querySelector(
+    '.info-service__details__price-card__events'
+  );
+
+  const events = await getEvents();
+
+  if ((events.status = 200)) {
+    if (events.data !== null) {
+      insertEvents(events.data, eventsContainer);
+    }
+  }
+
+  insertCreateEvent(eventsContainer);
+}
+
+async function addServiceToEvent(idEvent, idService) {
+  const data = new FormData();
+  data.set('action', 'addService');
+  data.set('idEvent', idEvent);
+  data.set('idService', idService);
+
+  const url = './control/events.control.php';
+  const method = 'POST';
+
+  const response = await fetchData(url, method, data);
+  if (response.status === 201) {
+    showAlert('service added to event');
+    window.location = 'resume-event?/' + idEvent;
+  } else {
+    showAlert('service has already been added to the event');
+  }
+}
+
+async function deleteEvent(idEvent) {
+  const data = new FormData();
+  data.set('action', 'delete');
+  data.set('idEvent', idEvent);
+
+  const url = './control/events.control.php';
+  const method = 'POST';
+
+  const response = await fetchData(url, method, data);
+
+  if (response.status === 200) {
+    showAlert('event deleted');
+    initEvents();
+  } else {
+    showAlert('something went wrong');
+  }
+}
+
+async function editEvent() {
+  const idEvent = location.search.split('?/')[1];
+  const form = document.querySelector('#form');
+  
+  const data = new FormData(form);
+  data.set('action', 'update');
+  data.set('idEvent', idEvent);
+
+  const url = './control/events.control.php';
+  const method = 'POST';
+
+  const response = await fetchData(url, method, data);
+
+  if (response.status === 200) {
+    showAlert('event updated');
+    window.location = 'my-events';
+  } else {
+    showAlert('something went wrong');
+  }
+
+}
+
+async function fillEventForm() {
+  const event = await getEventById(location.search.split('?/')[1]);
+
+  const name = document.querySelector('#event-name');
+  const date = document.querySelector('#event-date');
+  const type = document.querySelector('#event-type');
+
+  name.value = event.data.name;
+  date.value = event.data.date;
+  type.value = event.data.idEventType;
+}

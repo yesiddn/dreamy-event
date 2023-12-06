@@ -16,7 +16,6 @@ async function getServices(category, idCustomer) {
 function showServices(services) {
   const cardsContainer = document.getElementById('cards__container');
 
-  // recorrer objeto services
   for (const service in services) {
     const serviceItem = services[service];
     const card = document.createElement('a');
@@ -30,7 +29,7 @@ function showServices(services) {
     if (serviceItem[0].is_favorite) {
       favorite.classList.add('favorite--active');
     }
-    
+
     favorite.addEventListener('click', (e) => {
       e.preventDefault();
       if (favorite.classList.contains('favorite--active')) {
@@ -53,9 +52,8 @@ function showServices(services) {
     const title = document.createElement('h2');
     title.textContent = serviceItem[0].name_service;
 
-    // falta la opción de calificación
     const rating = document.createElement('span');
-    rating.textContent = `★${'¡FALTA!'}`;
+    rating.textContent = `★${serviceItem[0].rating}`;
 
     const location = document.createElement('p');
     location.textContent = serviceItem[0].location;
