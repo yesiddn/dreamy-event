@@ -59,7 +59,7 @@
         <!-- characteristics -->
         <label for="characteristics-service" class="form__input">
           Caracteriticas:
-          <textarea class="txtArea" name="characteristics-description" id="characteristics-service" cols="3" rows="5"></textarea>
+          <textarea class="txtArea" name="characteristics-service" id="characteristics-service" cols="3" rows="5"></textarea>
           <!-- mensaje de error -->
           <span class="inactive">Ingrese un valor valido.</span>
         </label>
@@ -116,5 +116,5 @@
     </div>
   </section>
 
-  <script src="../assets/js/create-service.js"></script>
+  <script src="views/assets/js/create-service.js"></script>
 

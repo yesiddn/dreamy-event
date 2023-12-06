@@ -1,7 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-
-
     document.querySelector('#service-form-button').addEventListener('click', function () {
 
         const formService = document.querySelector('#newServiceForm');
@@ -24,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
         // Realizar la solicitud fetch
-        fetch('../../control/services.control.php', {
+        fetch('control/services.control.php', {
             method: 'POST',
             body: formData
         })
