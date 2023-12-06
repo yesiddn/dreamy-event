@@ -96,7 +96,6 @@ class EventsModel {
       'currency' => 'COP',
       'signature' => self::generateSignature('508029', $referenceCode, $total, 'COP'),
       'test' => '0',
-      'buyerEmail' => 'yesidrodriguez305@gmail.com',
       'responseUrl' => 'http://192.168.0.42/dreamy-event/response-checkout',
     );
 
