@@ -7,6 +7,9 @@ class EventsController {
   public $idCustomer;
   public $name;
   public $date;
+  public $address;
+  public $city;
+  public $country;
   public $typeEvent;
 
   public function getEvents()
@@ -31,7 +34,7 @@ class EventsController {
   }
 
   public function updateEvent() {
-    $response = EventsModel::updateEvent($this->idEvent, $this->name, $this->date, $this->typeEvent);
+    $response = EventsModel::updateEvent($this->idEvent, $this->name, $this->date, $this->address, $this->city, $this->country, $this->typeEvent);
     echo json_encode($response);
   }
 
@@ -76,6 +79,9 @@ if (isset($_POST["action"]) && $_POST["action"] == "update") {
   $events->idEvent = $_POST["idEvent"];
   $events->name = $_POST["event-name"];
   $events->date = $_POST["event-date"];
+  $events->address = $_POST["event-address"];
+  $events->city = $_POST["event-city"];
+  $events->country = $_POST["event-country"];
   $events->typeEvent = $_POST["event-type"];
   $events->updateEvent();
 }

@@ -49,6 +49,9 @@ class EventsModel {
       'idEvent' => $response['id_event'],
       'name' => $response['name_event'],
       'date' => $response['date'],
+      'address' => $response['address'],
+      'city' => $response['city'],
+      'country' => $response['country'],
       'idEventType' => $response['id_event_type'],
       'idCustomer' => $response['id_customer'],
     );
@@ -156,14 +159,17 @@ class EventsModel {
     );
   }
 
-  public static function updateEvent($idEvent, $name, $date, $typeEvent) {
-    $sql = "UPDATE events SET name_event = ?, date = ?, id_event_type = ? WHERE id_event = ?;";
+  public static function updateEvent($idEvent, $name, $date, $addres, $city, $country, $typeEvent) {
+    $sql = "UPDATE events SET name_event = ?, date = ?, address = ?, city = ?, country = ?, id_event_type = ? WHERE id_event = ?;";
 
     $query = Connection::connect()->prepare($sql);
     $query->bindParam(1, $name, PDO::PARAM_STR);
     $query->bindParam(2, $date, PDO::PARAM_STR);
-    $query->bindParam(3, $typeEvent, PDO::PARAM_INT);
-    $query->bindParam(4, $idEvent, PDO::PARAM_INT);
+    $query->bindParam(3, $addres, PDO::PARAM_STR);
+    $query->bindParam(4, $city, PDO::PARAM_STR);
+    $query->bindParam(5, $country, PDO::PARAM_STR);
+    $query->bindParam(6, $typeEvent, PDO::PARAM_INT);
+    $query->bindParam(7, $idEvent, PDO::PARAM_INT);
     $response = $query->execute();
     $query = null;
 
@@ -182,6 +188,9 @@ class EventsModel {
         'idEvent' => $idEvent,
         'name' => $name,
         'date' => $date,
+        'address' => $addres,
+        'city' => $city,
+        'country' => $country,
         'idEventType' => $typeEvent
       )
     );
