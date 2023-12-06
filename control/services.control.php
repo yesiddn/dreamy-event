@@ -44,11 +44,17 @@ class ServiceControl
     $getService = ServicesModel::getServices($this->idCustomer);
     echo json_encode($getService);
   }
-
+  
   public function getEventServices()
   {
     $getEventServices = ServicesModel::getEventServices($this->idEvent);
     echo json_encode($getEventServices);
+  }
+  
+  public function getServicesSupplier()
+  {
+    $getServiceSupplier = ServicesModel::getServicesSupplier($this->idSupplier);
+    echo json_encode($getServiceSupplier);
   }
 }
 
@@ -60,6 +66,14 @@ if ($_POST["action"] == "read") {
   }
 }
 
+if ($_POST["action"] == "reads") {
+  $getServicesSupplier = new ServiceControl();
+  $getServicesSupplier->idSupplier = $_POST["idSupplier"];
+  if ($_POST["category"] == "all") {
+    $getServicesSupplier->getServicesSupplier();
+  }
+}
+  
 if ($_POST["action"] == "read event services") {
   $getServices = new ServiceControl();
   $getServices->idEvent = $_POST["eventId"];
