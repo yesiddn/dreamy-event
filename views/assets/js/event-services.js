@@ -42,8 +42,16 @@ async function showEventInfo() {
   const spanDate = document.createElement('span');
   spanDate.textContent = data.date;
 
+  const location = document.createElement('p');
+  location.textContent = 'Lugar: ';
+
+  const spanLocation = document.createElement('span');
+  spanLocation.textContent = `${data.address} | ${data.city}`;
+  
   date.appendChild(spanDate);
+  location.appendChild(spanLocation);
   details.appendChild(date);
+  details.appendChild(location);
   header.appendChild(title);
   header.appendChild(details);
 }
