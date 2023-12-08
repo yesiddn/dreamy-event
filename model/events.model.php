@@ -52,6 +52,7 @@ class EventsModel {
       'address' => $response['address'],
       'city' => $response['city'],
       'country' => $response['country'],
+      'transactionState' => $response['transaction_state'],
       'idEventType' => $response['id_event_type'],
       'idCustomer' => $response['id_customer'],
     );
