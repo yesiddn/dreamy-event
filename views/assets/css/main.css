@@ -635,8 +635,16 @@ select:focus {
   border: none;
   border-radius: 10px;
   text-align: center;
+  text-decoration: none;
   color: var(--white);
   cursor: pointer;
+}
+
+.resume-event__body__message {
+  margin: 1rem 0 0;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--black);
 }
 
 .event-details .cards-container {
@@ -822,6 +830,7 @@ select:invalid:focus {
 .filter-bar li a {
   text-decoration: none;
 }
+
 /* info Service */
 .info-service {
   width: 100%;
