@@ -971,15 +971,18 @@ select:invalid:focus {
 .filter-bar {
   display: flex;
   align-items: center;
-  padding: 1rem;
+  width: 100%;
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0;
   gap: 1.5rem;
   background-color: var(--white);
   overflow: scroll;
-  justify-content: center;
 }
 
 .filter-bar li {
   list-style: none;
+  cursor: pointer;
 }
 
 .filter-bar li img {
@@ -1489,7 +1492,7 @@ select:invalid:focus {
 }
 
 @media (min-width: 768px) {
-  .filer-bar {
+  .filter-bar {
     justify-content: space-evenly;
     overflow: hidden;
   }
