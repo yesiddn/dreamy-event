@@ -85,6 +85,23 @@ function showAlert(typeAlert) {
       message: 'No se ha podido agregar tu calificación y comentario',
       color: '#F02D3A',
     },
+    // transaction states
+    'transaction approved': {
+      message: 'Se ha realizado el pago correctamente.',
+      color: '#ADFFC7',
+    },
+    'transaction rejected': {
+      message: 'El pago ha sido rechazado.',
+      color: '#F02D3A',
+    },
+    'transaction pending': {
+      message: 'El pago está pendiente.',
+      color: '#ADBDFF',
+    },
+    'transaction error': {
+      message: 'Ha ocurrido un error al realizar el pago.',
+      color: '#F02D3A',
+    },
   };
 
   let alert = document.getElementById('alert');
