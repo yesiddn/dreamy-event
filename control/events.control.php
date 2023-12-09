@@ -47,6 +47,11 @@ class EventsController {
     $response = EventsModel::deleteEventService($this->idEvent, $this->idService);
     echo json_encode($response);
   }
+
+  public function updateCheckoutState() {
+    $response = EventsModel::updateCheckoutState($this->idEvent);
+    echo json_encode($response);
+  }
 }
 
 if (isset($_POST["action"]) && $_POST["action"] == "read") {
@@ -103,4 +108,10 @@ if (isset($_POST["action"]) && $_POST["action"] == "delete event service") {
   $events->idEvent = $_POST["idEvent"];
   $events->idService = $_POST["idService"];
   $events->deleteEventService();
+}
+
+if (isset($_POST["action"]) && $_POST["action"] == "update checkout state") {
+  $events = new EventsController();
+  $events->idEvent = $_POST["idEvent"];
+  $events->updateCheckoutState();
 }
