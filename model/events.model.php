@@ -100,7 +100,7 @@ class EventsModel {
       'currency' => 'COP',
       'signature' => self::generateSignature('508029', $referenceCode, $total, 'COP'),
       'test' => '0',
-      'responseUrl' => 'http://192.168.0.42/dreamy-event/response-checkout',
+      'responseUrl' => 'http://192.168.0.42/dreamy-event/resume-event?/' . $idEvent,
     );
 
     return array(
@@ -265,6 +265,31 @@ class EventsModel {
       'data' => array(
         'idEvent' => $idEvent,
         'idService' => $idService
+      )
+    );
+  }
+
+  public static function updateCheckoutState($idEvent) {
+    $sql = "UPDATE events SET transaction_state = 4 WHERE id_event = ?;";
+
+    $query = Connection::connect()->prepare($sql);
+    $query->bindParam(1, $idEvent, PDO::PARAM_INT);
+    $response = $query->execute();
+    $query = null;
+
+    if (!$response) {
+      return array(
+        'status' => 400,
+        'message' => 'Event not updated',
+        'data' => null
+      );
+    }
+
+    return array(
+      'status' => 200,
+      'message' => 'Event updated',
+      'data' => array(
+        'idEvent' => $idEvent
       )
     );
   }
