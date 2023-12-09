@@ -5,6 +5,7 @@ include_once("./views/modules/alerts.php");
 include_once("./views/modules/header.php");
 
 if (!isset($_GET["rout"]) || $_GET["rout"] == "home") {
+  include_once("./views/modules/hero.php");
   include_once("./views/modules/filter-bar.php");
   include_once("./views/modules/list-of-services.php");
 } elseif ($_GET["rout"] == "sign-up") {
