@@ -50,6 +50,12 @@ class ServiceControl
     $getEventServices = ServicesModel::getEventServices($this->idEvent);
     echo json_encode($getEventServices);
   }
+
+  public function getServicesByType()
+  {
+    $services = ServicesModel::getServicesByType($this->idCustomer, $this->idTypeService);
+    echo json_encode($services);
+  }
   
   public function getServicesSupplier()
   {
@@ -78,6 +84,13 @@ if ($_POST["action"] == "read event services") {
   $getServices = new ServiceControl();
   $getServices->idEvent = $_POST["eventId"];
   $getServices->getEventServices();  
+}
+
+if ($_POST["action"] == "read by type") {
+  $getServices = new ServiceControl();
+  $getServices->idCustomer = $_POST["idCustomer"];
+  $getServices->idTypeService = $_POST["idTypeService"];
+  $getServices->getServicesByType();
 }
 
 if (isset($_POST['queryType']) == 'Insert') {
