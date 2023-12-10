@@ -3,6 +3,7 @@ session_start();
 include_once("./views/modules/head.php");
 include_once("./views/modules/alerts.php");
 include_once("./views/modules/header.php");
+include_once("./views/modules/search.php");
 
 if (!isset($_GET["rout"]) || $_GET["rout"] == "home") {
   include_once("./views/modules/hero.php");
