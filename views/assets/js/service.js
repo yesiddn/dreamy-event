@@ -15,6 +15,7 @@ async function getServices(category, idCustomer) {
 
 function showServices(services) {
   const cardsContainer = document.getElementById('cards__container');
+  cardsContainer.innerHTML = '';
 
   for (const service in services) {
     const serviceItem = services[service];
