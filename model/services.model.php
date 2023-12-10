@@ -52,7 +52,7 @@ class ServicesModel
   public static function getService($id)
   {
     try {
-      $query = "SELECT services.*, ROUND(AVG(COALESCE(comments.calificacion_comentario, 0)), 1) AS rating FROM services INNER JOIN comments ON comments.id_servicio = services.id_service WHERE id_service = ?";
+      $query = "SELECT services.*, COALESCE(ROUND(AVG(comments.calificacion_comentario), 1), 0) AS rating FROM services LEFT JOIN comments ON comments.id_servicio = services.id_service WHERE id_service = ?";
       $response = Connection::connect()->prepare($query);
       $response->bindParam(1, $id, PDO::PARAM_INT);
       $response->execute();
@@ -92,11 +92,33 @@ class ServicesModel
     return array("status" => 200, "message" => "ok", "data" => $services);
   }
 
+  public static function getServicesByType($idCustomer, $idTypeService)
+  {
+    try {
+      if ($idCustomer == "null") {
+        $query = "SELECT services.id_service, services.name_service, services.description_service, services.price, services.location, services.city, services.country, services.amount_people, services.characteristics, ROUND(AVG(COALESCE(comments.calificacion_comentario, 0)), 1) AS rating, services.id_type_service, services.id_supplier, images_services.id_image, images_services.url_image FROM services INNER JOIN images_services ON services.id_service = images_services.id_service LEFT JOIN comments ON comments.id_servicio = services.id_service WHERE services.id_type_service = ? GROUP BY comments.id_servicio;";
+        $result = Connection::connect()->prepare($query);
+        $result->bindParam(1, $idTypeService, PDO::PARAM_INT);
+      } else {
+        $query = "SELECT services.id_service, services.name_service, services.description_service, services.price, services.location, services.city, services.country, services.amount_people, services.characteristics, ROUND(AVG(COALESCE(comments.calificacion_comentario, 0)), 1) AS rating, services.id_type_service, services.id_supplier, images_services.id_image, images_services.url_image, favorites.id_customer AS is_favorite FROM services INNER JOIN images_services ON services.id_service = images_services.id_service LEFT JOIN favorites ON services.id_service = favorites.id_service AND favorites.id_customer = ? LEFT JOIN comments ON comments.id_servicio = services.id_service WHERE services.id_type_service = ? GROUP BY comments.id_servicio;";
+        $result = Connection::connect()->prepare($query);
+        $result->bindParam(1, $idCustomer, PDO::PARAM_INT);
+        $result->bindParam(2, $idTypeService, PDO::PARAM_INT);
+      }
+
+      $result->execute();
+      $services = $result->fetchAll();
+      $result = null;
+
+      return array("codigo" => "200", "mensaje" => "ok", "data" => $services);
+    } catch (Exception $e) {
+      return array("codigo" => "500", "mensaje" => $e->getMessage());
+    }
+  }
+
   public static function createService($data)
   {
     try {
-
-
       $query = "INSERT INTO services (name_service, description_service, price, location, city, country, amount_people, characteristics, id_type_service, id_supplier) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
       $connection = Connection::connect();
@@ -110,19 +132,16 @@ class ServicesModel
       $result->bindParam(6, $data['country'], PDO::PARAM_STR);
       $result->bindParam(7, $data['amount'], PDO::PARAM_INT);
       $result->bindParam(8, $data['characteristics'], PDO::PARAM_STR);
-      $result->bindParam(9, $data['service-type'], PDO::PARAM_INT);
-      $result->bindParam(10, $data['supplier-type'], PDO::PARAM_INT);
+      $result->bindParam(9, $data['id_type_service'], PDO::PARAM_INT);
+      $result->bindParam(10, $data['id_supplier'], PDO::PARAM_INT);
 
       if ($result->execute()) {
-
         $serviceId = $connection->lastInsertId();
+        $data['id'] = $serviceId;
+        return array("codigo" => "200", "mensaje" => "ok", "data" => $data);
       } else {
         return array("codigo" => "500", "mensaje" => $connection->errorInfo()[2]);
-      }
-
-      $data['id'] = $serviceId;
-
-      return array("codigo" => "200", "mensaje" => "ok", "data" => $data);
+      }    
     } catch (Exception $e) {
       return array("codigo" => "500", "mensaje" => $e->getMessage());
     }
@@ -130,7 +149,6 @@ class ServicesModel
 
   public static function editServiceInfo($data)
   {
-
     try {
       $query = "UPDATE services SET description_service = ?, price_service = ?, location_service = ?, city_service = ?, country_service = ?, amount_people_service = ?, characteristics_service = ?, id_service_type = ? WHERE id_service = ?";
       $result = Connection::connect()->prepare($query);

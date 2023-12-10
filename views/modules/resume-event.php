@@ -1,7 +1,7 @@
 <div class="event-details">
-  <section class="resume-event">
+  <!-- <section class="resume-event">
     <div class="resume-event__header">
-      <!-- <h2>CUMPLEAÑOS CAMILO</h2>
+      <h2>CUMPLEAÑOS CAMILO</h2>
   
       <div class="resume-event__header__details">
   
@@ -17,11 +17,11 @@
           <span>##### 00:00</span>
         </p>
   
-      </div> -->
+      </div>
     </div>
 
     <div class="resume-event__body">
-      <!-- 
+      
       <h3>Resumen</h3>
   
       <div class="resume-event__body__service">
@@ -55,14 +55,14 @@
         <p>$300.000</p>
       </div>
   
-      <button type="button" class="resume-event__body__button" id="reserve">Reservar servicios</button> -->
+      <button type="button" class="resume-event__body__button" id="reserve">Reservar servicios</button>
 
     </div>
-  </section>
+  </section> -->
 
-  <section class="cards-container" id="cards__container">
+  <!-- <section class="cards-container" id="cards__container">
 
-    <!-- <a href="#" class="card">
+    <a href="#" class="card">
       <button></button>
       <img src="./views/assets/img/img2.jpeg" alt="Imagen 2">
       <div class="card__content">
@@ -73,8 +73,9 @@
         <p class="">Ubicación: <span></span></p>
         <p class=""></p>
       </div>
-    </a> -->
+    </a>
 
-    <script defer src="./views/assets/js/event-services.js"></script>
-  </section>
+  </section> -->
+
+  <script defer src="./views/assets/js/event-services.js"></script>
 </div>

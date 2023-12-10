@@ -25,13 +25,16 @@ class EventModel
   public static function createEvent($data)
   {
     try {
-      $query = "INSERT INTO events (name_event,date,id_event_type,id_customer) VALUES (?,?,?,?)";
+      $query = "INSERT INTO events (name_event, date, address, city, country, id_event_type, id_customer) VALUES (?,?,?,?, ?, ?, ?)";
       $connection = Connection::connect();
       $result = $connection->prepare($query);
       $result->bindParam(1, $data['name_event'], PDO::PARAM_STR);
       $result->bindParam(2, $data['date'], PDO::PARAM_STR);
-      $result->bindParam(3, $data['id_event_type'], PDO::PARAM_INT);
-      $result->bindParam(4, $data['id_customer'], PDO::PARAM_INT);
+      $result->bindParam(3, $data['address'], PDO::PARAM_STR);
+      $result->bindParam(4, $data['city'], PDO::PARAM_STR);
+      $result->bindParam(5, $data['country'], PDO::PARAM_STR);
+      $result->bindParam(6, $data['id_event_type'], PDO::PARAM_INT);
+      $result->bindParam(7, $data['id_customer'], PDO::PARAM_INT);
 
       if ($result->execute()) {
         $idEvent = $connection->lastInsertId();
@@ -39,6 +42,9 @@ class EventModel
           "idEvent" => $idEvent,
           "name" => $data['name_event'],
           "date" => $data['date'],
+          "address" => $data['address'],
+          "city" => $data['city'],
+          "country" => $data['country'],
           "idEventType" => $data['id_event_type'],
           "idCustomer" => $data['id_customer']
         ));

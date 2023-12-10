@@ -207,11 +207,13 @@ header>div {
 }
 
 /* Hero */
-
 .hero-container {
   position: relative;
   width: 100%;
+  max-width: 900px;
   height: 60dvh;
+  margin: 0 auto;
+  border-radius: 15px;
   overflow: hidden;
 }
 
@@ -223,28 +225,38 @@ header>div {
 
 .hero-text {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  gap: 2rem;
+  margin: 0;
+  backdrop-filter: blur(2px);
   text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
   color: var(--white);
 }
 
-.hero-text p {
-  margin: 0;
-  font-size: 32px;
-  line-height: 1.5;
+.hero-text h2 {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 400px;
 }
 
 .hero-button {
-  margin-top: 20px;
   padding: 10px 20px;
   background-color: var(--primary);
   color: var(--white);
   text-decoration: none;
   border: none;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 1rem;
+  font-weight: normal;
   border-radius: 10px;
   cursor: pointer;
 }
@@ -293,6 +305,7 @@ header>div {
 /* sign up form */
 .form__container h2 {
   text-align: center;
+  margin-bottom: 15px;
 }
 
 .form {
@@ -635,7 +648,16 @@ select:focus {
   border: none;
   border-radius: 10px;
   text-align: center;
+  text-decoration: none;
   color: var(--white);
+  cursor: pointer;
+}
+
+.resume-event__body__message {
+  margin: 1rem 0 0;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--black);
 }
 
 .event-details .cards-container {
@@ -959,15 +981,18 @@ select:invalid:focus {
 .filter-bar {
   display: flex;
   align-items: center;
-  padding: 1rem;
+  width: 100%;
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0;
   gap: 1.5rem;
   background-color: var(--white);
   overflow: scroll;
-  justify-content: center;
 }
 
 .filter-bar li {
   list-style: none;
+  cursor: pointer;
 }
 
 .filter-bar li img {
@@ -994,6 +1019,7 @@ select:invalid:focus {
 .filter-bar li a {
   text-decoration: none;
 }
+
 /* info Service */
 .info-service {
   width: 100%;
@@ -1477,7 +1503,7 @@ select:invalid:focus {
 }
 
 @media (min-width: 768px) {
-  .filer-bar {
+  .filter-bar {
     justify-content: space-evenly;
     overflow: hidden;
   }
@@ -1570,17 +1596,6 @@ select:invalid:focus {
   .event__header {
     width: 60%;
   }
-}
-
-.create__event-button {
-  color: var(--white);
-  text-decoration: none;
-  border-radius: 10px;
-  background-color: var(--primary);
-  padding: 0.630rem;
-  margin-top: 15%;
-  margin-left: 5%;
-  cursor: pointer;
 }
 
 .opinions {

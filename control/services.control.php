@@ -31,12 +31,13 @@ class ServiceControl
       'country' => $this->country,
       'amount' => $this->amountPeople,
       'characteristics' => $this->characteristics,
-      'service-type' => 1,
-      'supplier-type' => 1,
+      'id_type_service' => $this->idTypeService,
+      'id_supplier' => $this->idSupplier,
       'service-pics' => $this->servicePics,
     ];
     $newService = ServicesModel::createService($data);
     $fileService = FilesModel::createServiceImages($newService['data']['id'], $data['service-pics']);
+    echo json_encode($newService,$fileService);
   }
 
   public function getServices()
@@ -49,6 +50,12 @@ class ServiceControl
   {
     $getEventServices = ServicesModel::getEventServices($this->idEvent);
     echo json_encode($getEventServices);
+  }
+
+  public function getServicesByType()
+  {
+    $services = ServicesModel::getServicesByType($this->idCustomer, $this->idTypeService);
+    echo json_encode($services);
   }
   
   public function getServicesSupplier()
@@ -80,6 +87,13 @@ if ($_POST["action"] == "read event services") {
   $getServices->getEventServices();  
 }
 
+if ($_POST["action"] == "read by type") {
+  $getServices = new ServiceControl();
+  $getServices->idCustomer = $_POST["idCustomer"];
+  $getServices->idTypeService = $_POST["idTypeService"];
+  $getServices->getServicesByType();
+}
+
 if (isset($_POST['queryType']) == 'Insert') {
   $ServiceControl = new ServiceControl();
   $ServiceControl->nameService = $_POST['name-service'];
@@ -90,6 +104,8 @@ if (isset($_POST['queryType']) == 'Insert') {
   $ServiceControl->country = $_POST['country-service'];
   $ServiceControl->amountPeople = $_POST['peopleAmount-service'];
   $ServiceControl->characteristics = $_POST['characteristics-service'];
+  $ServiceControl->idTypeService = $_POST['type-service'];
+  $ServiceControl->idSupplier = $_POST['id_supplier'];
 
   $filesData = $_FILES['images'];
   $newArrayFiles = [];

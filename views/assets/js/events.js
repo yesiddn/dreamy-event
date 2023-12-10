@@ -270,9 +270,15 @@ async function fillEventForm() {
 
   const name = document.querySelector('#event-name');
   const date = document.querySelector('#event-date');
+  const address = document.querySelector('#event-address');
+  const city = document.querySelector('#event-city');
+  const country = document.querySelector('#event-country');
   const type = document.querySelector('#event-type');
 
   name.value = event.data.name;
   date.value = event.data.date;
+  address.value = event.data.address;
+  city.value = event.data.city;
+  country.value = event.data.country;
   type.value = event.data.idEventType;
 }
