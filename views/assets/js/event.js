@@ -8,6 +8,9 @@ form.addEventListener('submit', function (event) {
 function createEvent() {
   const nameEvent = document.getElementById('event-name').value;
   const dateEvent = document.getElementById('event-date').value;
+  const address = document.getElementById('event-address').value;
+  const city = document.getElementById('event-city').value;
+  const country = document.getElementById('event-country').value;
   const typeEvent = document.getElementById('event-type').value;
 
   if (user) {
@@ -15,6 +18,9 @@ function createEvent() {
     formData.append('action', 'create');
     formData.append('event-name', nameEvent);
     formData.append('event-date', dateEvent);
+    formData.append('event-address', address);
+    formData.append('event-city', city);
+    formData.append('event-country', country);
     formData.append('event-type', typeEvent);
     formData.append('idCustomer', user.id_customer);
 

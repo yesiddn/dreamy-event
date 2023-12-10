@@ -1,7 +1,7 @@
 async function getEventInfo() {
   const data = new FormData();
   data.set('action', 'read event');
-  data.set('idEvent', window.location.search.split('?/')[1]);
+  data.set('idEvent', window.location.search.split('?/')[1].split('&')[0]);
 
   const url = './control/events.control.php';
   const method = 'POST';
@@ -14,7 +14,7 @@ async function getEventInfo() {
 async function getEventResumen() {
   const data = new FormData();
   data.set('action', 'read event resumen');
-  data.set('idEvent', window.location.search.split('?/')[1]);
+  data.set('idEvent', window.location.search.split('?/')[1].split('&')[0]);
 
   const url = './control/events.control.php';
   const method = 'POST';
@@ -24,11 +24,15 @@ async function getEventResumen() {
   return services.data;
 }
 
-async function showEventInfo() {
-  const data = await getEventInfo();
+async function showEventInfo(data) {
+  const eventDetails = document.querySelector('.event-details');
+  eventDetails.innerHTML = '';
 
-  const header = document.querySelector('.resume-event__header');
-  header.innerHTML = '';
+  const resumeEvent = document.createElement('section');
+  resumeEvent.classList.add('resume-event');
+
+  const header = document.createElement('div');
+  header.classList.add('resume-event__header');
 
   const title = document.createElement('h2');
   title.textContent = data.name;
@@ -42,22 +46,59 @@ async function showEventInfo() {
   const spanDate = document.createElement('span');
   spanDate.textContent = data.date;
 
+  const location = document.createElement('p');
+  location.textContent = 'Lugar: ';
+
+  const spanLocation = document.createElement('span');
+  spanLocation.textContent = `${data.address} | ${data.city}`;
+
   date.appendChild(spanDate);
+  location.appendChild(spanLocation);
   details.appendChild(date);
+  details.appendChild(location);
   header.appendChild(title);
   header.appendChild(details);
+  resumeEvent.appendChild(header);
+  eventDetails.appendChild(resumeEvent);
 }
 
-async function showEventResumen() {
+async function showEventResumen(transactionState) {
   const data = await getEventResumen();
 
-  const resumeEventBody = document.querySelector('.resume-event__body');
-  resumeEventBody.innerHTML = '';
+  const resumeEvent = document.querySelector('.resume-event');
 
+  const resumeEventBody = document.createElement('div');
+  resumeEventBody.classList.add('resume-event__body');
+  
+  if (data === null) {
+    const resumeEventService = document.createElement('div');
+    resumeEventService.classList.add('resume-event__body__service');
+    
+    const title = document.createElement('h4');
+    title.textContent = 'No hay servicios agregados';
+    
+    const button = document.createElement('a');
+    button.href = 'home';
+    button.classList.add('resume-event__body__button');
+    button.textContent = 'Ver servicios';
+
+    resumeEventService.appendChild(title);
+    resumeEventService.appendChild(button);
+    resumeEventBody.appendChild(resumeEventService);
+    resumeEvent.appendChild(resumeEventBody);
+
+    return;
+  }
+  
+  const services = data.services;
+  const checkoutData = data.checkoutData;
+  
   const titleBody = document.createElement('h3');
   titleBody.textContent = 'Resume';
 
-  data.forEach((service) => {
+  resumeEventBody.appendChild(titleBody);
+
+  services.forEach((service) => {
     const resumeEventService = document.createElement('div');
     resumeEventService.classList.add('resume-event__body__service');
 
@@ -79,21 +120,51 @@ async function showEventResumen() {
   title.textContent = 'Total:';
 
   const price = document.createElement('p');
-  const total = data.reduce((acc, service) => acc + Number(service.price), 0);
+  const total = services.reduce(
+    (acc, service) => acc + Number(service.price),
+    0
+  );
   price.textContent = `$${total}`;
 
   resumeEventTotal.appendChild(title);
   resumeEventTotal.appendChild(price);
-  resumeEventBody.appendChild(titleBody);
   resumeEventBody.appendChild(resumeEventTotal);
 
-  const button = document.createElement('button');
-  button.type = 'button';
-  button.classList.add('resume-event__body__button');
-  button.id = 'reserve';
-  button.textContent = 'Reservar servicios';
+  if (transactionState === 2) {
+    // form checkout
+    const form = document.createElement('form');
+    form.action = 'https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/';
+    form.method = 'POST';
+    form.id = 'form-checkout';
+  
+    // recorrer objeto checkoutData
+    for (const key in checkoutData) {
+      if (Object.hasOwnProperty.call(checkoutData, key)) {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = key;
+        input.value = checkoutData[key];
+      
+        form.appendChild(input);
+      }
+    }
 
-  resumeEventBody.appendChild(button);
+    const button = document.createElement('button');
+    button.type = 'submit';
+    button.classList.add('resume-event__body__button');
+    button.id = 'reserve';
+    button.textContent = 'Reservar servicios';
+  
+    form.appendChild(button);
+    resumeEventBody.appendChild(form);
+  } else if (transactionState === 4) {
+    const message = document.createElement('h4');
+    message.textContent = 'Nuestros proveedores se pondrán en contacto contigo para coordinar los detalles de tu evento.';
+    message.classList.add('resume-event__body__message');
+    resumeEventBody.appendChild(message);
+  }
+
+  resumeEvent.appendChild(resumeEventBody);
 }
 
 async function getServicesByEventId(eventId) {
@@ -106,12 +177,14 @@ async function getServicesByEventId(eventId) {
 
   const services = await fetchData(url, method, data);
 
-  showEventServices(services.data);
+  return services.data;
 }
 
 function showEventServices(services) {
-  const cardsContainer = document.getElementById('cards__container');
-  cardsContainer.innerHTML = '';
+  const eventDetails = document.querySelector('.event-details');
+  
+  const cardsContainer = document.createElement('section');
+  cardsContainer.classList.add('cards-container');
 
   services.forEach((service) => {
     const card = document.createElement('a');
@@ -144,7 +217,7 @@ function showEventServices(services) {
     deleteServiceFromEvent.addEventListener('click', (e) => {
       e.preventDefault();
       removeServiceFromEvent(
-        window.location.search.split('?/')[1],
+        window.location.search.split('?/')[1].split('&')[0],
         service.id_service
       );
     });
@@ -157,6 +230,7 @@ function showEventServices(services) {
     card.appendChild(cardContent);
     card.appendChild(deleteServiceFromEvent);
     cardsContainer.appendChild(card);
+    eventDetails.appendChild(cardsContainer);
   });
 }
 
@@ -173,12 +247,52 @@ async function removeServiceFromEvent(idEvent, idService) {
 
   if (response.status === 200) {
     showAlert('service removed from event');
-    showEventInfo();
-    showEventResumen();
-    getServicesByEventId(window.location.search.split('?/')[1]);
+    showUserInterface(window.location.search.split('?/')[1].split('&'));
   }
 }
 
-showEventInfo();
-showEventResumen();
-getServicesByEventId(window.location.search.split('?/')[1]);
+async function updateCheckoutState(idEvent) {
+  const data = new FormData();
+  data.set('action', 'update checkout state');
+  data.set('idEvent', idEvent);
+
+  const url = './control/events.control.php';
+  const method = 'POST';
+
+  const response = await fetchData(url, method, data);
+
+  if (response.status === 200) {
+    showAlert('transaction approved');
+  }
+}
+
+async function showUserInterface(infoEvent) {
+  const data = await getEventInfo();
+  if (data === null) showAlert('something went wrong');
+  
+  showEventInfo(data);
+  showEventResumen(data.transactionState);
+  const services = await getServicesByEventId(infoEvent[0]);
+  showEventServices(services);
+}
+
+const infoEvent = window.location.search.split('?/')[1].split('&');
+
+if (infoEvent.length > 1) {
+  const transactionStateIndex = infoEvent.findIndex((item) =>
+    item.includes('transactionState')
+  );
+  const transactionState = infoEvent[transactionStateIndex].split('=')[1];
+
+  if (transactionState === '4') {
+    updateCheckoutState(window.location.search.split('?/')[1].split('&')[0]);
+  } else if (transactionState === '6') {
+    showAlert('transaction rejected');
+  } else if (transactionState === '7') {
+    showAlert('transaction pending');
+  } else if (transactionState === '104') {
+    showAlert('transaction error');
+  }
+}
+
+showUserInterface(infoEvent);
