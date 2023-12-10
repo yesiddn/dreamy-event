@@ -113,14 +113,11 @@ class ServicesModel
 
       if ($result->execute()) {
         $serviceId = $connection->lastInsertId();
+        $data['id'] = $serviceId;
         return array("codigo" => "200", "mensaje" => "ok", "data" => $data);
       } else {
         return array("codigo" => "500", "mensaje" => $connection->errorInfo()[2]);
-      }
-
-      $data['id'] = $serviceId;
-
-    
+      }    
     } catch (Exception $e) {
       return array("codigo" => "500", "mensaje" => $e->getMessage());
     }
