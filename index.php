@@ -33,6 +33,10 @@ if (!isset($_GET["rout"]) || $_GET["rout"] == "home") {
   include_once("./views/modules/service-supplier.php");
 } elseif($_GET["rout"] == "create-services"){
   include_once("./views/modules/create-service.php"); 
+}elseif ($_GET["rout"] == "reset-password") {
+    include_once("./views/modules/password-recovery.php");
+
+
 } else {
   include_once("./views/modules/404.php");
 }

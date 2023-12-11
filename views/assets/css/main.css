@@ -315,6 +315,13 @@ header>div {
   justify-content: center;
 }
 
+.form p {
+  width: 75%;
+  margin: 0.5rem 0;
+  text-align: center;
+  color: var(--secondary);
+}
+
 .form__input {
   display: flex;
   flex-direction: column;
@@ -383,6 +390,9 @@ select:focus {
   box-shadow: 0 5px 15px var(--primary);
 }
 
+#passwordRecoveryInput {
+  text-decoration: none;
+}
 
 /* Estilos para boton de filtros */
 .button-filter-bar {

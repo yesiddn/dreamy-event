@@ -19,6 +19,8 @@
       </label>
 
       <button type="button" id="log-in-form-button">Entrar</button>
+      <a id="passwordRecoveryInput" href="reset-password">¿Ha olvidado su contraseña?</a>
+
     </form>
   </div>
 </section>

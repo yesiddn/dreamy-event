@@ -120,6 +120,33 @@ async function loginUser() {
   }
 }
 
+/* generacion del codigo de recuperacion */
+async function generateCode() {
+  const { isValid, formData } = getFormData();
+  if (!isValid) {
+    return false;
+  }
+  const url = `./control/recovery.control.php`;
+  const method = 'POST';
+  formData.set('action', 'recovery');
+
+  try {
+    const response = await fetchData(url, method, formData);
+
+    if (response.status === 404) {
+      alert('email no registrado');
+    } 
+
+    if (response.status === 200) {
+      alert('usuario encontrado');
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+
+
 async function getInfoService(idService) {
   const data = new FormData();
   data.set('action', 'read');
