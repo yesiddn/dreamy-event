@@ -3,7 +3,6 @@ session_start();
 include_once("./views/modules/head.php");
 include_once("./views/modules/alerts.php");
 include_once("./views/modules/header.php");
-include_once("./views/modules/search.php");
 
 if (!isset($_GET["rout"]) || $_GET["rout"] == "home") {
   include_once("./views/modules/hero.php");
@@ -30,6 +29,7 @@ if (!isset($_GET["rout"]) || $_GET["rout"] == "home") {
 } elseif ($_GET["rout"] == "edit-event") {
   include_once("./views/modules/edit-event-form.php");
 } elseif ($_GET["rout"] == "my-services") {
+  include_once("./views/modules/supplier-dashboard.php");
   include_once("./views/modules/service-supplier.php");
 } elseif($_GET["rout"] == "create-services"){
   include_once("./views/modules/create-service.php"); 
