@@ -141,37 +141,71 @@ class ServicesModel
     }
   }
 
-  public static function editServiceInfo($data)
-  {
-    try {
-      $query = "UPDATE services SET description_service = ?, price_service = ?, location_service = ?, city_service = ?, country_service = ?, amount_people_service = ?, characteristics_service = ?, id_service_type = ? WHERE id_service = ?";
+  public static function editService($idService,$nameService,$descriptionService,$price,$location,$city,$country,$amountPeople,$characteristics,$idTypeService,$idSupplier)
+   {
+      $query = "UPDATE services SET name_service = ?, description_service = ?, price_service = ?, location_service = ?, city_service = ?, country_service = ?, amount_people_service = ?, characteristics_service = ?, id_service_type = ? WHERE id_service = ?";
       $result = Connection::connect()->prepare($query);
-      $result->bindParam(1, $data['description'], PDO::PARAM_STR);
-      $result->bindParam(2, $data['price'], PDO::PARAM_STR);
-      $result->bindParam(3, $data['location'], PDO::PARAM_STR);
-      $result->bindParam(4, $data['city'], PDO::PARAM_STR);
-      $result->bindParam(5, $data['country'], PDO::PARAM_STR);
-      $result->bindParam(6, $data['amount'], PDO::PARAM_INT);
-      $result->bindParam(7, $data['characteristics'], PDO::PARAM_STR);
-      $result->bindParam(8, $data['type'], PDO::PARAM_INT);
-      $result->bindParam(9, $data['id'], PDO::PARAM_INT);
-      $result->execute();
-      return array("codigo" => "200", "mensaje" => "ok");
-    } catch (Exception $e) {
-      return array("codigo" => "500", "mensaje" => $e->getMessage());
+      $result->bindParam(1, $nameService, PDO::PARAM_STR);
+      $result->bindParam(1, $descriptionService, PDO::PARAM_STR);
+      $result->bindParam(2, $price, PDO::PARAM_STR);
+      $result->bindParam(3, $location, PDO::PARAM_STR);
+      $result->bindParam(4, $city, PDO::PARAM_STR);
+      $result->bindParam(5, $country, PDO::PARAM_STR);
+      $result->bindParam(6, $amountPeople, PDO::PARAM_INT);
+      $result->bindParam(7, $characteristics, PDO::PARAM_STR);
+      $result->bindParam(8, $idTypeService, PDO::PARAM_INT);
+      $result->bindParam(9, $idService, PDO::PARAM_INT);
+      $response = $result->execute();
+     
+    if (!$response) {
+      return array(
+        'status' => 400,
+        'message' => 'Service not updated',
+        'data' => null
+      );
     }
+
+    return array(
+      'status' => 200,
+      'message' => 'Service updated',
+      'data' => array(
+        'idService' => $idService,
+        'name' => $nameService,
+        'description' => $descriptionService,
+        'price' => $price,
+        'location' => $location,
+        'city' => $city,
+        'country' => $country,
+        'amount' => $amountPeople,
+        'characteristics' => $characteristics,
+        'idTypeService' => $idTypeService
+      )
+    );
   }
 
-  public static function deleteService($id)
-  {
-    try {
-      $query = "DELETE FROM services WHERE id_service = ?";
-      $result = Connection::connect()->prepare($query);
-      $result->bindParam(1, $id, PDO::PARAM_INT);
-      $result->execute();
-      return array("codigo" => "200", "mensaje" => "ok");
-    } catch (Exception $e) {
-      return array("codigo" => "500", "mensaje" => $e->getMessage());
-    }
-  }
+  public static function deleteService($idService){
+
+    $query = "DELETE FROM services WHERE id_service = ?;";
+    $result = Connection::connect()->prepare($query);
+    $result->bindParam(1, $idService, PDO::PARAM_INT);
+    $response = $result->execute();
+      $result = null;
+
+      if (!$response) {
+        return array(
+          'status' => 400,
+          'message' => 'Service not deleted',
+          'data' => null
+        );
+      }
+  
+      return array(
+        'status' => 200,
+        'message' => 'Service deleted',
+        'data' => array(
+          'idService' => $idService
+        )
+      );
+}
+
 }

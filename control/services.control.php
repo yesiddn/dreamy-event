@@ -5,6 +5,7 @@ include_once "../model/files.model.php";
 class ServiceControl
 {
   public $idEvent;
+  public $idService;
   public $nameService;
   public $descriptionService;
   public $price;
@@ -38,6 +39,17 @@ class ServiceControl
     $newService = ServicesModel::createService($data);
     $fileService = FilesModel::createServiceImages($newService['data']['id'], $data['service-pics']);
     echo json_encode($newService,$fileService);
+  }
+
+  public function editService() {
+    $service = ServicesModel::editService($this->idService, $this->nameService, $this->descriptionService, $this->price, $this->location, $this->city, $this->country, $this->amountPeople, $this->characteristics, $this->idTypeService);
+    echo json_encode($service);
+  }
+
+  public function deleteService()
+  {
+    $service = ServicesModel::deleteService($this->idService);
+    echo json_encode($service);
   }
 
   public function getServices()
@@ -121,4 +133,25 @@ if (isset($_POST['queryType']) == 'Insert') {
 
   $ServiceControl->servicePics = $newArrayFiles;
   $ServiceControl->createService();
+}
+
+if (isset($_POST["action"]) && $_POST["action"] == "update") {
+  $service = new ServiceControl();
+  $service->idService = $_POST["idService"];
+  $service->nameService = $_POST["name-service"];
+  $service->descriptionService = $_POST["description-service"];
+  $service->price = $_POST["price-service"];
+  $service->location = $_POST["location-service"];
+  $service->city = $_POST["city-service"];
+  $service->country = $_POST["country-service"];
+  $service->amountPeople = $_POST["peopleAmount-service"];
+  $service->characteristics = $_POST["characteristics-service"];
+  $service->idTypeService = $_POST["type-service"];
+  $service->editService();
+}
+
+if (isset($_POST["action"]) && $_POST["action"] == "delete") {
+  $service = new ServiceControl();
+  $service->idService = $_POST["idService"];
+  $service->deleteService();
 }

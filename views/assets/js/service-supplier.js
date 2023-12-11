@@ -116,3 +116,43 @@ if (!user) {
 } else {
   getServicesSupplier('all', user.supplier.id_supplier);
 }
+
+async function editEvent() {
+  const idService = location.search.split('?/')[1];
+  const form = document.querySelector('#form');
+  
+  const data = new FormData(form);
+  data.set('action', 'update');
+  data.set('idService', idService);
+
+  const url = './control/service.control.php';
+  const method = 'POST';
+
+  const response = await fetchData(url, method, data);
+
+  if (response.status === 200) {
+    showAlert('service updated');
+    window.location = 'my-services';
+  } else {
+    showAlert('something went wrong');
+  }
+
+}
+
+async function deleteService(idService) {
+  const data = new FormData();
+  data.set('action', 'delete');
+  data.set('idService', idService);
+
+  const url = './control/services.control.php';
+  const method = 'POST';
+
+  const response = await fetchData(url, method, data);
+
+  if (response.status === 200) {
+    showAlert('service deleted');
+    initEvents();
+  } else {
+    showAlert('something went wrong');
+  }
+}

@@ -102,6 +102,14 @@ function showAlert(typeAlert) {
       message: 'Ha ocurrido un error al realizar el pago.',
       color: '#F02D3A',
     },
+    'service deleted':{
+      message: 'Servicio eliminado correctamente.',
+      color: '#ADFFC7',
+    },
+    'service updated': {
+      message: 'Servicio editado correctamente.',
+      color: '#ADFFC7',
+    }
   };
 
   let alert = document.getElementById('alert');
