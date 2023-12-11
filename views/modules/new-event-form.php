@@ -18,7 +18,7 @@
       <!-- date event  -->
       <label for="event-date" class="form__input">
         Fecha/Hora:
-        <input id="event-date" type="datetime-local" name="event-date" placeholder="Fecha" onchange="validateInputData('event-date')">
+        <input id="event-date" type="datetime-local" name="event-date" placeholder="Fecha" min="<?php $hoy = date("Y-m-d", strtotime("+ 30 day")); echo $hoy; ?> 00:00" onchange="validateInputData('event-date')">
 
         <span class="inactive">Ingrese un valor valido.</span>
       </label>
