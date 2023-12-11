@@ -13,6 +13,19 @@ async function getServicesSupplier(category, idSupplier) {
   showServices(Object.groupBy(allServices, (service) => service.id_service));
 }
 
+async function getServiceById(idService) {
+  const data = new FormData();
+  data.set('action', 'read service by id');
+  data.set('idService', idService);
+
+  const url = './control/services.control.php';
+  const method = 'POST';
+
+  const service = await fetchData(url, method, data);
+
+  return service;
+}
+
 function showServices(services) {
   const cardsContainer = document.getElementById('cards__container');
   cardsContainer.innerHTML = '';
@@ -117,6 +130,12 @@ if (!user) {
   getServicesSupplier('all', user.supplier.id_supplier);
 }
 
+
+async function initServices() {
+  const services = await getServicesSupplier();
+  showServices(services.data);
+}
+
 async function editEvent() {
   const idService = location.search.split('?/')[1];
   const form = document.querySelector('#form');
@@ -139,6 +158,24 @@ async function editEvent() {
 
 }
 
+async function fillEventForm() {
+  const service = await getServiceById(location.search.split('?/')[1]);
+
+  const name = document.querySelector('#event-name');
+  const date = document.querySelector('#event-date');
+  const address = document.querySelector('#event-address');
+  const city = document.querySelector('#event-city');
+  const country = document.querySelector('#event-country');
+  const type = document.querySelector('#event-type');
+
+  name.value = service.data.name;
+  date.value = service.data.date;
+  address.value = service.data.address;
+  city.value = service.data.city;
+  country.value = service.data.country;
+  type.value = service.data.idEventType;
+}
+
 async function deleteService(idService) {
   const data = new FormData();
   data.set('action', 'delete');
@@ -151,7 +188,7 @@ async function deleteService(idService) {
 
   if (response.status === 200) {
     showAlert('service deleted');
-    initEvents();
+    initServices();
   } else {
     showAlert('something went wrong');
   }

@@ -110,6 +110,45 @@ class ServicesModel
     }
   }
 
+  public static function getEventById($idService) {
+    $sql = "SELECT * FROM services WHERE id_service = ?;";
+
+    $query = Connection::connect()->prepare($sql);
+    $query->bindParam(1, $idService, PDO::PARAM_INT);
+    $query->execute();
+    $response = $query->fetch();
+    $query = null;
+
+    if (!$response) {
+      return array(
+        'status' => 404,
+        'message' => 'Service not found',
+        'data' => null
+      );
+    }
+
+    $service = array(
+      'idService' => $response['id_service'],
+      'name' => $response['name_service'],
+      'description' => $response['description_service'],
+      'price' => $response['price'],
+      'location' => $response['location'],
+      'city' => $response['city'],
+      'country' => $response['country'],
+      'amount' => $response['amount_people'],
+      'characteristics' => $response['characteristics'],
+      'id_type_service' => $response['id_type_service'],
+      'id_supplier' => $response['id_supplier'],
+    );
+
+    return array(
+      'status' => 200,
+      'message' => 'Service found',
+      'data' => $service
+    );
+  }
+
+
   public static function createService($data)
   {
     try {
