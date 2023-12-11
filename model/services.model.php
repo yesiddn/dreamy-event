@@ -28,20 +28,14 @@ class ServicesModel
   public static function getServicesSupplier($idSupplier)
   {
     try {
-        $query = "SELECT services.id_service, services.name_service, services.description_service, services.price, services.location, services.city,
-        services.country,services.amount_people, services.characteristics, services.id_type_service, services.id_supplier,
-        suppliers.name_company, users.id_user, customers.id_customer, images_services.id_image, images_services.url_image
-        FROM services INNER JOIN images_services ON services.id_service = images_services.id_service 
-        INNER JOIN suppliers ON suppliers.id_supplier = services.id_supplier 
-        INNER JOIN users ON users.id_user = suppliers.id_user 
-        LEFT JOIN customers ON customers.id_user = users.id_user
-        WHERE services.id_supplier = suppliers.id_supplier AND customers.id_customer = ?";
-        $result = Connection::connect()->prepare($query);
-        $result->bindParam(1, $idSupplier, PDO::PARAM_INT);
-        $result->execute();
-        $services = $result->fetchAll();
-        $result = null;
-      
+      $query = "SELECT services.id_service, services.name_service, services.description_service, services.price, services.location, services.city, services.country, services.amount_people, services.characteristics, ROUND(AVG(COALESCE(comments.calificacion_comentario, 0)), 1) AS rating, services.id_type_service, services.id_supplier, images_services.id_image, images_services.url_image FROM services INNER JOIN images_services ON services.id_service = images_services.id_service INNER JOIN suppliers ON suppliers.id_supplier = services.id_supplier LEFT JOIN comments ON comments.id_servicio = services.id_service WHERE services.id_supplier = suppliers.id_supplier AND suppliers.id_supplier = ? GROUP BY comments.id_servicio;";
+
+      $result = Connection::connect()->prepare($query);
+      $result->bindParam(1, $idSupplier, PDO::PARAM_INT);
+      $result->execute();
+      $services = $result->fetchAll();
+      $result = null;
+
       return array("codigo" => "200", "mensaje" => "ok", "data" => $services);
     } catch (Exception $e) {
       echo json_encode(array("codigo" => "500", "mensaje" => $e->getMessage()));
@@ -141,7 +135,7 @@ class ServicesModel
         return array("codigo" => "200", "mensaje" => "ok", "data" => $data);
       } else {
         return array("codigo" => "500", "mensaje" => $connection->errorInfo()[2]);
-      }    
+      }
     } catch (Exception $e) {
       return array("codigo" => "500", "mensaje" => $e->getMessage());
     }

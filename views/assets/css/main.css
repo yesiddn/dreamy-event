@@ -1444,7 +1444,7 @@ select:invalid:focus {
   color: var(--primary);
 }
 
-.event__options {
+.event__options, .service__options {
   position: absolute;
   /* display: flex; */
   top: 0.5rem;
@@ -1459,7 +1459,9 @@ select:invalid:focus {
 }
 
 .event__options__edit,
-.event__options__delete {
+.event__options__delete,
+.service__options__edit,
+.service__options__delete {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1472,23 +1474,38 @@ select:invalid:focus {
   cursor: pointer;
 }
 
+.card .service__options__delete, .card .service__options__delete:hover {
+  position: static;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  background-image: none;
+  z-index: inherit;
+}
+
 .event__options__edit:hover,
-.event__options__delete:hover {
+.event__options__delete:hover,
+.service__options__edit:hover,
+.service__options__delete:hover {
   background-color: rgba(118, 112, 230, 0.4);
 }
 
 .event__options__edit span,
-.event__options__delete span {
+.event__options__delete span,
+.service__options__edit span,
+.service__options__delete span {
   display: inline-block;
   width: 24px;
   height: 24px;
 }
 
-.event__options__edit span {
+.event__options__edit span,
+.service__options__edit span {
   background: url('../svg/pencil.svg') no-repeat center/cover;
 }
 
-.event__options__delete span {
+.event__options__delete span,
+.service__options__delete span {
   background: url('../svg/trash.svg') no-repeat center/cover;
 }
 
@@ -1500,6 +1517,11 @@ select:invalid:focus {
   width: 24px;
   height: 24px;
   background: url('../svg/elipsis.svg') no-repeat center/cover;
+}
+
+.icon-ellipsis--bg-white {
+  background-color: var(--white);
+  border-radius: 50%;
 }
 
 @media (min-width: 768px) {

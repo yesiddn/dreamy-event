@@ -5,7 +5,7 @@
     <a href="create-services" class="my-services__header__create">Nuevo servicio<span></span></a>
   </div>
 
-<div class="service-list" id="cards__container2">
+<div class="service-list" id="cards__container">
   <!-- <a href="#" class="card">
     <button></button>
     <img src="./views/assets/img/img2.jpeg" alt="Imagen 2">
