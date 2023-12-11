@@ -63,6 +63,12 @@ class ServiceControl
     $getServiceSupplier = ServicesModel::getServicesSupplier($this->idSupplier);
     echo json_encode($getServiceSupplier);
   }
+
+  public function getReservedServices()
+  {
+    $getReservedServices = ServicesModel::getReservedServices($this->idSupplier);
+    echo json_encode($getReservedServices);
+  }
 }
 
 if ($_POST["action"] == "read") {
@@ -92,6 +98,12 @@ if ($_POST["action"] == "read by type") {
   $getServices->idCustomer = $_POST["idCustomer"];
   $getServices->idTypeService = $_POST["idTypeService"];
   $getServices->getServicesByType();
+}
+
+if ($_POST["action"] == "read reserved services") {
+  $getServices = new ServiceControl();
+  $getServices->idSupplier = $_POST["idSupplier"];
+  $getServices->getReservedServices();
 }
 
 if (isset($_POST['queryType']) == 'Insert') {
