@@ -70,6 +70,22 @@ class ServicesModel
     return array("status" => 200, "message" => "ok", "data" => $service);
   }
 
+  public static function getReservedServices($idSupplier)
+  {
+    try {
+      $query = "SELECT services.id_service, services.name_service, services.id_supplier, events.date, events.address, events.city, events.country, customers.name_customer, customers.last_name_customer, customers.phone_customer, customers.img_profile_customer, users.email_user FROM services LEFT JOIN event_has_services ON event_has_services.id_service = services.id_service LEFT JOIN events ON event_has_services.id_event = events.id_event LEFT JOIN customers ON events.id_customer = customers.id_customer LEFT JOIN users ON customers.id_user = users.id_user WHERE services.id_supplier = ? AND events.transaction_state = 4;";
+      $response = Connection::connect()->prepare($query);
+      $response->bindParam(1, $idSupplier, PDO::PARAM_INT);
+      $response->execute();
+      $services = $response->fetchAll();
+      $response = null;
+    } catch (Exception $e) {
+      return array("status" => 500, "message" => $e->getMessage());
+    }
+
+    return array("status" => 200, "message" => "ok", "data" => $services);
+  }
+
   public static function getEventServices($idEvent)
   {
     try {
