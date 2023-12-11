@@ -693,7 +693,7 @@ select:invalid:focus {
 }
 
 /* list of services */
-.cards-container, .services-container {
+.cards-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   justify-content: center;
@@ -809,7 +809,7 @@ select:invalid:focus {
 /* list of services in supplier */
 .cards-container2 {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   align-items: center;
   gap: 2rem;
   width: 100%;
@@ -821,8 +821,7 @@ select:invalid:focus {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
-  width: 100%; /* Ajustar el ancho al 100% */
+  width: 100%;
   padding: 0;
 }
 
@@ -858,7 +857,6 @@ select:invalid:focus {
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
-  padding: 2rem 0;
 }
 
 .card2 {
@@ -882,7 +880,7 @@ select:invalid:focus {
   top: 0;
   right: 0;
   margin: 1rem;
-  background-color:#7c7c82;
+  background-color: #7c7c82;
   background-image: url('../svg/option.svg');
   border: none;
   z-index: 100;
@@ -930,7 +928,7 @@ select:invalid:focus {
   font-size: 1rem;
 }
 
-.card2 .price2  {
+.card2 .price2 {
   margin-top: 1rem;
   font-size: 1.2rem;
   font-weight: 700;
@@ -972,7 +970,7 @@ select:invalid:focus {
 }
 
 /* textareas de form crear servicio */
-.txtArea{
+.txtArea {
   background-color: transparent;
   border-radius: 10px;
 }
@@ -998,7 +996,7 @@ select:invalid:focus {
 .filter-bar li img {
   display: block;
   margin: 0 auto;
-  
+
 }
 
 .filter-bar li span {
@@ -1444,7 +1442,8 @@ select:invalid:focus {
   color: var(--primary);
 }
 
-.event__options, .service__options {
+.event__options,
+.service__options {
   position: absolute;
   /* display: flex; */
   top: 0.5rem;
@@ -1474,7 +1473,8 @@ select:invalid:focus {
   cursor: pointer;
 }
 
-.card .service__options__delete, .card .service__options__delete:hover {
+.card .service__options__delete,
+.card .service__options__delete:hover {
   position: static;
   width: 100%;
   height: auto;
@@ -1663,35 +1663,18 @@ select:invalid:focus {
 }
 
 /* reserved services */
-.supplier__page__tittle {
-  padding: 20px;
-  text-align: center;
-  margin: auto;
-}
-
-.event__header {
-  width: 100%;
-}
-
-.service__dash__profile__pic {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background-image: url('https://img.freepik.com/premium-photo/woman-front-laptop_950558-7349.jpg');
-  background-size: cover;
-}
-
-.service__dash__customer__info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  row-gap: 5px;
-}
-
-.service__dash_card {
+.services-container {
   display: grid;
-  grid-template-columns: 5fr 3fr;
-  grid-template-rows: 4fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.service__dash__card {
   width: 100%;
   max-width: 400px;
   margin: 0 auto;
@@ -1702,31 +1685,92 @@ select:invalid:focus {
   color: var(--secondary);
 }
 
-.button-container {
-  grid-area: 2 / 1 / 3 / 3;
+.service__dash__card__details {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-.button-container button {
-  margin-top: 7px;
-  padding: 5px 15px 5px 15px;
-  text-decoration: none;
+.service__header h3 {
+  margin: 0 0 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--black);
+}
+
+.service__dash__customer__info {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 1rem;
+}
+
+.service__dash__profile__pic {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.service__header__details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.service__dash__customer__info p {
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--black);
+  cursor: default;
+}
+
+.service__dash__customer__info__details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 70%;
+  max-width: 360px;
+  gap: 0.5rem;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+.button-container a {
+  width: 120px;
+  padding: 0.5rem 1rem;
+  background-color: var(--secondary);
+  border-radius: 10px;
   border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  color: var(--white);
   cursor: pointer;
 }
 
-/* Colores a boton completar */
-#dash-customer-complete {
-  background-color: var(--primary);
-  color: var(--white);
+.button-container a:hover {
+  background-color: var(--black);
+  box-shadow: 0 5px 15px var(--primary);
 }
 
-/* colores a boton contacto */
-#dash-customer-contact {
-  background-color: var(--secondary);
+.button-container button {
+  width: 120px;
+  padding: 0.5rem 1rem;
+  background-color: var(--primary);
+  border-radius: 10px;
+  border: none;
+  text-align: center;
+  text-decoration: none;
   color: var(--white);
+  cursor: pointer;
 }
