@@ -110,7 +110,7 @@ class ServicesModel
     }
   }
 
-  public static function getEventById($idService) {
+  public static function getServiceById($idService) {
     $sql = "SELECT * FROM services WHERE id_service = ?;";
 
     $query = Connection::connect()->prepare($sql);
@@ -123,7 +123,7 @@ class ServicesModel
       return array(
         'status' => 404,
         'message' => 'Service not found',
-        'data' => null
+        'data' => null,
       );
     }
 
@@ -180,22 +180,23 @@ class ServicesModel
     }
   }
 
-  public static function editService($idService,$nameService,$descriptionService,$price,$location,$city,$country,$amountPeople,$characteristics,$idTypeService,$idSupplier)
+  public static function editService($idService,$nameService,$descriptionService,$price,$location,$city,$country,$amountPeople,$characteristics,$idTypeService)
    {
-      $query = "UPDATE services SET name_service = ?, description_service = ?, price_service = ?, location_service = ?, city_service = ?, country_service = ?, amount_people_service = ?, characteristics_service = ?, id_service_type = ? WHERE id_service = ?";
+      $query = "UPDATE services SET name_service = ?, description_service = ?, price = ?, location = ?, city = ?, country = ?, amount_people = ?, characteristics = ?, id_type_service = ? WHERE id_service = ?";
       $result = Connection::connect()->prepare($query);
       $result->bindParam(1, $nameService, PDO::PARAM_STR);
-      $result->bindParam(1, $descriptionService, PDO::PARAM_STR);
-      $result->bindParam(2, $price, PDO::PARAM_STR);
-      $result->bindParam(3, $location, PDO::PARAM_STR);
-      $result->bindParam(4, $city, PDO::PARAM_STR);
-      $result->bindParam(5, $country, PDO::PARAM_STR);
-      $result->bindParam(6, $amountPeople, PDO::PARAM_INT);
-      $result->bindParam(7, $characteristics, PDO::PARAM_STR);
-      $result->bindParam(8, $idTypeService, PDO::PARAM_INT);
-      $result->bindParam(9, $idService, PDO::PARAM_INT);
+      $result->bindParam(2, $descriptionService, PDO::PARAM_STR);
+      $result->bindParam(3, $price, PDO::PARAM_STR);
+      $result->bindParam(4, $location, PDO::PARAM_STR);
+      $result->bindParam(5, $city, PDO::PARAM_STR);
+      $result->bindParam(6, $country, PDO::PARAM_STR);
+      $result->bindParam(7, $amountPeople, PDO::PARAM_INT);
+      $result->bindParam(8, $characteristics, PDO::PARAM_STR);
+      $result->bindParam(9, $idTypeService, PDO::PARAM_INT);
+      $result->bindParam(10, $idService, PDO::PARAM_INT);
       $response = $result->execute();
-     
+      $query = null;
+
     if (!$response) {
       return array(
         'status' => 400,

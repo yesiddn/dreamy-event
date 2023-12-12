@@ -6,7 +6,7 @@
 
   <div class="square"></div>
 
-  <form class="form" id="newServiceForm" method="post">
+  <form class="form" id="form" method="post">
 
     <!-- name -->
     <label for="name-service" class="form__input">
@@ -104,8 +104,19 @@
       <span class="inactive">Ingrese un valor valido.</span>
     </label>
 
-    <button type="submit" id="service-form-button">Registrar</button>
+    <button type="submit" id="service-form-button">Editar</button>
   </form>
 </div>
 <script defer src="./views/assets/js/service-supplier.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      ServiceForm();
+    });
+
+    const editServiceFormButton = document.getElementById('service-form-button');
+    editServiceFormButton.addEventListener('click', () => {
+      event.preventDefault();
+      editService();
+    });
+  </script>
 </section>

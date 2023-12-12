@@ -52,6 +52,10 @@ class ServiceControl
     echo json_encode($service);
   }
 
+  public function getServiceById() {
+    $service = ServicesModel::getServiceById($this->idService);
+    echo json_encode($service);
+  }
   public function getServices()
   {
     $getService = ServicesModel::getServices($this->idCustomer);
@@ -154,4 +158,10 @@ if (isset($_POST["action"]) && $_POST["action"] == "delete") {
   $service = new ServiceControl();
   $service->idService = $_POST["idService"];
   $service->deleteService();
+}
+
+if (isset($_POST["action"]) && $_POST["action"] == "read by id") {
+  $service = new ServiceControl();
+  $service->idService = $_POST["idService"];
+  $service->getServiceById();
 }

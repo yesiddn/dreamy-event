@@ -15,7 +15,7 @@ async function getServicesSupplier(category, idSupplier) {
 
 async function getServiceById(idService) {
   const data = new FormData();
-  data.set('action', 'read service by id');
+  data.set('action', 'read by id');
   data.set('idService', idService);
 
   const url = './control/services.control.php';
@@ -27,8 +27,8 @@ async function getServiceById(idService) {
 }
 
 function showServices(services) {
-  const cardsContainer = document.getElementById('cards__container');
-  cardsContainer.innerHTML = '';
+  const cardsContainer = document.getElementById('cards__container2');
+  // cardsContainer.innerHTML = '';
 
   for (const service in services) {
     const serviceItem = services[service];
@@ -136,7 +136,7 @@ async function initServices() {
   showServices(services.data);
 }
 
-async function editEvent() {
+async function editService() {
   const idService = location.search.split('?/')[1];
   const form = document.querySelector('#form');
   
@@ -144,7 +144,7 @@ async function editEvent() {
   data.set('action', 'update');
   data.set('idService', idService);
 
-  const url = './control/service.control.php';
+  const url = './control/services.control.php';
   const method = 'POST';
 
   const response = await fetchData(url, method, data);
@@ -158,23 +158,34 @@ async function editEvent() {
 
 }
 
-async function fillEventForm() {
-  const service = await getServiceById(location.search.split('?/')[1]);
+async function ServiceForm(idService) {
+    
+  const service = await getServiceById(idService);
 
-  const name = document.querySelector('#event-name');
-  const date = document.querySelector('#event-date');
-  const address = document.querySelector('#event-address');
-  const city = document.querySelector('#event-city');
-  const country = document.querySelector('#event-country');
-  const type = document.querySelector('#event-type');
+  const nameServices = document.querySelector('#name-service');
+  const description = document.querySelector('#description-service');
+  const price = document.querySelector('#price-service');
+  const location = document.querySelector('#location-service');
+  const city = document.querySelector('#city-service');
+  const country = document.querySelector('#country-service');
+  const amountPeople = document.querySelector('#peopleAmount-service');
+  const characteristics = document.querySelector('#characteristics-service');
+  const typeService = document.querySelector('#type-service');
 
-  name.value = service.data.name;
-  date.value = service.data.date;
-  address.value = service.data.address;
+
+  nameServices.value = service.data.name;
+  description.value = service.data.description;
+  price.value = service.data.price;
+  location.value = service.data.location;
   city.value = service.data.city;
   country.value = service.data.country;
-  type.value = service.data.idEventType;
+  amountPeople.value = service.data.amount;
+  characteristics.value = service.data.characteristics;
+  typeService.value = service.data.id_type_service;
 }
+
+const idService = location.search.split('?/')[1];
+    ServiceForm(idService);
 
 async function deleteService(idService) {
   const data = new FormData();
@@ -188,7 +199,7 @@ async function deleteService(idService) {
 
   if (response.status === 200) {
     showAlert('service deleted');
-    initServices();
+    window.location = 'my-services';
   } else {
     showAlert('something went wrong');
   }
