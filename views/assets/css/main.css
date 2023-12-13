@@ -1035,6 +1035,29 @@ select:invalid:focus {
   scroll-snap-type: x mandatory;
 }
 
+.info-service__gallery__img--loading {
+  background: rgba(115, 115, 128, 0.2);
+  height: 30dvh;
+  min-height: 30dvh;
+  max-height: 30dvh;
+  width: 260px;
+  min-width: 260px;
+  max-width: 260px;
+  animation: loading-skeleton infinite 1.5s;
+}
+
+.info-service__gallery__img--loading:nth-child(2) {
+  animation-delay: .1s;
+}
+
+.info-service__gallery__img--loading:nth-child(3) {
+  animation-delay: .3s;
+}
+
+.info-service__gallery__img--loading:nth-child(4) {
+  animation-delay: .5s;
+}
+
 .info-service__gallery img {
   width: 100%;
   object-fit: cover;
@@ -1074,6 +1097,26 @@ select:invalid:focus {
   width: 80%;
 }
 
+.info-service__details__header__title--loading {
+  background: rgba(115, 115, 128, 0.2);
+  border-radius: 8px;
+  height: 60px;
+  min-height: 60px;
+  max-height: 60px;
+  width: 200px;
+  min-width: 200px;
+  max-width: 200px;
+  margin-bottom: 15px;
+  animation: loading-skeleton infinite 1.5s;
+}
+
+.info-service__details__header__title--loading:nth-child(2) {
+  width: 180px;
+  min-width: 180px;
+  max-width: 180px;
+  animation-delay: .1s;
+}
+
 .info-service__details__header__title p {
   margin: 1rem 0;
   font-size: 1.2rem;
@@ -1095,6 +1138,19 @@ select:invalid:focus {
   color: var(--primary);
 }
 
+.info-service__details__header__rating--loading {
+  background: var(--primary);
+  border-radius: 8px;
+  height: 25px;
+  min-height: 25px;
+  max-height: 25px;
+  width: 35px;
+  min-width: 35px;
+  max-width: 35px;
+  margin-bottom: 15px;
+  animation: loading-skeleton infinite 1.5s;
+}
+
 .info-service__details__header__rating p {
   margin: 0;
 }
@@ -1102,6 +1158,20 @@ select:invalid:focus {
 .info-service__details__body {
   font-size: 1rem;
   color: var(--black);
+}
+
+.info-service__details__body--loading {
+  background: rgba(115, 115, 128, 0.2);
+  border-radius: 8px;
+  height: 100px;
+  min-height: 100px;
+  max-height: 100px;
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  margin-bottom: 15px;
+  animation: loading-skeleton infinite 1.5s;
+  animation-delay: .1s;
 }
 
 .info-service__details__price-card {
@@ -1116,6 +1186,31 @@ select:invalid:focus {
   background-color: var(--white);
   border-top: solid 1px var(--primary);
   z-index: 100;
+}
+
+.info-service__details__price-card--loading {
+  background: rgba(115, 115, 128, 0.2);
+  border-radius: 8px;
+  height: 25px;
+  min-height: 25px;
+  max-height: 25px;
+  width: 140px;
+  min-width: 140px;
+  max-width: 140px;
+  margin-bottom: 15px;
+  animation: loading-skeleton infinite 1.5s;
+  animation-delay: .1s;
+}
+
+.info-service__details__price-card--loading:nth-child(2) {
+  background: var(--primary);
+  height: 50px;
+  min-height: 50px;
+  max-height: 50px;
+  width: 200px;
+  min-width: 200px;
+  max-width: 200px;
+  animation-delay: .2s;
 }
 
 .info-service__details__price-card p {
@@ -1557,6 +1652,18 @@ select:invalid:focus {
     width: 100%;
     height: auto;
     gap: 1rem;
+    overflow: inherit;
+  }
+
+  .info-service__gallery__img--loading {
+    background: rgba(115, 115, 128, 0.2);
+    height: 100%;
+    min-height: 100%;
+    max-height: 100%;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    animation: loading-skeleton infinite 1.5s;
   }
 
   .info-service__gallery img {
@@ -1571,6 +1678,18 @@ select:invalid:focus {
     gap: 1rem;
     /* width: 100%;
     padding: 2rem 0; */
+  }
+
+  .info-service__details__header__title--loading {
+    width: 350px;
+    min-width: 350px;
+    max-width: 350px;
+  }
+
+  .info-service__details__header__title--loading:nth-child(2) {
+    width: 250px;
+    min-width: 250px;
+    max-width: 250px;
   }
 
   .info-service__details>div:first-child {
@@ -1593,6 +1712,18 @@ select:invalid:focus {
     box-shadow: 0 5px 15px var(--primary);
     border: none;
     z-index: 0;
+  }
+
+  .info-service__details__price-card--loading {
+    width: 60%;
+    min-width: 60%;
+    max-width: 60%;
+  }
+
+  .info-service__details__price-card--loading:nth-child(2) {
+    width: 80%;
+    min-width: 80%;
+    max-width: 80%;
   }
 
   .info-service__details__price-card button span {
@@ -1773,4 +1904,17 @@ select:invalid:focus {
   text-decoration: none;
   color: var(--white);
   cursor: pointer;
+}
+
+/* Animations */
+@keyframes loading-skeleton {
+
+  0%,
+  100% {
+    opacity: 100%;
+  }
+
+  50% {
+    opacity: 0%;
+  }
 }
