@@ -209,7 +209,7 @@ function showInfoService(data) {
   );
 
   const infoServiceDetailsPriceCardP = document.createElement('p');
-  infoServiceDetailsPriceCardP.textContent = `${data.price}€ / 24h`;
+  infoServiceDetailsPriceCardP.textContent = `$${data.price} / 24h`;
 
   const infoServiceDetailsPriceCardButton = document.createElement('button');
   infoServiceDetailsPriceCardButton.textContent = 'Agregar a un evento';
@@ -256,6 +256,7 @@ function showInfoService(data) {
   infoServiceDetails.appendChild(infoServiceDetailsPriceCard);
 
   const infoService = document.querySelector('.info-service');
+  infoService.innerHTML = '';
   infoService.appendChild(infoServiceGallery);
   infoService.appendChild(infoServiceDetails);
 
