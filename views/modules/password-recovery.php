@@ -7,7 +7,7 @@
             <p>Introduce la dirección de correo electrónico que usaste para registrarte.</p>
             <label id="emailLabel" for="email" class="form__input">
                 <!-- <span>Email:</span>  -->
-                <input id="email" type="email" name="email" placeholder="Email" onkeyup="validateInputData('email')" disabeld>
+                <input id="email" type="email" name="email" placeholder="Email">
                 <span class="inactive">Ingrese un valor valido.</span>
             </label>
 
@@ -18,33 +18,28 @@
 
 
 <script>
-    const loginFormButton = document.getElementById('generate-code');
+    const resetFormButton = document.getElementById('generate-code');
     const emailInpt = document.querySelector('#email');
     let newBtn;
 
-    loginFormButton.addEventListener('click', async () => {
-
+    resetFormButton.addEventListener('click', async () => {
         const newInputCode = await generateCode();
         if (newInputCode) {
+            alert('boton 1 cliqueado');
             hola();
-        };
+        }
     });
 
-
-
     function hola() {
-
-        /* contenido dinamico con un nuevo input para el codigo */ 
+        /* contenido dinamico con un nuevo input para el codigo */
         emailInpt.disabled = true;
-
 
         var nuevoLabel = document.createElement('label');
         nuevoLabel.setAttribute('for', 'nuevoEmail');
         nuevoLabel.className = 'form__input';
 
-    
         var inputCode = document.createElement('input');
-        inputCode.id = 'nuevoEmail';
+        inputCode.id = 'inputCode';
         inputCode.type = 'number';
         inputCode.name = 'recovery-code';
         inputCode.placeholder = 'Codigo';
@@ -59,17 +54,18 @@
         inputCode.addEventListener('input', function(event) {
             var inputValue = event.target.value;
             event.target.value = inputValue.replace(/[^0-9]/g, '').substring(0, 6);
-        })
-
-
-        button.id = 'alejo';
-        newBtn.addEventListener('click', function() {
-
-            alert('Nuevo evento con el botón alejo');
         });
 
+        button.id = 'alejo';
+    }
 
 
- 
-    };
+    document.getElementById('form').addEventListener('click', function(event) {
+
+        if (event.target.id === '') {
+            alert('solo boton 2')
+            
+
+        }
+    });
 </script>

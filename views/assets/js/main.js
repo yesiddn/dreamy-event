@@ -120,14 +120,20 @@ async function loginUser() {
   }
 }
 
-/* generacion del codigo de recuperacion */
+/*- - - - - - - -  - - generacion del codigo de recuperacion  - - - - -  - - - - - - - - - - - */
+
 async function generateCode() {
-  const { isValid, formData } = getFormData();
+ /* const { isValid, formData } = getFormData();
   if (!isValid) {
     return false;
-  }
+  } */
+
+  alert('main.js - generation code')
   const url = `./control/recovery.control.php`;
   const method = 'POST';
+  const formData = new FormData();
+  let email = document.querySelector('#email').value;
+  formData.append('email', email);
   formData.set('action', 'recovery');
 
   try {
@@ -144,7 +150,47 @@ async function generateCode() {
   } catch (error) {
     console.error(error);
   }
-}
+};
+
+async function validationCode() {
+  /* const { isValid, formData } = getFormData();
+   if (!isValid) {
+     return false;
+
+
+   } */
+
+   alert('main.js - validation code')
+   const url = `./control/recovery.control.php`;
+   const method = 'POST';
+   const formData = new FormData();
+   let code = document.querySelector('#inputCode').value;
+   formData.append('code', code);
+   formData.set('action', 'validationCode');
+ 
+   try {
+     const response = await fetchData(url, method, formData);
+ 
+     if (response.status === 404) {
+       alert('email no registrado');
+       return false;
+     } 
+ 
+     if (response.status === 200) {
+      alert('codigo correcto');
+       return true;
+     }
+   } catch (error) {
+     console.error(error);
+   }
+ }
+ 
+
+
+
+
+
+
 
 
 
