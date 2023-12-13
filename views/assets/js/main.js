@@ -135,10 +135,11 @@ async function generateCode() {
 
     if (response.status === 404) {
       alert('email no registrado');
+      return false;
     } 
 
     if (response.status === 200) {
-      alert('usuario encontrado');
+      return true;
     }
   } catch (error) {
     console.error(error);

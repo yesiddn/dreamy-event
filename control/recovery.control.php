@@ -7,15 +7,15 @@ class LoginControl {
   public $email;
 
   public function login() {
-    $customer = LoginModel::login($this->email);
+    $User = LoginModel::login($this->email);
 
-    return $customer;
+    return $User;
   }
 }
 
 if ($_POST['action'] === 'recovery') {
-  $customer = new LoginControl();
-  $customer->email = $_POST['email'];
-  $customer = $customer->login();
-  echo json_encode($customer);
+  $User = new LoginControl();
+  $User->email = $_POST['email'];
+  $User = $User->login();
+  echo json_encode($User);
 }
