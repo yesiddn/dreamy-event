@@ -33,6 +33,8 @@ if (!isset($_GET["rout"]) || $_GET["rout"] == "home") {
   include_once("./views/modules/service-supplier.php");
 } elseif($_GET["rout"] == "create-services"){
   include_once("./views/modules/create-service.php"); 
+} elseif($_GET["rout"] == "search"){
+  include_once("./views/modules/search.php"); 
 } else {
   include_once("./views/modules/404.php");
 }

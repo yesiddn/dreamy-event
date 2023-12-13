@@ -41,8 +41,8 @@ async function addFavoriteService(serviceId, favoriteTarget) {
 
 function showServices(services) {
   const cardsContainer = document.getElementById('cards__container');
+  cardsContainer.innerHTML = '';
 
-  // recorrer objeto services
   for (const service in services) {
     const serviceItem = services[service];
     const card = document.createElement('a');
@@ -71,12 +71,11 @@ function showServices(services) {
     const title = document.createElement('h2');
     title.textContent = serviceItem[0].name_service;
 
-    // falta la opción de calificación
     const rating = document.createElement('span');
-    rating.textContent = `★${'¡FALTA!'}`;
+    rating.textContent = `★${serviceItem[0].rating}`;
 
     const location = document.createElement('p');
-    location.textContent = `Ubicación: ${serviceItem[0].location}`;
+    location.textContent = serviceItem[0].location;
 
     const price = document.createElement('p');
     price.textContent = `$${serviceItem[0].price}`;
