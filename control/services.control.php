@@ -38,7 +38,7 @@ class ServiceControl
     ];
     $newService = ServicesModel::createService($data);
     $fileService = FilesModel::createServiceImages($newService['data']['id'], $data['service-pics']);
-    echo json_encode($newService,$fileService);
+    echo json_encode($newService);
   }
 
   public function editService() {
@@ -79,6 +79,12 @@ class ServiceControl
     $getServiceSupplier = ServicesModel::getServicesSupplier($this->idSupplier);
     echo json_encode($getServiceSupplier);
   }
+
+  public function getReservedServices()
+  {
+    $getReservedServices = ServicesModel::getReservedServices($this->idSupplier);
+    echo json_encode($getReservedServices);
+  }
 }
 
 if ($_POST["action"] == "read") {
@@ -110,7 +116,13 @@ if ($_POST["action"] == "read by type") {
   $getServices->getServicesByType();
 }
 
-if (isset($_POST['queryType']) == 'Insert') {
+if ($_POST["action"] == "read reserved services") {
+  $getServices = new ServiceControl();
+  $getServices->idSupplier = $_POST["idSupplier"];
+  $getServices->getReservedServices();
+}
+
+if ($_POST['action'] == 'create') {
   $ServiceControl = new ServiceControl();
   $ServiceControl->nameService = $_POST['name-service'];
   $ServiceControl->descriptionService = $_POST['description-service'];

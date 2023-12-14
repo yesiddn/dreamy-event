@@ -3,7 +3,6 @@ session_start();
 include_once("./views/modules/head.php");
 include_once("./views/modules/alerts.php");
 include_once("./views/modules/header.php");
-include_once("./views/modules/search.php");
 
 if (!isset($_GET["rout"]) || $_GET["rout"] == "home") {
   include_once("./views/modules/hero.php");
@@ -32,9 +31,16 @@ if (!isset($_GET["rout"]) || $_GET["rout"] == "home") {
 } elseif ($_GET["rout"] == "edit-service") {
   include_once("./views/modules/edit-service-form.php");
 } elseif ($_GET["rout"] == "my-services") {
+  include_once("./views/modules/supplier-dashboard.php");
   include_once("./views/modules/service-supplier.php");
 } elseif($_GET["rout"] == "create-services"){
   include_once("./views/modules/create-service.php"); 
+} elseif ($_GET["rout"] == "reset-password") {
+    include_once("./views/modules/password-recovery.php");
+} elseif ($_GET["rout"] == "new-password") {
+    include_once("./views/modules/new-password.php");
+} elseif($_GET["rout"] == "search"){
+  include_once("./views/modules/search.php"); 
 } else {
   include_once("./views/modules/404.php");
 }

@@ -120,6 +120,95 @@ async function loginUser() {
   }
 }
 
+/*- - - - - - - -  - - generacion del codigo de recuperacion  - - - - -  - - - - - - - - - - - */
+
+async function generateCode() {
+
+  const url = `./control/recovery.control.php`;
+  const method = 'POST';
+  const formData = new FormData();
+  let email = document.querySelector('#email').value;
+  formData.append('email', email);
+  formData.set('action', 'recovery');
+
+  try {
+    const response = await fetchData(url, method, formData);
+
+    if (response.status === 404) {
+      showAlert('user-not-exists');
+      return false;
+    } 
+
+    if (response.status === 200) {
+      return true;
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+async function validationCode() {
+
+   const url = `./control/recovery.control.php`;
+   const method = 'POST';
+   const formData = new FormData();
+   let code = document.querySelector('#inputCode').value;
+   formData.append('code', code);
+   formData.set('action', 'validationCode');
+ 
+   try {
+     const response = await fetchData(url, method, formData);
+ 
+     if (response.status === 404) {
+      showAlert('wrong verification code');
+       return false;
+     } 
+ 
+     if (response.status === 200) {
+      window.location.href = 'new-password';
+
+       return true;
+     }
+   } catch (error) {
+     console.error(error);
+   }
+ }
+
+ async function setNewPassword(password) {
+   const url = `./control/recovery.control.php`;
+   const method = 'POST';
+   const formData = new FormData();
+   formData.append('newPassword', password);
+   formData.set('action', 'NewPassword');
+ 
+   try {
+     const response = await fetchData(url, method, formData);
+ 
+     if (response.status === 400) {
+       return false;
+     } 
+ 
+     if (response.status === 200) {
+      showAlert('password changed')
+      /* cambio realizado con exito */
+      window.location.href = 'home';
+
+       return true;
+     }
+   } catch (error) {
+     console.error(error);
+   }
+ }
+ 
+
+
+
+
+
+
+
+
+
 async function getInfoService(idService) {
   const data = new FormData();
   data.set('action', 'read');
@@ -209,7 +298,7 @@ function showInfoService(data) {
   );
 
   const infoServiceDetailsPriceCardP = document.createElement('p');
-  infoServiceDetailsPriceCardP.textContent = `${data.price}€ / 24h`;
+  infoServiceDetailsPriceCardP.textContent = `$${data.price} / 24h`;
 
   const infoServiceDetailsPriceCardButton = document.createElement('button');
   infoServiceDetailsPriceCardButton.textContent = 'Agregar a un evento';
@@ -256,6 +345,7 @@ function showInfoService(data) {
   infoServiceDetails.appendChild(infoServiceDetailsPriceCard);
 
   const infoService = document.querySelector('.info-service');
+  infoService.innerHTML = '';
   infoService.appendChild(infoServiceGallery);
   infoService.appendChild(infoServiceDetails);
 

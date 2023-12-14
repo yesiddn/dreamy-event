@@ -84,28 +84,27 @@
           <select name="type-service" id="type-service" onchange="validateInputData('type-service')">
             <option value="" hidden>Seleccione un tipo de servicio</option>
 
-            <option value="1">Alojamiento</option>
+            <option value="1">Lugar</option>
 
-            <option value="2">Decoracion</option>
+            <option value="2">Pasteleria</option>
 
-            <option value="3">Musica</option>
+            <option value="3">Transporte</option>
 
-            <option value="4">Catering</option>
+            <option value="4">Comida</option>
 
-            <option value="5">Comida</option>
+            <option value="5">Ambientacion</option>
 
-            <option value="6">Logística</option>
+            <option value="6">Decoracion</option>
 
-            <option value="7">Audiovisual</option>
-
-            <option value="8">Marketing</option>
+            <option value="7">Fotografia y video</option>
           </select>
 
           <span class="inactive">Ingrese un valor valido.</span>
         </label>
 
-        <button type="submit" id="service-form-button">Registrar</button>
+        <button type="button" id="service-form-button">Registrar</button>
       </form>
     </div>
+    <script defer src="./views/assets/js/alert.js"></script>
     <script defer src="./views/assets/js/create-service.js"></script>
   </section>
