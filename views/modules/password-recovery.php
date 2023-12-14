@@ -25,7 +25,6 @@
     resetFormButton.addEventListener('click', async () => {
         const newInputCode = await generateCode();
         if (newInputCode) {
-            alert('boton 1 cliqueado');
             hola();
         }
     });
@@ -67,7 +66,6 @@
 
 document.addEventListener('click', function(event) {
     if (event.target.id === 'alejo') {
-        alert('¡Botón "alejo" clickeado fuera de la función hola!');
         validationCode();
     }
 });
