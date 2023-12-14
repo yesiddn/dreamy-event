@@ -117,7 +117,14 @@ function showAlert(typeAlert) {
     'password mismatch Validator': {
       message: 'Las contraseñas ingresadas no coinciden.',
       color: '#F02D3A',
-    }
+    'service deleted':{
+      message: 'Servicio eliminado correctamente.',
+      color: '#ADFFC7',
+    },
+    'service updated': {
+      message: 'Servicio editado correctamente.',
+      color: '#ADFFC7',
+    },
   };
 
   let alert = document.getElementById('alert');

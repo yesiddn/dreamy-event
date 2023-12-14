@@ -28,6 +28,8 @@ if (!isset($_GET["rout"]) || $_GET["rout"] == "home") {
   include_once("./views/modules/new-event-form.php");
 } elseif ($_GET["rout"] == "edit-event") {
   include_once("./views/modules/edit-event-form.php");
+} elseif ($_GET["rout"] == "edit-service") {
+  include_once("./views/modules/edit-service-form.php");
 } elseif ($_GET["rout"] == "my-services") {
   include_once("./views/modules/supplier-dashboard.php");
   include_once("./views/modules/service-supplier.php");
