@@ -486,8 +486,8 @@ select:focus {
 }
 
 .button_places {
-  display: flex;
-  justify-content: space-around;
+  /* display: flex; */
+  /* justify-content: space-around; */
   padding-bottom: 10px;
 }
 
