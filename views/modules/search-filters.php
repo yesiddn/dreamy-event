@@ -31,13 +31,11 @@
 
         <div class="button_places row">
 
-          <button type="button" class="img_places_button" id="urban__place"><img class="img_places" src="./views/assets/img/urban.png" alt="Urbano">
-            <br><label class="form-check-label" for="urban__place">Urbano</label>
-          </button>
-
-          <button type="button" class="img_places_button" id="rural__place"><img class="img_places" src="./views/assets/img/campestre.png" alt="Campestre">
-            <br><label class="form-check-label" for="rural__place">Campestre</label>
-          </button>
+          <div>
+            <label>Ciudad: <input list="ciudades-colombia" name="ciudades-colombia" /></label>
+            <datalist id="ciudades-colombia">
+            </datalist>
+          </div>
 
         </div>
       </div>
@@ -56,7 +54,6 @@
             <label for="max__Price">Precio máximo:</label>
             <input type="number" id="max__Price" min="60000" style="width: 168px;height: 38px;" max="10000000" placeholder="Máximo">
           </div>
-          <!-- <button onclick="filterByPrice()">Aplicar filtro</button> -->
         </div>
       </div>
     </section>
@@ -124,8 +121,24 @@
       <button onclick="filterByPrice()">Aplicar filtro</button>
     </div>
   </div>
-  
+
   <script>
+    const cities = fetch('https://www.datos.gov.co/resource/xdk5-pm3f.json?$query=SELECT%20municipio', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
+      }).then(response => response.json())
+      .then(data => {
+        const ciudades = document.getElementById('ciudades-colombia');
+        data.forEach(element => {
+          const option = document.createElement('option');
+          option.value = element.municipio;
+          ciudades.appendChild(option);
+        });
+      });
+
     document.getElementById("filter__bar").addEventListener("click", function() {
       document.getElementById("modal__filter").style.display = "flex";
       document.body.style.overflow = 'hidden';
