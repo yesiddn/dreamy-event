@@ -109,10 +109,6 @@
 </div>
 <script defer src="./views/assets/js/service-supplier.js"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      ServiceForm();
-    });
-
     const editServiceFormButton = document.getElementById('service-form-button');
     editServiceFormButton.addEventListener('click', () => {
       event.preventDefault();

@@ -124,9 +124,9 @@ function showServices(services) {
   }
 }
 
-if (!user) {
+if (!user && (window.location.pathname.split('/')[2] === 'my-services')) {
   getServicesSupplier('all', null);
-} else {
+} else if (user && (window.location.pathname.split('/')[2] === 'my-services')) {
   getServicesSupplier('all', user.supplier.id_supplier);
 }
 
@@ -173,7 +173,7 @@ async function ServiceForm(idService) {
   const typeService = document.querySelector('#type-service');
 
 
-  nameServices.value = service.data.name;
+  nameServices.value = service.data.nameService;
   description.value = service.data.description;
   price.value = service.data.price;
   location.value = service.data.location;
@@ -184,8 +184,11 @@ async function ServiceForm(idService) {
   typeService.value = service.data.id_type_service;
 }
 
-const idService = location.search.split('?/')[1];
-    ServiceForm(idService);
+if (window.location.pathname.split('/')[2] === 'edit-service') {
+  const idService = location.search.split('?/')[1];
+  ServiceForm(idService);
+}
+
 
 async function deleteService(idService) {
   const data = new FormData();

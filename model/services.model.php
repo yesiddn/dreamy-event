@@ -129,7 +129,7 @@ class ServicesModel
 
     $service = array(
       'idService' => $response['id_service'],
-      'name' => $response['name_service'],
+      'nameService' => $response['name_service'],
       'description' => $response['description_service'],
       'price' => $response['price'],
       'location' => $response['location'],
@@ -210,7 +210,7 @@ class ServicesModel
       'message' => 'Service updated',
       'data' => array(
         'idService' => $idService,
-        'name' => $nameService,
+        'nameService' => $nameService,
         'description' => $descriptionService,
         'price' => $price,
         'location' => $location,
