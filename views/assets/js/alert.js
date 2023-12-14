@@ -102,6 +102,10 @@ function showAlert(typeAlert) {
       message: 'Ha ocurrido un error al realizar el pago.',
       color: '#F02D3A',
     },
+    'service created': {
+      message: 'El servicio se ha creado correctamente.',
+      color: '#ADFFC7',
+    },
     'password changed': {
       message: 'Cambio de contraseña realizado.',
       color: '#ADFFC7',

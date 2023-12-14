@@ -1,26 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../assets/css/normalize.css">
-  <link rel="stylesheet" href="../assets/css/main.css">
-  <title>Document</title>
-
-</head>
-
-
-</body>
-<div class="button-filter">
+<li class="button-filter">
   <button class="button-filter-bar" id="filter__bar">
     <span>
-      <img src="../assets/img/filter new.png" alt="Filters" class="filter__img" id="filter__img" height="20px"
-        width="20px">
+      <img src="./views/assets/img/filter new.png" alt="Filters" class="filter__img" id="filter__img" height="20px" width="20px">
     </span> Filtros </button>
 
-</div>
+</li>
 
 <div id="modal__filter" class="Modal__filter">
 
@@ -33,8 +17,8 @@
       </div>
 
       <div class="column-filter2">
-        <button class="exit__filter" onclick="document.getElementById('modal__filter').style.display='none'">
-          <img src="../assets/img/salir filtro.png" alt="Salir" height="25px" width="25px">
+        <button class="exit__filter" onclick="closeModal()">
+          <img src="./views/assets/img/salir filtro.png" alt="Salir" height="25px" width="25px">
         </button>
       </div>
 
@@ -47,15 +31,11 @@
 
         <div class="button_places row">
 
-          <button type="button" class="img_places_button" id="urban__place"><img class="img_places"
-              src="../assets/img/urban.png" alt="Urbano">
-            <br><label class="form-check-label" for="urban__place">Urbano</label>
-          </button>
-
-          <button type="button" class="img_places_button" id="rural__place"><img class="img_places"
-              src="../assets/img/campestre.png" alt="Campestre">
-            <br><label class="form-check-label" for="rural__place">Campestre</label>
-          </button>
+          <div>
+            <label>Ciudad: <input list="ciudades-colombia" name="ciudades-colombia" /></label>
+            <datalist id="ciudades-colombia">
+            </datalist>
+          </div>
 
         </div>
       </div>
@@ -68,14 +48,12 @@
           <h3>Rango de precio</h3>
           <div>
             <label for="min__Price">Precio mínimo:</label>
-            <input type="number" id="min__Price" min="200000" style="width: 168px;height: 38px;" placeholder="Mínimo">
+            <input type="number" id="min__Price" min="50000" style="width: 168px;height: 38px;" placeholder="Mínimo">
           </div>
           <div>
             <label for="max__Price">Precio máximo:</label>
-            <input type="number" id="max__Price" min="300000" style="width: 168px;height: 38px;" max="10000000"
-              placeholder="Máximo">
+            <input type="number" id="max__Price" min="60000" style="width: 168px;height: 38px;" max="10000000" placeholder="Máximo">
           </div>
-          <!-- <button onclick="filterByPrice()">Aplicar filtro</button> -->
         </div>
       </div>
     </section>
@@ -121,7 +99,6 @@
       </div>
     </section>
 
-
     <section class="filter_elements">
       <div class="scroll-container">
         <div class="mb-3 input__amount">
@@ -134,27 +111,42 @@
 
           <div>
             <label for="max__amount">Cantidad máxima:</label>
-            <input type="number" id="max__amount" min="30" max="3000" style="width: 168px;height: 38px;"
-              placeholder="Máximo">
+            <input type="number" id="max__amount" min="30" max="3000" style="width: 168px;height: 38px;" placeholder="Máximo">
           </div>
-          <!-- <button onclick="filterByPrice()">Aplicar filtro</button> -->
         </div>
       </div>
     </section>
 
-
-
-
-
-
+    <div class="filter__container-button">
+      <button onclick="filterByPrice()">Aplicar filtro</button>
+    </div>
   </div>
-</div>
-</div>
 
-<script>
-  document.getElementById("filter__bar").addEventListener("click", function () {
-    document.getElementById("modal__filter").style.display = "block";
-  });
-</script>
+  <script>
+    const cities = fetch('https://www.datos.gov.co/resource/xdk5-pm3f.json?$query=SELECT%20municipio', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
+      }).then(response => response.json())
+      .then(data => {
+        const ciudades = document.getElementById('ciudades-colombia');
+        data.forEach(element => {
+          const option = document.createElement('option');
+          option.value = element.municipio;
+          ciudades.appendChild(option);
+        });
+      });
 
-</html>
+    document.getElementById("filter__bar").addEventListener("click", function() {
+      document.getElementById("modal__filter").style.display = "flex";
+      document.body.style.overflow = 'hidden';
+    });
+
+    function closeModal() {
+      document.getElementById('modal__filter').style.display = 'none'
+      document.body.style.overflow = 'auto';
+    }
+  </script>
+</div>

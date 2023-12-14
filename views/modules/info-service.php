@@ -1,36 +1,37 @@
 <section class="info-service">
-  <!-- <div class="info-service__gallery">
-    4 images
-    <img
-      src="https://images.unsplash.com/photo-1696388790726-68161096266e?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      alt="">
+  <div class="info-service__gallery">
+    <img class="info-service__gallery__img--loading" alt="">
+    <img class="info-service__gallery__img--loading" alt="">
+    <img class="info-service__gallery__img--loading" alt="">
+    <img class="info-service__gallery__img--loading" alt="">
   </div>
 
   <div class="info-service__details">
     <div>
       <div class="info-service__details__header">
         <div class="info-service__details__header__title">
-          <h2>Habitación con vista a las montañas</h2>
-          <p>Oslo, Noruega</p>
+          <h2 class="info-service__details__header__title--loading"></h2>
+          <p class="info-service__details__header__title--loading"></p>
         </div>
-
         <div class="info-service__details__header__rating">
-          <p>4.5⭐</p>
+          <p class="info-service__details__header__rating--loading"></p>
         </div>
       </div>
-
       <div class="info-service__details__body">
-        <p>
-          Descripcion del servicio.
-        </p>
+        <p class="info-service__details__body--loading"></p>
       </div>
     </div>
-
     <div class="info-service__details__price-card">
-      <span>1000€ / 24h</span>
-      <button>Reservar</button>
+      <p class="info-service__details__price-card--loading"></p>
+      <button class="info-service__details__price-card--loading"><span></span></button>
+
+      <ul class="info-service__details__price-card__events inactive">
+        <li>Mi cumpleaños</li>
+        <li><span></span>Crear evento</li>
+      </ul>
     </div>
-  </div> -->
+  </div>
+
   <script defer src="./views/assets/js/events.js"></script>
 </section>
 

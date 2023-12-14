@@ -5,7 +5,7 @@
         <img src="./views/assets/svg/logo.svg" alt="Logo Dreamy Event">
       </a>
 
-      <form id="searchForm" class="search-bar">
+      <form action="search" id="searchForm" class="search-bar">
         <input type="text" name="search" id="search" placeholder="Buscar">
         <button type="submit" id="searchButton"></button>
       </form>
