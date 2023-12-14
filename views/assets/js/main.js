@@ -156,10 +156,7 @@ async function validationCode() {
   /* const { isValid, formData } = getFormData();
    if (!isValid) {
      return false;
-
-
    } */
-
    alert('main.js - validation code')
    const url = `./control/recovery.control.php`;
    const method = 'POST';
@@ -172,12 +169,14 @@ async function validationCode() {
      const response = await fetchData(url, method, formData);
  
      if (response.status === 404) {
-       alert('email no registrado');
+       alert('codigo incorrecto, Intentalo de nuevo');
        return false;
      } 
  
      if (response.status === 200) {
       alert('codigo correcto');
+      window.location.href = 'new-password';
+
        return true;
      }
    } catch (error) {

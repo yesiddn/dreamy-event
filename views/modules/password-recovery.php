@@ -30,42 +30,46 @@
         }
     });
 
+
     function hola() {
-        /* contenido dinamico con un nuevo input para el codigo */
-        emailInpt.disabled = true;
+    resetFormButton.parentNode.removeChild(resetFormButton);
 
-        var nuevoLabel = document.createElement('label');
-        nuevoLabel.setAttribute('for', 'nuevoEmail');
-        nuevoLabel.className = 'form__input';
+    var codeValButton = document.createElement('button');
+    codeValButton.type = 'button';
+    codeValButton.id = 'alejo';
+    codeValButton.textContent = 'Confirmar';
 
-        var inputCode = document.createElement('input');
-        inputCode.id = 'inputCode';
-        inputCode.type = 'number';
-        inputCode.name = 'recovery-code';
-        inputCode.placeholder = 'Codigo';
+    const form = document.getElementById('form');
+    form.appendChild(codeValButton);
 
-        nuevoLabel.appendChild(inputCode);
+    emailInpt.disabled = true;
 
-        const form = document.getElementById('form');
-        let button = document.getElementById('generate-code');
+    var newIptCodeLabel = document.createElement('label');
+    newIptCodeLabel.setAttribute('for', 'nuevoEmail');
+    newIptCodeLabel.className = 'form__input';
 
-        form.insertBefore(nuevoLabel, button);
+    var inputCode = document.createElement('input');
+    inputCode.id = 'inputCode';
+    inputCode.type = 'number';
+    inputCode.name = 'recovery-code';
+    inputCode.placeholder = 'Codigo';
 
-        inputCode.addEventListener('input', function(event) {
-            var inputValue = event.target.value;
-            event.target.value = inputValue.replace(/[^0-9]/g, '').substring(0, 6);
-        });
+    newIptCodeLabel.appendChild(inputCode);
 
-        button.id = 'alejo';
-    }
+    form.insertBefore(newIptCodeLabel, codeValButton);
 
-
-    document.getElementById('form').addEventListener('click', function(event) {
-
-        if (event.target.id === '') {
-            alert('solo boton 2')
-            
-
-        }
+    inputCode.addEventListener('input', function(event) {
+        var inputValue = event.target.value;
+        event.target.value = inputValue.replace(/[^0-9]/g, '').substring(0, 6);
     });
+}
+
+
+document.addEventListener('click', function(event) {
+    if (event.target.id === 'alejo') {
+        alert('¡Botón "alejo" clickeado fuera de la función hola!');
+        validationCode();
+    }
+});
+
 </script>

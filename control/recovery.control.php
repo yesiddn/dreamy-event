@@ -28,6 +28,7 @@ if ($_POST['action'] === 'recovery') {
   $User = new LoginControl();
   $User->email = $_POST['email'];
   $User = $User->login();
+  $_SESSION['currentUserData'] = $User['data']; // saving in session the useful current user data
   echo json_encode($User);
   
 } elseif ($_POST['action'] === 'validationCode') {

@@ -35,6 +35,9 @@ if (!isset($_GET["rout"]) || $_GET["rout"] == "home") {
   include_once("./views/modules/create-service.php"); 
 }elseif ($_GET["rout"] == "reset-password") {
     include_once("./views/modules/password-recovery.php");
+  }elseif ($_GET["rout"] == "new-password") {
+    include_once("./views/modules/new-password.php");
+    
 
 
 } else {
