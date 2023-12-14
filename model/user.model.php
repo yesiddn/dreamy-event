@@ -14,10 +14,9 @@ class UserModel
       $query->bindParam(1, $email, PDO::PARAM_STR);
       $query->bindParam(2, $password, PDO::PARAM_STR);
 
-      if ($query->execute()){
+      if ($query->execute()) {
         $userId = $connection->lastInsertId();
-        $email = RegEmail::SignUpEmailConfirmation($email,$name);
-
+        $email = RegEmail::SignUpEmailConfirmation($email, $name);
       } else {
         return $connection->errorInfo()[2];
       }
@@ -56,6 +55,27 @@ class UserModel
         'message' => 'User not found',
         'data' => null
       );
+    } catch (Exception $e) {
+      return $e->getMessage();
+    }
+  }
+
+
+
+  public static function userInsertionCode($email, $code)
+  {
+    try {
+      $sql = "UPDATE users SET recovery_code = ? WHERE email_user = ?";
+      $connection = Connection::connect();
+      $query = $connection->prepare($sql);
+      $query->bindParam(1, $code, PDO::PARAM_STR);
+      $query->bindParam(2, $email, PDO::PARAM_STR);
+      $query->execute();
+      $code = $query->fetch(PDO::FETCH_ASSOC);
+
+      if ($code) {
+        return array('data' => $code);
+      }
     } catch (Exception $e) {
       return $e->getMessage();
     }

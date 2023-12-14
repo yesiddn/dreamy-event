@@ -106,6 +106,18 @@ function showAlert(typeAlert) {
       message: 'El servicio se ha creado correctamente.',
       color: '#ADFFC7',
     },
+    'password changed': {
+      message: 'Cambio de contraseña realizado.',
+      color: '#ADFFC7',
+    },
+    'wrong verification code': {
+      message: 'codigo incorrecto, Intentalo de nuevo.',
+      color: '#F02D3A',
+    },
+    'password mismatch Validator': {
+      message: 'Las contraseñas ingresadas no coinciden.',
+      color: '#F02D3A',
+    }
   };
 
   let alert = document.getElementById('alert');
