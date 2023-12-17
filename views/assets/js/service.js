@@ -207,9 +207,9 @@ function showReservedServices(services) {
   reservedServicesContainer.appendChild(servicesContainer);
 }
 
-if (!user) {
+if (!user && window.location.pathname.split('/')[2] != 'my-services') {
   getServices('all', null);
-} else {
+} else if (window.location.pathname.split('/')[2] != 'my-services') {
   getServices('all', user.id_customer);
 }
 

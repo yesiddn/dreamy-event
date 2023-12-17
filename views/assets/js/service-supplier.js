@@ -124,13 +124,6 @@ function showServices(services) {
   }
 }
 
-if (!user && (window.location.pathname.split('/')[2] === 'my-services')) {
-  getServicesSupplier('all', null);
-} else if (user && (window.location.pathname.split('/')[2] === 'my-services')) {
-  getServicesSupplier('all', user.supplier.id_supplier);
-}
-
-
 async function initServices() {
   const services = await getServicesSupplier();
   showServices(services.data);
@@ -184,11 +177,6 @@ async function ServiceForm(idService) {
   typeService.value = service.data.id_type_service;
 }
 
-if (window.location.pathname.split('/')[2] === 'edit-service') {
-  const idService = location.search.split('?/')[1];
-  ServiceForm(idService);
-}
-
 
 async function deleteService(idService) {
   const data = new FormData();
@@ -206,4 +194,16 @@ async function deleteService(idService) {
   } else {
     showAlert('something went wrong');
   }
+}
+
+if (window.location.pathname.split('/')[2] === 'edit-service') {
+  const idService = location.search.split('?/')[1];
+  ServiceForm(idService);
+}
+
+if (!user && window.location.pathname.split('/')[2] === 'my-services') {
+  getServicesSupplier('all', null);
+} 
+else if (user && (window.location.pathname.split('/')[2] === 'my-services')) {
+  getServicesSupplier('all', user.supplier.id_supplier);
 }
